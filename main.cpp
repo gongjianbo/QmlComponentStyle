@@ -1,13 +1,19 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+//#include <QQuickWindow>
+
+#include "ColorTool.h"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    //QQuickWindow::setTextRenderType(QQuickWindow::NativeTextRendering);
+
+    qmlRegisterType<ColorTool>("Tools",1,0,"ColorTool");
 
     QGuiApplication app(argc, argv);
 
-    QQmlApplicationEngine engine;
+    QQmlApplicationEngine engine;   
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
