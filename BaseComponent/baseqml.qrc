@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>BaseButton.qml</file>
+        <file>BaseComboBox.qml</file>
     </qresource>
 </RCC>
