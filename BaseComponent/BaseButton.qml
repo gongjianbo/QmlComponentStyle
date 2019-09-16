@@ -7,8 +7,8 @@ import QtQuick.Controls 2.12
 Button {
     id:control
 
-    property color themeColor: "darkCyan"
-    property color textColor: "white"
+    property color themeColor: "darkCyan" //主题颜色
+    property color textColor: "white"     //文本颜色
 
     property Gradient _highlightGradient: Gradient{
         GradientStop { position: 0.0; color: "gray" }
@@ -38,12 +38,15 @@ Button {
                              implicitContentHeight + topPadding + bottomPadding)*/
     implicitWidth: 90
     implicitHeight: 30
+    leftPadding: 5
+    rightPadding: 5
     //checkable: true
     font{
         family: "SimSun"
         pixelSize: 16
     }
 
+    //按钮中显示的内容：图标+文字
     contentItem: Row{
         id:btn_row
         width: control.width
@@ -53,7 +56,7 @@ Button {
             anchors{
                 verticalCenter: parent.verticalCenter
             }
-            source: control.icon.source
+            source: control.icon.source //借用icon的接口
         }
         Text{
             id:btn_text
@@ -95,9 +98,10 @@ Button {
         color: control.textColor
     }*/
 
+    //背景
     background: Rectangle{
-        implicitWidth: 90
-        implicitHeight: 30
+        implicitWidth: control.implicitWidth
+        implicitHeight: control.implicitHeight
         radius: 3
         gradient: (control.checked||control.highlighted)
                   ? _highlightGradient
