@@ -9,7 +9,6 @@ Button {
 
     property color themeColor: "darkCyan"
     property color textColor: "white"
-    property url iconSource
 
     property Gradient _highlightGradient: Gradient{
         GradientStop { position: 0.0; color: "gray" }
@@ -54,7 +53,7 @@ Button {
             anchors{
                 verticalCenter: parent.verticalCenter
             }
-            source: control.iconSource
+            source: control.icon.source
         }
         Text{
             id:btn_text

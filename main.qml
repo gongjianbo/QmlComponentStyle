@@ -9,7 +9,7 @@ Window {
 
     BaseButton{
         text: "Base Button"
-        iconSource: "qrc:/fire.png"
+        icon.source: "qrc:/fire.png"
         themeColor: "red"
         textColor: "white"
         onClicked: {
