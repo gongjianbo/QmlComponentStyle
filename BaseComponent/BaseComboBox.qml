@@ -13,6 +13,7 @@ ComboBox {
     property color themeColor: "darkCyan"  //主题颜色
     property color indicatorColor: "white" //按钮颜色
     property color textColor: "white"      //文本主颜色
+    property int showCount: 5              //最多显示的item个数
     property Gradient _lightToNormal: Gradient{
         GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
         GradientStop { position: 0.6; color: themeColor }
@@ -21,6 +22,8 @@ ComboBox {
         GradientStop { position: 0.2; color: themeColor }
         GradientStop { position: 0.9; color: Qt.darker(themeColor) }
     }
+    property int _globalY: mapToGlobal(control.x,control.y).y
+    property int _globalHeight: Screen.desktopAvailableHeight
 
     implicitWidth: 120
     implicitHeight: 30
@@ -128,9 +131,13 @@ ComboBox {
 
     //弹出框
     popup: Popup {
-        y: control.height //向下弹出
+        //默认向下弹出，如果距离不够，y会自动调整（）
+        y: control.height
         width: control.width
-        implicitHeight: contentItem.implicitHeight+2
+        //根据showCount来设置最多显示item个数
+        implicitHeight: (control.delegateModel.count<showCount
+                        ?contentItem.implicitHeight
+                        :5*control.implicitHeight)+2
         padding: 1
 
         contentItem: ListView {
@@ -138,8 +145,21 @@ ComboBox {
             implicitHeight: contentHeight
             model: control.popup.visible ? control.delegateModel : null
             currentIndex: control.highlightedIndex
-
-            ScrollIndicator.vertical: ScrollIndicator { }
+            snapMode: ListView.SnapToItem //按行滚动
+            //ScrollBar.horizontal: ScrollBar { visible: false }
+            ScrollBar.vertical: ScrollBar { //定制滚动条
+                id: box_bar
+                implicitWidth: 10
+                visible: (control.delegateModel.count>showCount)
+                //background: Rectangle{} //这是整体的背景
+                contentItem: Rectangle{
+                    implicitWidth:10
+                    radius: width/2
+                    color: box_bar.pressed
+                    ? Qt.rgba(0.6,0.6,0.6)
+                    : Qt.rgba(0.6,0.6,0.6,0.5)
+                }
+            }
         }
 
         //弹出框背景（只有border显示出来了，其余部分被delegate背景遮挡）

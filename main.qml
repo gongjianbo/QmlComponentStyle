@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Controls 2.12
 
 Window {
     id:root
@@ -20,6 +21,11 @@ Window {
             id:button_row
             spacing: 10
 
+            Button{
+                text: "Button"
+                width: 90
+                height: 30
+            }
             BaseButton{
                 text: "Button"
                 themeColor: "green"
@@ -37,6 +43,11 @@ Window {
             id:combobox_row
             spacing: 10
 
+            ComboBox{
+                width: 120
+                height: 30
+                model: ["First", "Second", "Third"]
+            }
             BaseComboBox{
                 model: ["First", "Second", "Third"]
                 themeColor: "green"
@@ -44,11 +55,11 @@ Window {
                 textColor: "white"
             }
             BaseComboBox{
-                model: ["First", "Second", "Third"]
-                themeColor: "red"
+                model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                themeColor: "blue"
                 indicatorColor: "yellow"
                 textColor: "yellow"
-            }
+            }            
         }
     }
 }
