@@ -61,5 +61,35 @@ Window {
                 textColor: "yellow"
             }            
         }
+
+        Row{
+            id:checkbox_row
+            spacing: 10
+
+            ButtonGroup{
+                id:checkbox_group
+            }
+            CheckBox{
+                width: 90
+                height: 30
+                text: "Box A"
+                checked: true
+                ButtonGroup.group: checkbox_group
+            }
+            BaseCheckBox{
+                text: "Box B"
+                themeColor: "blue"
+                tristate: true
+                ButtonGroup.group: checkbox_group
+            }
+            BaseCheckBox{
+                text: "Box C"
+                themeColor: "transparent"
+                textColor: "red"
+                indicatorColor: "red"
+                tristate: true
+                checkState: Qt.PartiallyChecked
+            }
+        }
     }
 }

@@ -3,4 +3,5 @@ RESOURCES += \
 
 DISTFILES += \
     $$PWD/BaseButton.qml \
+    $$PWD/BaseCheckBox.qml \
     $$PWD/BaseComboBox.qml
