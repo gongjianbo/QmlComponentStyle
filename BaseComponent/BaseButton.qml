@@ -1,10 +1,11 @@
 import QtQuick 2.12
+import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 //import QtQuick.Controls.impl 2.12
 
 //qtquickcontrols2\src\imports\controls\Button.qml
-
-Button {
+//from Customizing Button
+T.Button {
     id:control
 
     property color themeColor: "darkCyan" //主题颜色

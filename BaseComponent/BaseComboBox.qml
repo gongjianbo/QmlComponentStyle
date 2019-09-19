@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
+import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 import QtQuick.Shapes 1.12
 //import QtQuick.Controls.impl 2.12
@@ -7,7 +8,7 @@ import QtQuick.Shapes 1.12
 //qtquickcontrols2\src\imports\controls\ComboBox.qml
 //from Customizing ComboBox
 
-ComboBox {
+T.ComboBox {
     id:control
 
     property color themeColor: "darkCyan"  //主题颜色

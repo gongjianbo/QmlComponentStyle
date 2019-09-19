@@ -3,5 +3,6 @@
         <file>BaseButton.qml</file>
         <file>BaseComboBox.qml</file>
         <file>BaseCheckBox.qml</file>
+        <file>BaseProgressBar.qml</file>
     </qresource>
 </RCC>
