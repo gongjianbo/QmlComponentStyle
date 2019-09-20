@@ -11,6 +11,6 @@ Window {
 
     Loader{
         anchors.fill: parent
-        source: "qrc:/BaseComponentDemo.qml"
+        source: "qrc:/BasicComponentDemo.qml"
     }
 }

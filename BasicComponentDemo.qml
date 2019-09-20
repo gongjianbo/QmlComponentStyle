@@ -27,13 +27,13 @@ ScrollView {
                 height: 30
                 onClicked: drawer.close()
             }
-            BaseButton{
+            BasicButton{
                 text: "Button"
                 themeColor: "green"
                 textColor: "white"
             }
-            BaseButton{
-                text: "Base Button"
+            BasicButton{
+                text: "Basic Button"
                 icon.source: "qrc:/fire.png"
                 themeColor: "red"
                 textColor: "white"
@@ -49,13 +49,13 @@ ScrollView {
                 height: 30
                 model: ["First", "Second", "Third"]
             }
-            BaseComboBox{
+            BasicComboBox{
                 model: ["First", "Second", "Third"]
                 themeColor: "green"
                 indicatorColor: "white"
                 textColor: "white"
             }
-            BaseComboBox{
+            BasicComboBox{
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                 themeColor: "blue"
                 indicatorColor: "yellow"
@@ -77,13 +77,13 @@ ScrollView {
                 checked: true
                 ButtonGroup.group: checkbox_group
             }
-            BaseCheckBox{
+            BasicCheckBox{
                 text: "Box B"
                 themeColor: "blue"
                 tristate: true
                 ButtonGroup.group: checkbox_group
             }
-            BaseCheckBox{
+            BasicCheckBox{
                 text: "Box C"
                 themeColor: "transparent"
                 textColor: "red"
@@ -101,7 +101,7 @@ ScrollView {
                 from: 0; to:100; value: 20
                 indeterminate: true
             }
-            BaseProgressBar{
+            BasicProgressBar{
                 id:progress_bar1
                 from: 0; to:100; value: 20
                 foregroundColor: "green"
@@ -112,7 +112,7 @@ ScrollView {
                 text: progress_bar1.value+"%"
                 color: progress_bar1.foregroundColor
             }
-            BaseProgressBar{
+            BasicProgressBar{
                 id: progress_bar2
                 from: 0; to:100; value: 20
                 foregroundColor: "blue"

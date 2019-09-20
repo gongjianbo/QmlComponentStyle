@@ -24,11 +24,11 @@ SOURCES += \
 
 RESOURCES += qml.qrc
 
-include($$PWD/BaseComponent/BaseComponent.pri)
+include($$PWD/BasicComponent/BasicComponent.pri)
 include($$PWD/CustomComponent/CustomComponent.pri)
 include($$PWD/Tools/Tools.pri)
 include($$PWD/Image/Image.pri)
-INCLUDEPATH += $$PWD/BaseComponent
+INCLUDEPATH += $$PWD/BasicComponent
 INCLUDEPATH += $$PWD/CustomComponent
 INCLUDEPATH += $$PWD/Tools
 INCLUDEPATH += $$PWD/Image
