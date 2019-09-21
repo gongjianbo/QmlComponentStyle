@@ -86,7 +86,7 @@ ScrollView {
             BasicCheckBox{
                 text: "Box B"
                 themeColor: "blue"
-                tristate: true
+                //tristate: true
                 ButtonGroup.group: checkbox_group
             }
             BasicCheckBox{
@@ -141,6 +141,9 @@ ScrollView {
                 themeColor: "yellow"
             }
         }
+
+        //BasicInputComponent.qml
+        BasicInputComponent{}
     }
 
     //一个滑动的抽屉
