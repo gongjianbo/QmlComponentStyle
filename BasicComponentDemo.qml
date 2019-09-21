@@ -109,23 +109,19 @@ ScrollView {
             }
             BasicProgressBar{
                 id:progress_bar1
-                from: 0; to:100; value: 20
-                foregroundColor: "green"
+                //from: 0; to:100; value: 20
+                themeColor: "green"
                 //模糊模式，即没有具体值
                 indeterminate: true
-            }
-            Text {
-                text: progress_bar1.value+"%"
-                color: progress_bar1.foregroundColor
             }
             BasicProgressBar{
                 id: progress_bar2
                 from: 0; to:100; value: 20
-                foregroundColor: "blue"
+                themeColor: "blue"
             }
             Text {
                 text: progress_bar2.value+"%"
-                color: progress_bar2.foregroundColor
+                color: progress_bar2.themeColor
             }
         }
 
