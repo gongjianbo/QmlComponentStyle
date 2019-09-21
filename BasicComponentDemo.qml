@@ -3,6 +3,12 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 ScrollView {
+    //控件的implici尺寸是随内容变化的，但是我为了展示设置为了固定值
+    /*implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding)*/
+
     Column{
         anchors{
             left: parent.left
@@ -120,6 +126,23 @@ ScrollView {
             Text {
                 text: progress_bar2.value+"%"
                 color: progress_bar2.foregroundColor
+            }
+        }
+
+        Row{
+            id:busy_row
+            spacing: 10
+
+            BusyIndicator{
+                width: 64
+                height: 64
+                running: true //running时才visible
+            }
+            BasicBusyIndicator{
+                themeColor: "orange"
+            }
+            BasicBusyIndicator{
+                themeColor: "yellow"
             }
         }
     }

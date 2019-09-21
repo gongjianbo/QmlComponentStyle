@@ -4,5 +4,6 @@
         <file>BasicCheckBox.qml</file>
         <file>BasicComboBox.qml</file>
         <file>BasicProgressBar.qml</file>
+        <file>BasicBusyIndicator.qml</file>
     </qresource>
 </RCC>
