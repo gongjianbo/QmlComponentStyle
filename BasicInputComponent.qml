@@ -40,7 +40,7 @@ Column {
                 id: textinput_1
                 width: textinput_1_view.width
                 padding: 5
-                text: "<p>Test String</p>"
+                text: "<p>Gong Jian Bo</p>"
                 //文本颜色
                 color: "black"
                 //只读
@@ -202,7 +202,7 @@ Column {
             leftPadding: 5
             rightPadding: 5
             //无输入时显示的文本
-            placeholderText: "Test String"
+            placeholderText: "Gong Jian Bo"
             placeholderTextColor: "gray"
             //horizontalAlignment: TextInput.AlignLeft
             //和TextInput不一样的是，它默认是VCenter
@@ -318,7 +318,7 @@ Column {
                 width: textedit_1_view.width
                 padding: 5
                 color: "black"
-                text: "<p>Test String</p>"
+                text: "<p>Gong Jian Bo</p>"
                 //支持富文本
                 textFormat: TextEdit.RichText
                 //光标样式是可以自定义的
@@ -381,9 +381,9 @@ Column {
                 padding: 5
                 color: "black"
                 //无输入时的提示文本
-                placeholderText: "Test String"
+                placeholderText: "Gong Jian Bo"
                 placeholderTextColor: "gray"
-                //text: "<p>Test String</p>"
+                //text: "<p>Gong Jian Bo</p>"
                 //支持富文本
                 textFormat: TextEdit.RichText
                 //光标样式是可以自定义的
