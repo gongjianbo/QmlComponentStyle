@@ -9,6 +9,13 @@ import QtQuick.Controls 2.12
 Column {
     spacing: 10
 
+    Text {
+        width: 90
+        height: 30
+        verticalAlignment: Text.AlignVCenter
+        renderType: Text.NativeRendering
+        text: "Basic Input Component"
+    }
 
     Row{
         id: textinput_row

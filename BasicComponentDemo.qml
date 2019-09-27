@@ -18,7 +18,7 @@ ScrollView {
         spacing: 10
 
         Row{
-            id:button_row
+            id:gradientbutton_row
             spacing: 10
 
             Button{
@@ -33,12 +33,12 @@ ScrollView {
                 height: 30
                 onClicked: drawer.close()
             }
-            BasicButton{
+            GradientButton{
                 text: "Button"
                 themeColor: "green"
                 textColor: "white"
             }
-            BasicButton{
+            GradientButton{
                 text: "Basic Button"
                 icon.source: "qrc:/fire.png"
                 themeColor: "red"
@@ -47,7 +47,7 @@ ScrollView {
         }
 
         Row{
-            id:combobox_row
+            id:gradientcombobox_row
             spacing: 10
 
             ComboBox{
@@ -55,13 +55,13 @@ ScrollView {
                 height: 30
                 model: ["First", "Second", "Third"]
             }
-            BasicComboBox{
+            GradientComboBox{
                 model: ["First", "Second", "Third"]
                 themeColor: "green"
                 indicatorColor: "white"
                 textColor: "white"
             }
-            BasicComboBox{
+            GradientComboBox{
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                 themeColor: "blue"
                 indicatorColor: "yellow"
@@ -70,7 +70,7 @@ ScrollView {
         }
 
         Row{
-            id:checkbox_row
+            id:gradientcheckbox_row
             spacing: 10
 
             ButtonGroup{
@@ -83,17 +83,17 @@ ScrollView {
                 checked: true
                 ButtonGroup.group: checkbox_group
             }
-            BasicCheckBox{
+            GradientCheckBox{
                 text: "Box B"
                 themeColor: "blue"
                 //tristate: true
                 ButtonGroup.group: checkbox_group
             }
-            BasicCheckBox{
+            GradientCheckBox{
                 text: "Box C"
-                themeColor: "transparent"
-                textColor: "red"
-                indicatorColor: "red"
+                themeColor: "red"
+                textColor: "white"
+                indicatorColor: "blue"
                 tristate: true
                 checkState: Qt.PartiallyChecked
             }
@@ -138,7 +138,7 @@ ScrollView {
                 themeColor: "orange"
             }
             BasicBusyIndicator{
-                themeColor: "yellow"
+                themeColor: "red"
             }
         }
 

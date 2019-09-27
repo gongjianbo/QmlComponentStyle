@@ -5,5 +5,8 @@
         <file>BasicComboBox.qml</file>
         <file>BasicProgressBar.qml</file>
         <file>BasicBusyIndicator.qml</file>
+        <file>GradientButton.qml</file>
+        <file>GradientCheckBox.qml</file>
+        <file>GradientComboBox.qml</file>
     </qresource>
 </RCC>
