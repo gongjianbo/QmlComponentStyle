@@ -3,11 +3,10 @@ import QtQuick.Window 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 import QtQuick.Shapes 1.12
-//import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.impl 2.12
 
 //qtquickcontrols2\src\imports\controls\ComboBox.qml
 //from Customizing ComboBox
-
 T.ComboBox {
     id:control
 
@@ -79,30 +78,6 @@ T.ComboBox {
             PathLine { x:box_indicator.width; y:4 }
         }
     }
-    //from Customizing ComboBox
-    /*indicator: Canvas {
-        id: canvas
-        x: control.width - width - control.rightPadding
-        y: control.topPadding + (control.availableHeight - height) / 2
-        width: 12
-        height: 8
-        contextType: "2d"
-
-        Connections {
-            target: control
-            onPressedChanged: canvas.requestPaint()
-        }
-
-        onPaint: {
-            context.reset();
-            context.moveTo(0, 0);
-            context.lineTo(width, 0);
-            context.lineTo(width / 2, height);
-            context.closePath();
-            context.fillStyle = control.pressed ? "#17a81a" : "#21be2b";
-            context.fill();
-        }
-    }*/
 
     //box显示item
     contentItem: Text {

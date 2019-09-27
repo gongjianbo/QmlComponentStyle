@@ -111,6 +111,5 @@ T.Button {
                     : control.hovered
                       ? _hoverGradient
                       : _normalGradient
-
     }
 }

@@ -7,7 +7,6 @@ import QtQuick.Shapes 1.12
 
 //qtquickcontrols2\src\imports\controls\ComboBox.qml
 //from Customizing ComboBox
-
 T.ComboBox {
     id:control
 

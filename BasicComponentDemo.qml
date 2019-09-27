@@ -100,6 +100,83 @@ ScrollView {
         }
 
         Row{
+            id:button_row
+            spacing: 10
+
+            Button{
+                text: "Button"
+                width: 120
+                height: 30
+            }
+            BasicButton{
+                text: "Button"
+                textColor: "white"
+                backgroundColor: "green"
+            }
+            BasicButton{
+                text: "Basic Button"
+                icon.source: "qrc:/fire.png"
+                textColor: "white"
+                backgroundColor: "red"
+                _textHoverColor: "cyan"
+                _bgHoverColor: "purple"
+            }
+        }
+
+        /*Row{
+            id:combobox_row
+            spacing: 10
+
+            ComboBox{
+                width: 120
+                height: 30
+                model: ["First", "Second", "Third"]
+            }
+            GradientComboBox{
+                model: ["First", "Second", "Third"]
+                themeColor: "green"
+                indicatorColor: "white"
+                textColor: "white"
+            }
+            GradientComboBox{
+                model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                themeColor: "blue"
+                indicatorColor: "yellow"
+                textColor: "yellow"
+            }
+        }
+
+        Row{
+            id:checkbox_row
+            spacing: 10
+
+            ButtonGroup{
+                id:checkbox_group2
+            }
+            CheckBox{
+                width: 90
+                height: 30
+                text: "Box A"
+                checked: true
+                ButtonGroup.group: checkbox_group2
+            }
+            GradientCheckBox{
+                text: "Box B"
+                themeColor: "blue"
+                //tristate: true
+                ButtonGroup.group: checkbox_group2
+            }
+            GradientCheckBox{
+                text: "Box C"
+                themeColor: "red"
+                textColor: "white"
+                indicatorColor: "blue"
+                tristate: true
+                checkState: Qt.PartiallyChecked
+            }
+        }*/
+
+        Row{
             id:progress_row
             spacing: 10
             ProgressBar{
