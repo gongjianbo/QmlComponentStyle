@@ -7,7 +7,7 @@ Window {
     visible: true
     width: 720
     height: 500
-    title: qsTr("Qml Component Style")
+    title: qsTr("Qml Component Style: by Gong Jian Bo")
 
     Loader{
         anchors.fill: parent

@@ -148,6 +148,8 @@ ScrollView {
             }
         }
 
+        //发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
+        //类似这些动态效果，在我的电脑上缩小窗口过程中会有闪烁
         Row{
             id:checkbox_row
             spacing: 10
