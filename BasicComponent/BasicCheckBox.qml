@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
+import QtQuick.Controls.impl 2.12
 import QtQuick.Shapes 1.12
 
 //qtquickcontrols2\src\imports\controls\CheckBox.qml
@@ -8,20 +9,21 @@ import QtQuick.Shapes 1.12
 T.CheckBox {
     id:control
 
-    property color themeColor: "darkCyan"  //主题颜色
-    property color textColor: "white"      //文本颜色
-    property color indicatorColor: "white" //按钮颜色
-    property Gradient _normalGradient: Gradient{
-        GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
-        GradientStop { position: 0.5; color: themeColor }
-        GradientStop { position: 1.0; color: Qt.lighter(themeColor) }
-    }
+    //可以像源码一样，定义一个全局的样式，然后取全局样式中对应的颜色
+    property color textColor: "white"          //文字颜色
+    property color backgroundColor: "darkCyan" //背景颜色
+    property color _bgNormalColor: backgroundColor               //普通状态背景颜色
+    property color _bgCheckColor: Qt.darker(backgroundColor)     //选中背景颜色
+    property color _bgHoverColor: Qt.lighter(backgroundColor)    //悬停背景颜色
+    property color _bgDownColor: Qt.darker(backgroundColor)      //按下背景颜色
+    property color indicatorColor: "white"     //勾选框颜色
+    property int radius: 0
 
     implicitWidth: 90
     implicitHeight: 30
     leftPadding: 5
     rightPadding: 5
-
+    spacing: 5
     font{
         family: "SimSun"
         pixelSize: 16
@@ -38,12 +40,7 @@ T.CheckBox {
         border.color: indicatorColor
         antialiasing: false
 
-        /*Rectangle {
-
-            color: indicatorColor
-            antialiasing: false
-            visible: control.checkState === Qt.Checked
-        }*/
+        //源码中是用ColorImage加载的按钮图标
         Shape { //indicator全部用shape算了
             id: checked_indicator
             anchors.centerIn: parent
@@ -73,11 +70,9 @@ T.CheckBox {
     }
 
     //勾选框文本
-    contentItem: Text {
+    contentItem: CheckLabel {
         text: control.text
         font: control.font
-        //opacity: enabled ? 1.0 : 0.3
-        //color: control.down ? "red" : "blue"
         color: textColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -88,7 +83,13 @@ T.CheckBox {
     }
 
     background: Rectangle{
-        radius: 3
-        gradient: _normalGradient
+        radius: control.radius
+        color: control.checked
+               ? _bgCheckColor
+               : control.down
+                 ? _bgDownColor
+                 : control.hovered
+                   ? _bgHoverColor
+                   : _bgNormalColor
     }
 }

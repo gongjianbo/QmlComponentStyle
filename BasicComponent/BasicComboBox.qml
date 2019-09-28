@@ -10,18 +10,16 @@ import QtQuick.Controls.impl 2.12
 T.ComboBox {
     id:control
 
-    property color themeColor: "darkCyan"  //主题颜色
-    property color indicatorColor: "white" //按钮颜色
-    property color textColor: "white"      //文本主颜色
+    //可以像源码一样，定义一个全局的样式，然后取全局样式中对应的颜色
+    property color textColor: "white"          //文字颜色
+    property color backgroundColor: "darkCyan" //背景颜色
+    property color _bgNormalColor: backgroundColor               //普通状态背景颜色
+    property color _bgCheckColor: Qt.darker(backgroundColor)     //选中背景颜色
+    property color _bgHoverColor: Qt.lighter(backgroundColor)    //悬停背景颜色
+    property color _bgDownColor: Qt.darker(backgroundColor)      //按下背景颜色
+    property color indicatorColor: "white"     //勾选框颜色
+    property int radius: 0
     property int showCount: 5              //最多显示的item个数
-    property Gradient _lightToNormal: Gradient{
-        GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
-        GradientStop { position: 0.6; color: themeColor }
-    }
-    property Gradient _normalToDark: Gradient{
-        GradientStop { position: 0.2; color: themeColor }
-        GradientStop { position: 0.9; color: Qt.darker(themeColor) }
-    }
     property int _globalY: mapToGlobal(control.x,control.y).y
     property int _globalHeight: Screen.desktopAvailableHeight
 
@@ -49,9 +47,16 @@ T.ComboBox {
         }
         //highlighted: control.highlightedIndex === index
         background: Rectangle{
-            gradient: (control.highlightedIndex === index)
-                      ?_normalToDark
-                      :_lightToNormal
+            //radius: control.radius
+            color: (control.highlightedIndex === index)
+                      ?_bgCheckColor
+                      :_bgNormalColor
+            Rectangle{
+                height: 1
+                width: parent.width
+                anchors.bottom: parent.bottom
+                color: Qt.lighter(_bgNormalColor)
+            }
         }
     }
 
@@ -68,7 +73,7 @@ T.ComboBox {
             strokeWidth: 1
             strokeColor: indicatorColor
             fillRule: ShapePath.WindingFill
-            fillColor: control.pressed ? Qt.lighter(themeColor) : themeColor
+            fillColor: control.down ? _bgCheckColor : _bgNormalColor
             startX: 0; startY: 4
             PathLine { x:0; y:0 }
             PathLine { x:box_indicator.width+1; y:0 } //+1补齐
@@ -97,12 +102,12 @@ T.ComboBox {
     background: Rectangle {
         implicitWidth: control.implicitWidth
         implicitHeight: control.implicitHeight
-        radius: 3
-        gradient: Gradient{
-            GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
-            GradientStop { position: 0.5; color: themeColor }
-            GradientStop { position: 1.0; color: Qt.lighter(themeColor) }
-        }
+        radius: control.radius
+        color: control.down
+                 ? _bgDownColor
+                 : control.hovered
+                   ? _bgHoverColor
+                   : _bgNormalColor
     }
 
     //弹出框
@@ -141,9 +146,9 @@ T.ComboBox {
         //弹出框背景（只有border显示出来了，其余部分被delegate背景遮挡）
         background: Rectangle {
             border.width: 1
-            border.color: themeColor
+            border.color: _bgNormalColor
             //color: Qt.lighter(themeColor)
-            radius: 2
+            radius: control.radius
         }
     }
 }

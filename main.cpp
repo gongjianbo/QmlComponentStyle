@@ -7,6 +7,8 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    //对单个Text设置renderType: Text.NativeRendering比较烦
+    //可以设置全局的
     //QQuickWindow::setTextRenderType(QQuickWindow::NativeTextRendering);
 
     qmlRegisterType<ColorTool>("Tools",1,0,"ColorTool");

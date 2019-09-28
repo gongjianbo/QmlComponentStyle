@@ -120,10 +120,11 @@ ScrollView {
                 backgroundColor: "red"
                 _textHoverColor: "cyan"
                 _bgHoverColor: "purple"
+                radius: 3
             }
         }
 
-        /*Row{
+        Row{
             id:combobox_row
             spacing: 10
 
@@ -132,17 +133,18 @@ ScrollView {
                 height: 30
                 model: ["First", "Second", "Third"]
             }
-            GradientComboBox{
+            BasicComboBox{
                 model: ["First", "Second", "Third"]
-                themeColor: "green"
-                indicatorColor: "white"
                 textColor: "white"
+                indicatorColor: "white"
+                backgroundColor: "deepskyblue"
             }
-            GradientComboBox{
+            BasicComboBox{
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-                themeColor: "blue"
-                indicatorColor: "yellow"
-                textColor: "yellow"
+                textColor: "white"
+                indicatorColor: "white"
+                backgroundColor: "green"
+                radius: 3
             }
         }
 
@@ -160,21 +162,22 @@ ScrollView {
                 checked: true
                 ButtonGroup.group: checkbox_group2
             }
-            GradientCheckBox{
+            BasicCheckBox{
                 text: "Box B"
-                themeColor: "blue"
-                //tristate: true
+                textColor: "white"
+                backgroundColor: "orange"
                 ButtonGroup.group: checkbox_group2
             }
-            GradientCheckBox{
+            BasicCheckBox{
                 text: "Box C"
-                themeColor: "red"
-                textColor: "white"
-                indicatorColor: "blue"
+                textColor: "cyan"
+                backgroundColor: "purple"
+                indicatorColor: "cyan"
                 tristate: true
                 checkState: Qt.PartiallyChecked
+                radius: 3
             }
-        }*/
+        }
 
         Row{
             id:progress_row
@@ -215,7 +218,7 @@ ScrollView {
                 themeColor: "orange"
             }
             BasicBusyIndicator{
-                themeColor: "red"
+                themeColor: "purple"
             }
         }
 

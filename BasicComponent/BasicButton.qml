@@ -9,14 +9,14 @@ T.Button {
     id:control
 
     //可以像源码一样，定义一个全局的样式，然后取全局样式中对应的颜色
-    property color textColor: "darkCyan"
-    property color backgroundColor: "white"
+    property color textColor: "white"
+    property color backgroundColor: "darkCyan"
     property color _bgNormalColor: backgroundColor               //普通状态背景颜色
-    property color _bgLightColor: Qt.lighter(backgroundColor)    //高亮背景颜色
+    property color _bgCheckColor: Qt.lighter(backgroundColor)    //选中背景颜色
     property color _bgHoverColor: Qt.lighter(backgroundColor)    //悬停背景颜色
     property color _bgDownColor: Qt.darker(backgroundColor)      //按下背景颜色
     property color _textNormalColor: textColor  //普通状态文本颜色
-    property color _textLightColor: textColor   //高亮文本颜色
+    property color _textCheckColor: textColor   //高亮文本颜色
     property color _textHoverColor: textColor   //悬停文本颜色
     property color _textDownColor: textColor    //按下文本颜色
     property int radius: 0     //背景rect的圆角
@@ -75,7 +75,7 @@ T.Button {
             //        control.flat && !control.down ?
             //      (control.visualFocus ? control.palette.highlight : control.palette.windowText) : control.palette.buttonText
             color: (control.checked||control.highlighted)
-                   ? _textLightColor
+                   ? _textCheckColor
                    : control.down
                      ? _textDownColor
                      : control.hovered
@@ -97,7 +97,7 @@ T.Button {
 
         //不同状态的颜色可以单独设置
         color: (control.checked||control.highlighted)
-               ? _bgLightColor
+               ? _bgCheckColor
                : control.down
                  ? _bgDownColor
                  : control.hovered
