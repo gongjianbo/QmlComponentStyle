@@ -224,6 +224,25 @@ ScrollView {
             }
         }
 
+        Row{
+            id:label_row
+            spacing: 10
+
+            Label{
+                //Label继承自Text，而Text是支持Html样式的
+                text: "<u>Label</u>"
+            }
+            BasicLabel{
+                underlineVisible: true
+                normalColor: "red"
+                hoverColor: "blue"
+                text: "Label"
+            }
+            BasicLabel{
+                text: "Label"
+            }
+        }
+
         //BasicInputComponent.qml
         BasicInputComponent{}
     }

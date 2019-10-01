@@ -8,5 +8,6 @@
         <file>GradientButton.qml</file>
         <file>GradientCheckBox.qml</file>
         <file>GradientComboBox.qml</file>
+        <file>BasicLabel.qml</file>
     </qresource>
 </RCC>
