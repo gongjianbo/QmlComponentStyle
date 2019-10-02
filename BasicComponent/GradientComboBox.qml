@@ -14,6 +14,22 @@ T.ComboBox {
     property color indicatorColor: "white" //按钮颜色
     property color textColor: "white"      //文本主颜色
     property int showCount: 5              //最多显示的item个数
+
+    property Gradient _normalGradient: Gradient{
+        GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
+        GradientStop { position: 0.5; color: themeColor }
+        GradientStop { position: 1.0; color: Qt.lighter(themeColor) }
+    }
+    property Gradient _downGradient: Gradient{
+        GradientStop { position: 0.0; color: Qt.darker(themeColor) }
+        GradientStop { position: 0.5; color: themeColor }
+        GradientStop { position: 1.0; color: Qt.lighter(themeColor) }
+    }
+    property Gradient _hoverGradient: Gradient{
+        GradientStop { position: 0.0; color: themeColor }
+        GradientStop { position: 0.5; color: Qt.darker(themeColor) }
+        GradientStop { position: 1.0; color: themeColor }
+    }
     property Gradient _lightToNormal: Gradient{
         GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
         GradientStop { position: 0.6; color: themeColor }
@@ -122,11 +138,11 @@ T.ComboBox {
         implicitWidth: control.implicitWidth
         implicitHeight: control.implicitHeight
         radius: 3
-        gradient: Gradient{
-            GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
-            GradientStop { position: 0.5; color: themeColor }
-            GradientStop { position: 1.0; color: Qt.lighter(themeColor) }
-        }
+        gradient: control.down
+                    ? _downGradient
+                    : control.hovered
+                      ? _hoverGradient
+                      : _normalGradient
     }
 
     //弹出框

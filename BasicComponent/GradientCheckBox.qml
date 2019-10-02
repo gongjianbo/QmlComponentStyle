@@ -16,6 +16,16 @@ T.CheckBox {
         GradientStop { position: 0.5; color: themeColor }
         GradientStop { position: 1.0; color: Qt.lighter(themeColor) }
     }
+    property Gradient _downGradient: Gradient{
+        GradientStop { position: 0.0; color: Qt.darker(themeColor) }
+        GradientStop { position: 0.5; color: themeColor }
+        GradientStop { position: 1.0; color: Qt.lighter(themeColor) }
+    }
+    property Gradient _hoverGradient: Gradient{
+        GradientStop { position: 0.0; color: themeColor }
+        GradientStop { position: 0.5; color: Qt.darker(themeColor) }
+        GradientStop { position: 1.0; color: themeColor }
+    }
 
     implicitWidth: 90
     implicitHeight: 30
@@ -89,6 +99,10 @@ T.CheckBox {
 
     background: Rectangle{
         radius: 3
-        gradient: _normalGradient
+        gradient: control.down
+                    ? _downGradient
+                    : control.hovered
+                      ? _hoverGradient
+                      : _normalGradient
     }
 }
