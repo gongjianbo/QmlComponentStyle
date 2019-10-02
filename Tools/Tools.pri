@@ -1,5 +1,3 @@
-HEADERS += \
-    $$PWD/ColorTool.h
+HEADERS +=
 
-SOURCES += \
-    $$PWD/ColorTool.cpp
+SOURCES +=
