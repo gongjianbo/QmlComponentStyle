@@ -9,5 +9,6 @@
         <file>GradientCheckBox.qml</file>
         <file>GradientComboBox.qml</file>
         <file>BasicLabel.qml</file>
+        <file>BasicSpinBox.qml</file>
     </qresource>
 </RCC>

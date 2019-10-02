@@ -7,6 +7,7 @@ DISTFILES += \
     $$PWD/BasicComboBox.qml \
     $$PWD/BasicLabel.qml \
     $$PWD/BasicProgressBar.qml \
+    $$PWD/BasicSpinBox.qml \
     $$PWD/GradientButton.qml \
     $$PWD/GradientCheckBox.qml \
     $$PWD/GradientComboBox.qml

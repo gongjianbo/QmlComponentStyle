@@ -2,12 +2,19 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
+//--slider和spinbox和scrollbar
 ScrollView {
-    //控件的implici尺寸是随内容变化的，但是我为了展示设置为了固定值
-    /*implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitContentWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding)*/
+    //En: The default implicit size of the control varies with the content,
+    //    but I set it to a fixed value for demonstration purposes.
+    //Ch: 控件的默认implicit尺寸是随内容变化的，但是我为了展示设置为了固定值
+    //e.g.
+    //implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+    //                        implicitContentWidth + leftPadding + rightPadding)
+    //implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+    //                         implicitContentHeight + topPadding + bottomPadding)
+
+    //En: In addition, I excluded mirrored (which may represent right-to-left)
+    //Ch: 此外，我排除了mirrored这种情况（他可能是表示的右到左）
 
     Column{
         anchors{
@@ -76,6 +83,8 @@ ScrollView {
             ButtonGroup{
                 id:checkbox_group
             }
+            //En: CheckBox sets tristate to three-state mode, as detailed in the document.
+            //Ch: CheckBox 设置tristate后为三态模式，详见文档
             CheckBox{
                 width: 90
                 height: 30
@@ -148,8 +157,6 @@ ScrollView {
             }
         }
 
-        //发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
-        //类似这些动态效果，在我的电脑上缩小窗口过程中会有闪烁
         Row{
             id:checkbox_row
             spacing: 10
@@ -181,9 +188,14 @@ ScrollView {
             }
         }
 
+        //发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
+        //类似这些动态效果，在我的电脑上缩小窗口过程中会有闪烁
         Row{
             id:progress_row
             spacing: 10
+            //En: When ProgressBar sets indeterminate, it waits for an indeterminate time,
+            //    similar to BusyIndicator
+            //Ch: ProgressBar设置indeterminate后为时间不明确的等待，类似BusyIndicator
             ProgressBar{
                 width: 200; height: 10
                 from: 0; to:100; value: 20
@@ -193,7 +205,6 @@ ScrollView {
                 id:progress_bar1
                 //from: 0; to:100; value: 20
                 themeColor: "green"
-                //模糊模式，即没有具体值
                 indeterminate: true
             }
             BasicProgressBar{
@@ -240,6 +251,98 @@ ScrollView {
             }
             BasicLabel{
                 text: "Label"
+            }
+        }
+
+        Row{
+            id:spinbox_row
+            spacing: 10
+            //参考文档示例里代码
+            SpinBox{
+                width: 120
+                height: 30
+                //默认范围[0,99]，步进1
+                from: -100
+                to: 100
+                value: -100
+                stepSize: 2
+            }
+            SpinBox {
+                id: spinbox2
+                width: 150
+                height: 30
+                from: 0
+                to: items.length - 1
+                value: 1 // "Medium"
+                property var items: ["Small", "Medium", "Large"]
+
+                validator: RegExpValidator {
+                    //js的正则对象
+                    //参数一为正则表达式
+                    //参数二为可选字符，包含属性 "g"、"i" 和 "m"，
+                    //     分别用于指定全局匹配、区分大小写的匹配和多行匹配
+                    regExp: new RegExp("(Small|Medium|Large)", "i")
+                }
+
+                textFromValue: function(value) {
+                    return items[value];
+                }
+                valueFromText: function(text) {
+                    for (var i = 0; i < items.length; ++i) {
+                        if (items[i].toLowerCase().indexOf(text.toLowerCase()) === 0)
+                            return i
+                    }
+                    return sb.value
+                }
+            }
+            SpinBox{
+                id: spinbox3
+                width: 150
+                height: 30
+                from: 0
+                to: 100*100
+                value: 1111
+                stepSize: 1
+                editable: true
+                //wrap为true则上下按钮设置是循环设置范围内值的
+                wrap: true
+                property int decimals: 2
+                validator: DoubleValidator {
+                    decimals: spinbox3.decimals
+                    bottom: Math.min(spinbox3.from, spinbox3.to)
+                    top:  Math.max(spinbox3.from, spinbox3.to)
+                }
+                //loale为格式化数据和数字，见control
+                //如果想使用js的函数作为回调函数，可以看下这部分的源码
+                textFromValue: function(value, locale) {
+                    return Number(value / 100).toLocaleString(locale, 'f', spinbox3.decimals)
+                }
+
+                valueFromText: function(text, locale) {
+                    return Number.fromLocaleString(locale, text) * 100
+                }
+            }
+            BasicSpinBox{
+                from: 0
+                to: 100
+                value: 10
+                stepSize: 1
+                editable: true
+            }
+            BasicSpinBox{
+                from: 0
+                to: 100
+                value: 10
+                stepSize: 1
+                //editable: true
+                borderVisible: false
+                //borderColor: "darkCyan"
+                textColor: "white"
+                btnNormalColor: "darkCyan"
+                bgNormalColor: "skyblue"
+                bgFocusColor: "blue"
+                indicatorNormalColor: "white"
+                indicatorDisableColor: "gray"
             }
         }
 
