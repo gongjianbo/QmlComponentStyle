@@ -8,6 +8,7 @@ import QtQuick.Templates 2.12 as T
 T.Slider {
     id: control
 
+    property bool acceptWheel: true //滚轮滑动
     //本来想在原来的基础上增加个opposite direction相反方向的属性
     //奈何handle是和鼠标判定区域挂钩的，所以要做这个的话就不能用原来的handle
     //相当于自己重新组合一个slider控件
@@ -65,6 +66,18 @@ T.Slider {
             height: control.horizontal ? parent.height : control.position * parent.height
             radius: 3
             color: control.completeColor
+        }
+    }
+    MouseArea{
+        anchors.fill: parent
+        //避免和handle冲突
+        acceptedButtons: Qt.NoButton
+        onWheel: {
+            if(wheel.angleDelta.y<0){
+                control.decrease();
+            }else{
+                control.increase();
+            }
         }
     }
 }
