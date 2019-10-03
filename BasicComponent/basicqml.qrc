@@ -11,5 +11,6 @@
         <file>BasicLabel.qml</file>
         <file>BasicSpinBox.qml</file>
         <file>BasicSlider.qml</file>
+        <file>BasicScrollBar.qml</file>
     </qresource>
 </RCC>

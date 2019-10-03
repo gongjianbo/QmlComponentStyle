@@ -419,6 +419,78 @@ ScrollView {
                 }
             }
         }
+        Row{
+            id:scrollbar_row
+            spacing: 10
+
+            //用ScrollView来展示ScrollBar
+            ScrollView{
+                id: scrollview_1
+                width: 200
+                height: 200
+                contentWidth: 500
+                //contentHeight: 500
+                background: Rectangle{
+                    border.color: "black"
+                    border.width: 1
+                }
+                padding: 1
+                ScrollBar.vertical: ScrollBar {
+                    parent: scrollview_1
+                    x: scrollview_1.mirrored ? 0 : scrollview_1.width - width
+                    y: scrollview_1.topPadding
+                    //可以判断下另一边的scrollbar，减去其高度避免重叠
+                    height: scrollview_1.availableHeight
+                    active: scrollview_1.ScrollBar.horizontal.active
+                    policy: ScrollBar.AlwaysOn //默认asneeded需要操作时才显示
+                    //默认是可以拖动来交互的
+                    //interactive: true
+                }
+
+                ScrollBar.horizontal: ScrollBar {
+                    parent: scrollview_1
+                    x: scrollview_1.leftPadding
+                    y: scrollview_1.height - height
+                    //可以判断下另一边的scrollbar，减去其宽度避免重叠
+                    width: scrollview_1.availableWidth
+                    active: scrollview_1.ScrollBar.vertical.active
+                    policy: ScrollBar.AsNeeded
+                }
+            }
+
+            ScrollView{
+                id: scrollview_2
+                width: 200
+                height: 200
+                contentWidth: 500
+                //contentHeight: 500
+                background: Rectangle{
+                    border.color: "black"
+                    border.width: 1
+                }
+                padding: 1
+                ScrollBar.vertical: BasicScrollBar {
+                    parent: scrollview_2
+                    //这里有1是为了防止踩再background的border上
+                    x: scrollview_2.mirrored ? 1 : scrollview_2.width - width-1
+                    y: scrollview_2.topPadding
+                    height: scrollview_2.availableHeight
+                    active: scrollview_2.ScrollBar.horizontal.active
+                    policy: ScrollBar.AlwaysOn //因为每超出范围，所以设置让他显示
+                    handleNormalColor: "orange"
+                }
+
+                ScrollBar.horizontal: BasicScrollBar {
+                    parent: scrollview_2
+                    x: scrollview_2.leftPadding
+                    y: scrollview_2.height - height-1
+                    width: scrollview_2.availableWidth
+                    active: scrollview_2.ScrollBar.vertical.active
+                    policy: ScrollBar.AsNeeded
+                    handleNormalColor: "orange"
+                }
+            }
+        }
 
         //BasicInputComponent.qml
         BasicInputComponent{}
