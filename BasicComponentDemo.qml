@@ -2,7 +2,6 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
-//--slider和spinbox和scrollbar
 ScrollView {
     //En: The default implicit size of the control varies with the content,
     //    but I set it to a fixed value for demonstration purposes.
@@ -419,6 +418,7 @@ ScrollView {
                 }
             }
         }
+
         Row{
             id:scrollbar_row
             spacing: 10

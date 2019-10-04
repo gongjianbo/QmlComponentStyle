@@ -1,5 +1,3 @@
-
-
 DISTFILES += \
     $$PWD/BasicBusyIndicator.qml \
     $$PWD/BasicButton.qml \

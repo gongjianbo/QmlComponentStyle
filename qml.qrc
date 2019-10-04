@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>BasicComponentDemo.qml</file>
         <file>BasicInputComponent.qml</file>
+        <file>CustomComponentDemo.qml</file>
     </qresource>
 </RCC>
