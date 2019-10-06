@@ -3,7 +3,22 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 ScrollView {
-    CustomButton{
+    Column{
+        anchors{
+            left: parent.left
+            top: parent.top
+            margins: 10
+        }
+        spacing: 10
 
+        //普通按钮
+        CustomButton{
+
+        }
+
+        //开关按钮
+        CustomSwitchButton{
+
+        }
     }
 }
