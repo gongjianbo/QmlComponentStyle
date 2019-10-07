@@ -2,6 +2,11 @@ QT += quick
 
 CONFIG += c++11
 
+msvc {
+    QMAKE_CFLAGS += -source-charset:utf-8
+    QMAKE_CXXFLAGS += -source-charset:utf-8
+}
+
 CONFIG(debug, debug|release){
     DESTDIR = $$PWD/App_Debug
 } else {
