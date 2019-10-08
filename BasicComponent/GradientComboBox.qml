@@ -125,9 +125,9 @@ T.ComboBox {
 
         background: Rectangle {
             visible: control.enabled && control.editable
-            border.width: parent && parent.activeFocus ? 1 : 0
-            border.color: themeColor
-            color: "transparent"
+            color: parent && parent.activeFocus
+                      ? Qt.rgba(0.6,0.6,0.6,0.6)
+                      : "transparent"
         }
     }
 
