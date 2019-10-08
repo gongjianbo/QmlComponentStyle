@@ -57,15 +57,18 @@ ScrollView {
             spacing: 10
 
             ComboBox{
+                editable: true
                 width: 120
                 height: 30
                 model: ["First", "Second", "Third"]
             }
             GradientComboBox{
+                editable: true
                 model: ["First", "Second", "Third"]
                 themeColor: "green"
                 indicatorColor: "white"
                 textColor: "white"
+                //onEditTextChanged: { console.log(editText); }
             }
             GradientComboBox{
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
@@ -137,15 +140,18 @@ ScrollView {
             spacing: 10
 
             ComboBox{
+                editable: true
                 width: 120
                 height: 30
                 model: ["First", "Second", "Third"]
             }
             BasicComboBox{
+                editable: true
                 model: ["First", "Second", "Third"]
                 textColor: "white"
                 indicatorColor: "white"
                 backgroundColor: "deepskyblue"
+                //onEditTextChanged: { console.log(editText); }
             }
             BasicComboBox{
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]

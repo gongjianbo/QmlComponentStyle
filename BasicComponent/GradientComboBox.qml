@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 import QtQuick.Shapes 1.12
-//import QtQuick.Controls.impl 2.12
+import QtQuick.Controls.impl 2.12
 
 //qtquickcontrols2\src\imports\controls\ComboBox.qml
 //from Customizing ComboBox
@@ -13,6 +13,7 @@ T.ComboBox {
     property color themeColor: "darkCyan"  //主题颜色
     property color indicatorColor: "white" //按钮颜色
     property color textColor: "white"      //文本主颜色
+    property int radius: 3
     property int showCount: 5              //最多显示的item个数
 
     property Gradient _normalGradient: Gradient{
@@ -38,13 +39,14 @@ T.ComboBox {
         GradientStop { position: 0.2; color: themeColor }
         GradientStop { position: 0.9; color: Qt.darker(themeColor) }
     }
-    property int _globalY: mapToGlobal(control.x,control.y).y
-    property int _globalHeight: Screen.desktopAvailableHeight
+    //property int _globalY: mapToGlobal(control.x,control.y).y
+    //property int _globalHeight: Screen.desktopAvailableHeight
 
     implicitWidth: 120
     implicitHeight: 30
-    leftPadding: 5
-    rightPadding: 5
+    spacing: 5
+    leftPadding: padding
+    rightPadding: padding + indicator.width + spacing
     font{
         family: "SimSun"
         pixelSize: 16
@@ -56,14 +58,18 @@ T.ComboBox {
         implicitHeight: control.implicitHeight
         width: control.width
         contentItem: Text {
-            text: modelData
+            text: control.textRole
+                  ? (Array.isArray(control.model)
+                     ? modelData[control.textRole]
+                     : model[control.textRole])
+                  : modelData
             color: control.textColor
             font: control.font
             elide: Text.ElideRight
             renderType: Text.NativeRendering
             verticalAlignment: Text.AlignVCenter
         }
-        //highlighted: control.highlightedIndex === index
+        hoverEnabled: control.hoverEnabled
         background: Rectangle{
             gradient: (control.highlightedIndex === index)
                       ?_normalToDark
@@ -74,9 +80,9 @@ T.ComboBox {
     //图标自己画比较麻烦，还是贴图方便
     indicator: Shape {
         id: box_indicator
-        x: control.width - width - control.rightPadding
+        x: control.width - width - control.padding
         y: control.topPadding + (control.availableHeight - height) / 2
-        width: height*2-8
+        width: height*2
         height: control.height/2
         //smooth: true //平滑处理
         //antialiasing: true //反走样抗锯齿
@@ -87,73 +93,65 @@ T.ComboBox {
             fillColor: control.pressed ? Qt.lighter(themeColor) : themeColor
             startX: 0; startY: 4
             PathLine { x:0; y:0 }
-            PathLine { x:box_indicator.width+1; y:0 } //+1补齐
-            PathLine { x:box_indicator.width+1; y:4 }
+            PathLine { x:box_indicator.width-8+1; y:0 } //+1补齐
+            PathLine { x:box_indicator.width-8+1; y:4 }
             PathLine { x:0; y:4 }
-            PathLine { x:box_indicator.width/2; y:box_indicator.height }
-            PathLine { x:box_indicator.width; y:4 }
+            PathLine { x:(box_indicator.width-8)/2; y:box_indicator.height }
+            PathLine { x:box_indicator.width-8; y:4 }
         }
     }
-    //from Customizing ComboBox
-    /*indicator: Canvas {
-        id: canvas
-        x: control.width - width - control.rightPadding
-        y: control.topPadding + (control.availableHeight - height) / 2
-        width: 12
-        height: 8
-        contextType: "2d"
-
-        Connections {
-            target: control
-            onPressedChanged: canvas.requestPaint()
-        }
-
-        onPaint: {
-            context.reset();
-            context.moveTo(0, 0);
-            context.lineTo(width, 0);
-            context.lineTo(width / 2, height);
-            context.closePath();
-            context.fillStyle = control.pressed ? "#17a81a" : "#21be2b";
-            context.fill();
-        }
-    }*/
 
     //box显示item
-    contentItem: Text {
-        width: control.width-control.indicator.width-control.rightPadding
-        leftPadding: control.leftPadding
-        rightPadding: control.spacing
-
-        text: control.displayText
+    contentItem: T.TextField{
+        leftPadding: 10
+        rightPadding: 6
+        text: control.editable ? control.editText : control.displayText
         font: control.font
         color: control.textColor
         verticalAlignment: Text.AlignVCenter
+        //默认鼠标选取文本设置为false
+        selectByMouse: true
+        //选中文本的颜色
+        selectedTextColor: "white"
+        //选中文本背景色
+        selectionColor: "black"
+        clip: true
         renderType: Text.NativeRendering
-        elide: Text.ElideRight
+        enabled: control.editable
+        autoScroll: control.editable
+        readOnly: control.down
+        inputMethodHints: control.inputMethodHints
+        validator: control.validator
+
+        background: Rectangle {
+            visible: control.enabled && control.editable
+            border.width: parent && parent.activeFocus ? 1 : 0
+            border.color: themeColor
+            color: "transparent"
+        }
     }
 
     //box框背景
     background: Rectangle {
         implicitWidth: control.implicitWidth
         implicitHeight: control.implicitHeight
-        radius: 3
+        radius: control.radius
         gradient: control.down
-                    ? _downGradient
-                    : control.hovered
-                      ? _hoverGradient
-                      : _normalGradient
+                  ? _downGradient
+                  : control.hovered
+                    ? _hoverGradient
+                    : _normalGradient
     }
 
     //弹出框
-    popup: Popup {
+    popup: T.Popup {
         //默认向下弹出，如果距离不够，y会自动调整（）
         y: control.height
         width: control.width
         //根据showCount来设置最多显示item个数
         implicitHeight: (control.delegateModel.count<showCount
-                        ?contentItem.implicitHeight
-                        :5*control.implicitHeight)+2
+                         ?contentItem.implicitHeight
+                         :5*control.implicitHeight)+2
         padding: 1
 
         contentItem: ListView {
@@ -172,8 +170,8 @@ T.ComboBox {
                     implicitWidth:10
                     radius: width/2
                     color: box_bar.pressed
-                    ? Qt.rgba(0.6,0.6,0.6)
-                    : Qt.rgba(0.6,0.6,0.6,0.5)
+                           ? Qt.rgba(0.6,0.6,0.6)
+                           : Qt.rgba(0.6,0.6,0.6,0.5)
                 }
             }
         }
