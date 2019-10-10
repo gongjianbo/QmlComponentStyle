@@ -20,5 +20,10 @@ ScrollView {
         CustomSwitchButton{
 
         }
+
+        //音量调节
+        CustomVolumeSliderDemo{
+
+        }
     }
 }

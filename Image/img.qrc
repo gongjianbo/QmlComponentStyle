@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>fire.png</file>
         <file>demo_20190928.png</file>
+        <file>volume-medium.png</file>
     </qresource>
 </RCC>
