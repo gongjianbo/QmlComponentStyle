@@ -12,5 +12,6 @@
         <file>BasicSpinBox.qml</file>
         <file>BasicSlider.qml</file>
         <file>BasicScrollBar.qml</file>
+        <file>BasicRadioButton.qml</file>
     </qresource>
 </RCC>

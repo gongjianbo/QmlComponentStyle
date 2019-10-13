@@ -193,6 +193,44 @@ ScrollView {
             }
         }
 
+        Row{
+            id:radio_row
+            spacing: 10
+            //默认情况下，单选按钮是自动排他的。属于同一父项的单选按钮中随时只能检查一个按钮。
+            //对于不共享公共父级的单选按钮，可以使用ButtonGroup来管理排他性。
+            Row{
+                spacing: 10
+                RadioButton{
+                    checked: true
+                    text: "A"
+                }
+                RadioButton{
+                    text: "B"
+                }
+            }
+            Row{
+                spacing: 10
+                BasicRadioButton{
+                    checked: true
+                    text: "First"
+                    textColor: "red"
+                    radioColor: "red"
+                }
+                BasicRadioButton{
+                    text: "Second"
+                    radius: 3
+                    textColor: "green"
+                    radioColor: "green"
+                }
+                BasicRadioButton{
+                    text: "Third"
+                    radius: 0
+                    textColor: "blue"
+                    radioColor: "blue"
+                }
+            }
+        }
+
         //发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
         //类似这些动态效果，在我的电脑上缩小窗口过程中会有闪烁
         Row{

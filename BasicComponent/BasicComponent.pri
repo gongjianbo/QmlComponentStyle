@@ -5,6 +5,7 @@ DISTFILES += \
     $$PWD/BasicComboBox.qml \
     $$PWD/BasicLabel.qml \
     $$PWD/BasicProgressBar.qml \
+    $$PWD/BasicRadioButton.qml \
     $$PWD/BasicScrollBar.qml \
     $$PWD/BasicSlider.qml \
     $$PWD/BasicSpinBox.qml \
