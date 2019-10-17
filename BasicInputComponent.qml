@@ -24,7 +24,6 @@ Column {
         Text {
             width: 90
             height: 30
-            verticalAlignment: Text.AlignVCenter
             renderType: Text.NativeRendering
             text: "TextInput:"
         }
@@ -194,7 +193,6 @@ Column {
         Text {
             width: 90
             height: 30
-            verticalAlignment: Text.AlignVCenter
             renderType: Text.NativeRendering
             text: "TextField:"
         }
@@ -303,7 +301,6 @@ Column {
         Text {
             width: 90
             height: 30
-            verticalAlignment: Text.AlignVCenter
             renderType: Text.NativeRendering
             text: "TextEdit:"
         }
@@ -364,7 +361,6 @@ Column {
         Text {
             width: 90
             height: 30
-            verticalAlignment: Text.AlignVCenter
             renderType: Text.NativeRendering
             text: "TextArea:"
         }

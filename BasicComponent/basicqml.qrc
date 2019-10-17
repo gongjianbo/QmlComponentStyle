@@ -13,5 +13,6 @@
         <file>BasicSlider.qml</file>
         <file>BasicScrollBar.qml</file>
         <file>BasicRadioButton.qml</file>
+        <file>BasicDelayButton.qml</file>
     </qresource>
 </RCC>

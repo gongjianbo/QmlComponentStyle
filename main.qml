@@ -5,8 +5,8 @@ import QtQuick.Controls 2.12
 ApplicationWindow{
     id:root
     visible: true
-    width: 720
-    height: 500
+    width: 820
+    height: 600
     title: qsTr("Qml Component Style: by Gong Jian Bo")
 
     Loader{

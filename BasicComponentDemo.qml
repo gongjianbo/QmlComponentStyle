@@ -26,7 +26,12 @@ ScrollView {
         Row{
             id:gradientbutton_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "Button:"
+            }
             Button{
                 text: "DrawerShow"
                 width: 120
@@ -55,7 +60,12 @@ ScrollView {
         Row{
             id:gradientcombobox_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "ComboBox:"
+            }
             ComboBox{
                 editable: true
                 width: 120
@@ -81,7 +91,12 @@ ScrollView {
         Row{
             id:gradientcheckbox_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "CheckBox:"
+            }
             ButtonGroup{
                 id:checkbox_group
             }
@@ -113,7 +128,12 @@ ScrollView {
         Row{
             id:button_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "Button:"
+            }
             Button{
                 text: "Button"
                 width: 120
@@ -138,7 +158,12 @@ ScrollView {
         Row{
             id:combobox_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "ComboBox:"
+            }
             ComboBox{
                 editable: true
                 width: 120
@@ -165,7 +190,12 @@ ScrollView {
         Row{
             id:checkbox_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "CheckBox:"
+            }
             ButtonGroup{
                 id:checkbox_group2
             }
@@ -194,8 +224,14 @@ ScrollView {
         }
 
         Row{
-            id:radio_row
+            id:radiobutton_row
             spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "RadioButton:"
+            }
             //默认情况下，单选按钮是自动排他的。属于同一父项的单选按钮中随时只能检查一个按钮。
             //对于不共享公共父级的单选按钮，可以使用ButtonGroup来管理排他性。
             Row{
@@ -231,11 +267,47 @@ ScrollView {
             }
         }
 
+        Row{
+            id:delaybutton_row
+            spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "DelayButton:"
+            }
+
+            DelayButton{
+                text: "Delay"
+                width: 120
+                height: 30
+                delay: 1000 //press and hold delay 1s
+                onActivated: console.log("delay active");
+                onCheckedChanged: console.log("delay state",checked);
+            }
+            BasicDelayButton{
+                text: "GongJianBo"
+            }
+            BasicDelayButton{
+                text: "1992"
+                delay: 1000
+                backgroundColor: "purple"
+                maskColor: "green"
+                radius: 3
+            }
+        }
+
         //发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
-        //类似这些动态效果，在我的电脑上缩小窗口过程中会有闪烁
+        //类似这种有动画效果的绘制，在我的笔记本缩小窗口过程中会有闪烁，但另一台台式机显示正常
         Row{
             id:progress_row
             spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "ProgressBar:"
+            }
             //En: When ProgressBar sets indeterminate, it waits for an indeterminate time,
             //    similar to BusyIndicator
             //Ch: ProgressBar设置indeterminate后为时间不明确的等待，类似BusyIndicator
@@ -264,7 +336,12 @@ ScrollView {
         Row{
             id:busy_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "BusyIndicator:"
+            }
             BusyIndicator{
                 width: 64
                 height: 64
@@ -281,7 +358,12 @@ ScrollView {
         Row{
             id:label_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "Label:"
+            }
             Label{
                 //Label继承自Text，而Text是支持Html样式的
                 text: "<u>Label</u>"
@@ -300,6 +382,12 @@ ScrollView {
         Row{
             id:spinbox_row
             spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "SpinBox:"
+            }
             //参考文档示例里代码
             SpinBox{
                 width: 120
@@ -392,6 +480,12 @@ ScrollView {
         Row{
             id: slider_row
             spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "Slider:"
+            }
             //在实际应用中，也可以关联scrollbar，鼠标滚动之类的
             Slider{
                 height: 200
@@ -466,7 +560,12 @@ ScrollView {
         Row{
             id:scrollbar_row
             spacing: 10
-
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "ScrollBar:"
+            }
             //用ScrollView来展示ScrollBar
             ScrollView{
                 id: scrollview_1

@@ -3,6 +3,7 @@ DISTFILES += \
     $$PWD/BasicButton.qml \
     $$PWD/BasicCheckBox.qml \
     $$PWD/BasicComboBox.qml \
+    $$PWD/BasicDelayButton.qml \
     $$PWD/BasicLabel.qml \
     $$PWD/BasicProgressBar.qml \
     $$PWD/BasicRadioButton.qml \
