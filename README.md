@@ -6,7 +6,9 @@ QML组件样式Demo，以Qt5.12为基础版本。
 ---
 **Demo Show(展示)：**
 
-![2019-09-28](Image/demo_20190928.png)
+![2019-10-17](Image/demo_1.png)
+
+![2019-10-17](Image/demo_2.png)
 
 ---
 **Warning(注意)：**
