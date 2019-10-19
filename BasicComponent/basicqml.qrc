@@ -14,5 +14,10 @@
         <file>BasicScrollBar.qml</file>
         <file>BasicRadioButton.qml</file>
         <file>BasicDelayButton.qml</file>
+        <file>BasicMenu.qml</file>
+        <file>BasicMenuBar.qml</file>
+        <file>BasicMenuBarItem.qml</file>
+        <file>BasicMenuItem.qml</file>
+        <file>BasicMenuSeparator.qml</file>
     </qresource>
 </RCC>

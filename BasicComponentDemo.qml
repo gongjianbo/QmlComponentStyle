@@ -24,6 +24,85 @@ ScrollView {
         spacing: 10
 
         Row{
+            id:menu_row
+            spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "Menu:"
+            }
+            Button{
+                text: "A Menu"
+                width: 120
+                height: 30
+                onClicked: menu_default.open()
+                Menu{
+                    id: menu_default
+                    y: parent.height
+                    Action{ text: "A" }
+                    Action{ text: "B" }
+                }
+            }
+            //menubar通过row来组织menu
+            //menu通过listview来组织menuitem
+            BasicButton{
+                text: "B Menu"
+                width: 120
+                height: 30
+                backgroundColor: "gray"
+                onClicked: menu_style.open()
+                BasicMenu{
+                    id: menu_style
+                    y: parent.height
+                    Action{ text: "A" }
+                    Action{ text: "B" }
+                }
+            }
+        }
+
+        MenuBar{
+            width: 600
+            Menu{
+                title: "MenuA"
+                Action{ text: "A"; checkable: true; checked: true }
+                Action{ text: "B"; checkable: true; }
+                MenuSeparator{}
+                Menu{
+                    title: "C"
+                    Action{ text: "A" }
+                    Action{ text: "B" }
+                }
+            }
+            Menu{
+                title: "Menu Test"
+                Action{ text: "A" }
+                Action{ text: "B" }
+            }
+        }
+
+        BasicMenuBar{
+            width: 600
+            height: 30
+            BasicMenu{
+                title: "MenuA"
+                Action{ text: "A"; checkable: true; checked: true }
+                Action{ text: "B"; checkable: true; }
+                BasicMenuSeparator{ }
+                BasicMenu{
+                    title: "C"
+                    Action{ text: "A" }
+                    Action{ text: "B" }
+                }
+            }
+            BasicMenu{
+                title: "Menu Test"
+                Action{ text: "A" }
+                Action{ text: "B" }
+            }
+        }
+
+        Row{
             id:gradientbutton_row
             spacing: 10
             Text {
