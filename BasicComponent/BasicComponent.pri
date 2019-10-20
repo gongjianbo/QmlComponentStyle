@@ -17,6 +17,9 @@ DISTFILES += \
     $$PWD/BasicSpinBox.qml \
     $$PWD/BasicTabBar.qml \
     $$PWD/BasicTabButton.qml \
+    $$PWD/BasicToolBar.qml \
+    $$PWD/BasicToolButton.qml \
+    $$PWD/BasicToolSeparator.qml \
     $$PWD/GradientButton.qml \
     $$PWD/GradientCheckBox.qml \
     $$PWD/GradientComboBox.qml

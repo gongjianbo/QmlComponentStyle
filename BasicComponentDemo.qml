@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Layouts 1.12
 
 ScrollView {
     //En: The default implicit size of the control varies with the content,
@@ -117,6 +118,28 @@ ScrollView {
             BasicTabButton{ width: 120; text: "Tab" }
             BasicTabButton{ width: 120; text: "Button" }
             BasicTabButton{ width: 120; text: "1992" }
+        }
+
+        ToolBar{
+            width: 600
+            RowLayout{
+                layoutDirection: Qt.LeftToRight
+                ToolButton{ text: "Tool" }
+                ToolButton{ text: "Button" }
+                ToolSeparator{ }
+                ToolButton{ text: "GongJianBo" }
+            }
+        }
+
+        BasicToolBar{
+            width: 600
+            RowLayout{
+                layoutDirection: Qt.LeftToRight
+                BasicToolButton{ text: "Tool" }
+                BasicToolButton{ text: "Button" }
+                BasicToolSeparator{ }
+                BasicToolButton{ text: "1992" }
+            }
         }
 
         Row{

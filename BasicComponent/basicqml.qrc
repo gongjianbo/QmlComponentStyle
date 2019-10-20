@@ -21,5 +21,8 @@
         <file>BasicMenuSeparator.qml</file>
         <file>BasicTabBar.qml</file>
         <file>BasicTabButton.qml</file>
+        <file>BasicToolBar.qml</file>
+        <file>BasicToolButton.qml</file>
+        <file>BasicToolSeparator.qml</file>
     </qresource>
 </RCC>
