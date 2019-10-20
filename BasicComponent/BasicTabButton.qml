@@ -1,33 +1,31 @@
 import QtQuick 2.12
-import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 import QtQuick.Controls.impl 2.12
+import QtQuick.Templates 2.12 as T
 
-T.MenuBarItem {
+T.TabButton {
     id: control
 
-    property color textColor: control.highlighted ? "cyan" : "white"
-    property color backgroundColor: control.down || control.highlighted ? "black" : "gray"
+    property color textColor: (control.checked||control.hovered) ? "cyan" : "white"
+    property color buttonColor: control.checked ? "black": "gray"
+    property color indicatorColor: "black"
+    property color arrowColor: "black"
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitContentHeight + topPadding + bottomPadding,
-                             implicitIndicatorHeight + topPadding + bottomPadding)
+                             implicitContentHeight + topPadding + bottomPadding)
 
-    //spacing: 6
-    padding: 0
-    leftPadding: 12
-    rightPadding: 12
-
-    //icon.width: 24
-    //icon.height: 24
-    //icon.color: control.palette.buttonText
+    padding: 6
+    spacing: 6
+    font{
+        family: "SimSun"
+        pixelSize: 14
+    }
 
     contentItem: Text {
         text: control.text
         font: control.font
-        //opacity: enabled ? 1.0 : 0.3
         color: control.textColor
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -37,7 +35,7 @@ T.MenuBarItem {
 
     background: Rectangle {
         implicitHeight: 30
-        height: control.height-1
-        color: control.backgroundColor
+        height: control.height - 1
+        color: control.buttonColor
     }
 }

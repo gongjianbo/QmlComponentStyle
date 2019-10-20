@@ -102,6 +102,23 @@ ScrollView {
             }
         }
 
+        TabBar{
+            width: 600
+            background: Rectangle{ color: palette.button }
+            //tabbar默认平均分宽度
+            TabButton{ width: 120; text: "Tab" }
+            TabButton{ width: 120; text: "Button" }
+            TabButton{ width: 120; text: "GongJianBo" }
+        }
+
+        BasicTabBar{
+            width: 600
+            //tabbar默认平均分宽度
+            BasicTabButton{ width: 120; text: "Tab" }
+            BasicTabButton{ width: 120; text: "Button" }
+            BasicTabButton{ width: 120; text: "1992" }
+        }
+
         Row{
             id:gradientbutton_row
             spacing: 10

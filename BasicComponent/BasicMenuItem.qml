@@ -8,7 +8,7 @@ T.MenuItem {
     id: control
 
     property color textColor: control.highlighted ? "cyan" : "black"
-    property color menuColor: control.down ? "black": control.highlighted ? "gray": "transparent"
+    property color buttonColor: control.down ? "black": control.highlighted ? "gray": "transparent"
     property color indicatorColor: "black"
     property color arrowColor: "black"
 
@@ -86,7 +86,7 @@ T.MenuItem {
         y: 1
         width: control.width - 2
         height: control.height - 2
-        color: control.menuColor
+        color: control.buttonColor
     }
 }
 

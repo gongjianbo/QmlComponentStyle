@@ -19,5 +19,7 @@
         <file>BasicMenuBarItem.qml</file>
         <file>BasicMenuItem.qml</file>
         <file>BasicMenuSeparator.qml</file>
+        <file>BasicTabBar.qml</file>
+        <file>BasicTabButton.qml</file>
     </qresource>
 </RCC>

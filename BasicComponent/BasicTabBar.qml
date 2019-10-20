@@ -1,9 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
-import QtQuick.Controls 2.12
-import QtQuick.Controls.impl 2.12
 
-T.MenuBar {
+T.TabBar {
     id: control
 
     property color backgroundColor: "white"
@@ -14,20 +12,24 @@ T.MenuBar {
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              contentHeight + topPadding + bottomPadding)
 
-    font{
-        family: "SimSun"
-        pixelSize: 16
-    }
-    delegate: BasicMenuBarItem { }
+    spacing: 1
 
-    contentItem: Row {
+    contentItem: ListView {
+        model: control.contentModel
+        currentIndex: control.currentIndex
+
         spacing: control.spacing
-        Repeater {
-            model: control.contentModel
-        }
+        orientation: ListView.Horizontal
+        boundsBehavior: Flickable.StopAtBounds
+        flickableDirection: Flickable.AutoFlickIfNeeded
+        snapMode: ListView.SnapToItem
+
+        highlightMoveDuration: 0
+        highlightRangeMode: ListView.ApplyRange
+        preferredHighlightBegin: 40
+        preferredHighlightEnd: width - 40
     }
 
-    //背景在MenuBarItem之下，我把MenuBarItem的background高度去了1px
     background: Rectangle {
         implicitHeight: 30
         color: control.backgroundColor
