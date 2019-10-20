@@ -22,7 +22,8 @@ DISTFILES += \
     $$PWD/BasicToolSeparator.qml \
     $$PWD/GradientButton.qml \
     $$PWD/GradientCheckBox.qml \
-    $$PWD/GradientComboBox.qml
+    $$PWD/GradientComboBox.qml \
+    $$PWD/QmlIconLabel.qml
 
 RESOURCES += \
     $$PWD/basicqml.qrc

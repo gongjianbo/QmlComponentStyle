@@ -9,16 +9,16 @@ T.Button {
     id:control
 
     //可以像源码一样，定义一个全局的样式，然后取全局样式中对应的颜色
+    //checked选中状态，down按下状态，hovered悬停状态
     property color textColor: "white"
-    property color backgroundColor: "darkCyan"
-    property color _bgNormalColor: backgroundColor               //普通状态背景颜色
-    property color _bgCheckColor: Qt.lighter(backgroundColor)    //选中背景颜色
-    property color _bgHoverColor: Qt.lighter(backgroundColor)    //悬停背景颜色
-    property color _bgDownColor: Qt.darker(backgroundColor)      //按下背景颜色
-    property color _textNormalColor: textColor  //普通状态文本颜色
-    property color _textCheckColor: textColor   //高亮文本颜色
-    property color _textHoverColor: textColor   //悬停文本颜色
-    property color _textDownColor: textColor    //按下文本颜色
+    property color backgroundTheme: "darkCyan"
+    property color backgroundColor: control.down
+                                    ? Qt.darker(backgroundTheme)
+                                    : (control.hovered||control.highlighted)
+                                      ? Qt.lighter(backgroundTheme)
+                                      : control.checked
+                                        ? backgroundTheme
+                                        : backgroundTheme
     property int radius: 0     //背景rect的圆角
 
     //源码中
@@ -52,8 +52,6 @@ T.Button {
                 verticalCenter: parent.verticalCenter
             }
             source: control.icon.source //借用icon的接口
-            //width: control.icon.width
-            //height: control.icon.height
         }
         Text{
             id:btn_text
@@ -64,23 +62,13 @@ T.Button {
                    ? btn_row.width-btn_row.spacing-btn_icon.width
                    : btn_row.width
             text: control.text
+            color: control.textColor
             renderType: Text.NativeRendering
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             //wrapMode: Text.NoWrap
             elide: Text.ElideRight
             font: control.font
-            //源码中IconLabel
-            //color: control.checked || control.highlighted ? control.palette.brightText :
-            //        control.flat && !control.down ?
-            //      (control.visualFocus ? control.palette.highlight : control.palette.windowText) : control.palette.buttonText
-            color: (control.checked||control.highlighted)
-                   ? _textCheckColor
-                   : control.down
-                     ? _textDownColor
-                     : control.hovered
-                       ? _textHoverColor
-                       : _textNormalColor
         }
     }
 
@@ -90,18 +78,6 @@ T.Button {
         implicitHeight: control.implicitHeight
         radius: control.radius
         //visible: !control.flat || control.down || control.checked || control.highlighted
-        //源码中
-        //color: Color.blend(control.checked || control.highlighted ?
-        //                       control.palette.dark : control.palette.button,
-        //                   control.palette.mid, control.down ? 0.5 : 0.0)
-
-        //不同状态的颜色可以单独设置
-        color: (control.checked||control.highlighted)
-               ? _bgCheckColor
-               : control.down
-                 ? _bgDownColor
-                 : control.hovered
-                   ? _bgHoverColor
-                   : _bgNormalColor
+        color: control.backgroundColor
     }
 }

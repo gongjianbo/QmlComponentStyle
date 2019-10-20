@@ -9,14 +9,17 @@ T.RadioButton {
     id: control
 
     //只是把源码里的颜色改了下
-    property color textColor: "darkCyan"          //文字颜色
-    property color radioColor: "darkCyan" //背景颜色
-    property color _textNormalColor: textColor               //普通状态文本颜色
-    property color _textCheckColor: textColor                //选中文本颜色
-    property color _textFocusColor: Qt.lighter(textColor)    //焦点或悬停
-    property color _radioNormalColor: radioColor             //普通状态背景颜色
-    property color _radioCheckColor: radioColor              //选中背景颜色
-    property color _radioFocusColor: Qt.lighter(radioColor)  //焦点或悬停
+    property color textColor: (control.visualFocus||control.hovered)
+                              ? Qt.lighter(radioTheme)
+                              : control.checked
+                                ? radioTheme
+                                : radioTheme
+    property color radioTheme: "darkCyan"
+    property color radioColor: (control.visualFocus||control.hovered)
+                               ? Qt.lighter(radioTheme)
+                               : control.checked
+                                 ? radioTheme
+                                 : radioTheme
 
     property int radius: -1
 
@@ -49,11 +52,7 @@ T.RadioButton {
         color: "transparent"
         //color: control.down ? control.palette.light : control.palette.base
         border.width: 1 //control.visualFocus ? 2 : 1
-        border.color: (control.visualFocus||control.hovered)
-                      ? _radioFocusColor
-                      : control.checked
-                        ? _radioCheckColor
-                        : _radioNormalColor
+        border.color: control.radioColor
 
         Rectangle {
             anchors.fill: parent
@@ -74,11 +73,7 @@ T.RadioButton {
 
         text: control.text
         font: control.font
-        color: (control.visualFocus||control.hovered)
-               ? _textFocusColor
-               : control.checked
-                 ? _textCheckColor
-                 : _textNormalColor
+        color: control.textColor
         renderType: Text.NativeRendering
     }
 }

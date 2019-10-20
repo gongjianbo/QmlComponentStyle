@@ -14,21 +14,22 @@ T.TabButton {
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    padding: 6
+    padding: 0
+    leftPadding: 12
+    rightPadding: 12
     spacing: 6
     font{
         family: "SimSun"
         pixelSize: 14
     }
 
-    contentItem: Text {
+    //自定义的QmlIconLabel
+    contentItem: QmlIconLabel {
         text: control.text
         font: control.font
         color: control.textColor
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        renderType: Text.NativeRendering
-        elide: Text.ElideRight
+        spacing: control.spacing
+        source: control.icon.source
     }
 
     background: Rectangle {

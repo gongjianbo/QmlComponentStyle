@@ -8,24 +8,25 @@ T.ToolButton {
 
     property color textColor: (control.down || control.checked || control.highlighted || control.hovered) ? "cyan" : "white"
     property color buttonColor: (control.down || control.checked) ? "black": "transparent"
+    //color: control.visualFocus ? control.palette.highlight : control.palette.buttonText
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
     implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
                              implicitContentHeight + topPadding + bottomPadding)
 
-    padding: 6
+    padding: 0
+    leftPadding: 12
+    rightPadding: 12
     spacing: 6
 
-    contentItem: Text {
+    //自定义的QmlIconLabel
+    contentItem: QmlIconLabel {
         text: control.text
         font: control.font
         color: control.textColor
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        renderType: Text.NativeRendering
-        elide: Text.ElideRight
-        //color: control.visualFocus ? control.palette.highlight : control.palette.buttonText
+        spacing: control.spacing
+        source: control.icon.source
     }
 
     background: Rectangle {

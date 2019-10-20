@@ -10,12 +10,16 @@ T.CheckBox {
     id:control
 
     //可以像源码一样，定义一个全局的样式，然后取全局样式中对应的颜色
-    property color textColor: "white"          //文字颜色
-    property color backgroundColor: "darkCyan" //背景颜色
-    property color _bgNormalColor: backgroundColor               //普通状态背景颜色
-    property color _bgCheckColor: Qt.darker(backgroundColor)     //选中背景颜色
-    property color _bgHoverColor: Qt.lighter(backgroundColor)    //悬停背景颜色
-    property color _bgDownColor: Qt.darker(backgroundColor)      //按下背景颜色
+    //checked选中状态，down按下状态，hovered悬停状态
+    property color textColor: "white"
+    property color backgroundTheme: "darkCyan"
+    property color backgroundColor: control.down
+                                    ? Qt.darker(backgroundTheme)
+                                    : (control.hovered||control.highlighted)
+                                      ? Qt.lighter(backgroundTheme)
+                                      : control.checked
+                                        ? backgroundTheme
+                                        : backgroundTheme
     property color indicatorColor: "white"     //勾选框颜色
     property int radius: 0
 
@@ -84,12 +88,6 @@ T.CheckBox {
 
     background: Rectangle{
         radius: control.radius
-        color: control.checked
-               ? _bgCheckColor
-               : control.down
-                 ? _bgDownColor
-                 : control.hovered
-                   ? _bgHoverColor
-                   : _bgNormalColor
+        color: backgroundColor
     }
 }

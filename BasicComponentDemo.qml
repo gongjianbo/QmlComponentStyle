@@ -64,13 +64,21 @@ ScrollView {
 
         MenuBar{
             width: 600
+            //使用MenuBarItem来添加图标
+            //MenuBarItem{}
             Menu{
                 title: "MenuA"
                 Action{ text: "A"; checkable: true; checked: true }
-                Action{ text: "B"; checkable: true; }
+                Action{ text: "B"; checkable: true; icon.source: "qrc:/fire.png" }
                 MenuSeparator{}
+                //使用MenuItem来添加图标
+                MenuItem{
+                    text: "C"
+                    icon.source: "qrc:/fire.png"
+                }
+                //有下级菜单的还不知道怎么设置icon
                 Menu{
-                    title: "C"
+                    title: "D"
                     Action{ text: "A" }
                     Action{ text: "B" }
                 }
@@ -89,9 +97,12 @@ ScrollView {
                 title: "MenuA"
                 Action{ text: "A"; checkable: true; checked: true }
                 Action{ text: "B"; checkable: true; }
-                BasicMenuSeparator{ }
+                BasicMenuSeparator{}
+                BasicMenuItem{
+                    text: "C"
+                }
                 BasicMenu{
-                    title: "C"
+                    title: "D"
                     Action{ text: "A" }
                     Action{ text: "B" }
                 }
@@ -107,7 +118,7 @@ ScrollView {
             width: 600
             background: Rectangle{ color: palette.button }
             //tabbar默认平均分宽度
-            TabButton{ width: 120; text: "Tab" }
+            TabButton{ width: 120; text: "Tab"; icon.source: "qrc:/fire.png" }
             TabButton{ width: 120; text: "Button" }
             TabButton{ width: 120; text: "GongJianBo" }
         }
@@ -115,7 +126,7 @@ ScrollView {
         BasicTabBar{
             width: 600
             //tabbar默认平均分宽度
-            BasicTabButton{ width: 120; text: "Tab" }
+            BasicTabButton{ width: 120; text: "Tab"; icon.source: "qrc:/fire.png" }
             BasicTabButton{ width: 120; text: "Button" }
             BasicTabButton{ width: 120; text: "1992" }
         }
@@ -124,7 +135,7 @@ ScrollView {
             width: 600
             RowLayout{
                 layoutDirection: Qt.LeftToRight
-                ToolButton{ text: "Tool" }
+                ToolButton{ text: "Tool"; icon.source: "qrc:/fire.png" }
                 ToolButton{ text: "Button" }
                 ToolSeparator{ }
                 ToolButton{ text: "GongJianBo" }
@@ -135,10 +146,10 @@ ScrollView {
             width: 600
             RowLayout{
                 layoutDirection: Qt.LeftToRight
-                BasicToolButton{ text: "Tool" }
+                BasicToolButton{ text: "Tool"; icon.source: "qrc:/fire.png" }
                 BasicToolButton{ text: "Button" }
                 BasicToolSeparator{ }
-                BasicToolButton{ text: "1992" }
+                BasicToolButton{ icon.source: "qrc:/fire.png" }
             }
         }
 
@@ -169,6 +180,13 @@ ScrollView {
                 textColor: "white"
             }
             GradientButton{
+                text: "Basic Button"
+                icon.source: "qrc:/fire.png"
+                themeColor: "red"
+                textColor: "white"
+            }
+            GradientButton{
+                width: 200
                 text: "Basic Button"
                 icon.source: "qrc:/fire.png"
                 themeColor: "red"
@@ -261,16 +279,28 @@ ScrollView {
             BasicButton{
                 text: "Button"
                 textColor: "white"
-                backgroundColor: "green"
+                backgroundTheme: "green"
             }
             BasicButton{
                 text: "Basic Button"
                 icon.source: "qrc:/fire.png"
                 textColor: "white"
-                backgroundColor: "red"
-                _textHoverColor: "cyan"
-                _bgHoverColor: "purple"
                 radius: 3
+                backgroundColor:  down
+                                  ? Qt.darker("purple")
+                                  : (hovered||highlighted)
+                                    ? Qt.lighter("darkCyan")
+                                    : checked
+                                      ? Qt.lighter("darkCyan")
+                                      : "red"
+            }
+            BasicButton{
+                width: 200
+                text: "Basic Button"
+                icon.source: "qrc:/fire.png"
+                textColor: "white"
+                radius: 3
+                backgroundTheme: "red"
             }
         }
 
@@ -294,15 +324,17 @@ ScrollView {
                 model: ["First", "Second", "Third"]
                 textColor: "white"
                 indicatorColor: "white"
-                backgroundColor: "deepskyblue"
+                backgroundTheme: "deepskyblue"
                 //onEditTextChanged: { console.log(editText); }
             }
             BasicComboBox{
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                 textColor: "white"
-                indicatorColor: "white"
-                backgroundColor: "green"
                 radius: 3
+                indicatorColor: "white"
+                backgroundTheme: "green"
+                itemNormalColor: "skyblue"
+                itemHighlightColor: "darkCyan"
             }
         }
 
@@ -328,13 +360,13 @@ ScrollView {
             BasicCheckBox{
                 text: "Box B"
                 textColor: "white"
-                backgroundColor: "orange"
+                backgroundTheme: "orange"
                 ButtonGroup.group: checkbox_group2
             }
             BasicCheckBox{
                 text: "Box C"
                 textColor: "cyan"
-                backgroundColor: "purple"
+                backgroundTheme: "purple"
                 indicatorColor: "cyan"
                 tristate: true
                 checkState: Qt.PartiallyChecked
@@ -368,20 +400,18 @@ ScrollView {
                 BasicRadioButton{
                     checked: true
                     text: "First"
-                    textColor: "red"
-                    radioColor: "red"
+                    textColor: "purple"
+                    radioTheme: "red"
                 }
                 BasicRadioButton{
                     text: "Second"
                     radius: 3
-                    textColor: "green"
-                    radioColor: "green"
+                    radioTheme: "green"
                 }
                 BasicRadioButton{
                     text: "Third"
                     radius: 0
-                    textColor: "blue"
-                    radioColor: "blue"
+                    radioTheme: "blue"
                 }
             }
         }
