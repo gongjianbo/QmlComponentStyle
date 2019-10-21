@@ -29,6 +29,9 @@ SOURCES += \
 
 RESOURCES += qml.qrc
 
+OTHER_FILES += LICENSE \
+        README.md
+
 include($$PWD/BasicComponent/BasicComponent.pri)
 include($$PWD/CustomComponent/CustomComponent.pri)
 include($$PWD/Tools/Tools.pri)
@@ -48,6 +51,3 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-OTHER_FILES += \
-    README.md
