@@ -25,5 +25,6 @@
         <file>BasicToolButton.qml</file>
         <file>BasicToolSeparator.qml</file>
         <file>QmlIconLabel.qml</file>
+        <file>BasicSwitch.qml</file>
     </qresource>
 </RCC>

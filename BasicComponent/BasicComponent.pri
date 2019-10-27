@@ -15,6 +15,7 @@ DISTFILES += \
     $$PWD/BasicScrollBar.qml \
     $$PWD/BasicSlider.qml \
     $$PWD/BasicSpinBox.qml \
+    $$PWD/BasicSwitch.qml \
     $$PWD/BasicTabBar.qml \
     $$PWD/BasicTabButton.qml \
     $$PWD/BasicToolBar.qml \

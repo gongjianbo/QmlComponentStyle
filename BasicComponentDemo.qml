@@ -417,6 +417,34 @@ ScrollView {
         }
 
         Row{
+            id:switch_row
+            spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "DelayButton:"
+            }
+            Switch{
+                text: "Switch"
+                width: 120
+                height: 30
+                onClicked: console.log(checked)
+            }
+            BasicSwitch{
+                text: "Gong"
+                width: 120
+                height: 30
+            }
+            BasicSwitch{
+                text: "1992"
+                width: 120
+                height: 30
+                indicatorTheme: "green"
+            }
+        }
+
+        Row{
             id:delaybutton_row
             spacing: 10
             Text {
