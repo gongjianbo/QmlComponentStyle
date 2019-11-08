@@ -21,6 +21,7 @@ DISTFILES += \
     $$PWD/BasicToolBar.qml \
     $$PWD/BasicToolButton.qml \
     $$PWD/BasicToolSeparator.qml \
+    $$PWD/BasicTumbler.qml \
     $$PWD/GradientButton.qml \
     $$PWD/GradientCheckBox.qml \
     $$PWD/GradientComboBox.qml \

@@ -26,5 +26,6 @@
         <file>BasicToolSeparator.qml</file>
         <file>QmlIconLabel.qml</file>
         <file>BasicSwitch.qml</file>
+        <file>BasicTumbler.qml</file>
     </qresource>
 </RCC>

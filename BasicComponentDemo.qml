@@ -474,6 +474,49 @@ ScrollView {
             }
         }
 
+        //发现Tumbler有个问题，在滚动的过程中鼠标按下不动，
+        //放开鼠标元素就不会继续滚动到正中去
+        Row{
+            id:tumbler_row
+            spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "Tumbler:"
+            }
+            Tumbler{
+                width: 60
+                height: 160
+                model: ['AM','PM']
+            }
+            Tumbler{
+                id: tumbler
+                width: 60
+                height: 160
+                model: 12
+                visibleItemCount: 5
+            }
+            BasicTumbler{
+                width: 60
+                height: 160
+                model: 60
+                visibleItemCount: 7
+            }
+            BasicTumbler{
+                width: 60
+                height: 160
+                model: ["gong","jian","bo","1992"]
+                normalTextColor: "cyan"
+                selectedTextColor: "white"
+                backgroundGradient: Gradient{
+                    GradientStop{ position: 0.0; color: Qt.lighter("purple") }
+                    GradientStop{ position: 0.5; color: Qt.darker("purple") }
+                    GradientStop{ position: 1.0; color: Qt.lighter("purple") }
+                }
+            }
+        }
+
         //发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
         //类似这种有动画效果的绘制，在我的笔记本缩小窗口过程中会有闪烁，但另一台台式机显示正常
         Row{
