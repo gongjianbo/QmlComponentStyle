@@ -16,6 +16,10 @@ ScrollView {
 
         }
 
+        CustomButton2{
+
+        }
+
         //开关按钮
         CustomSwitchButton{
 

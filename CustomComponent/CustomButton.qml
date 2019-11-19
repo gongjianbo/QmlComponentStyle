@@ -36,6 +36,7 @@ Rectangle {
         id: control_text
         anchors.fill: parent
         text: qsTr("Button")
+        color: control_mousearea.down_state?"white":"black"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         renderType: Text.NativeRendering
