@@ -27,5 +27,6 @@
         <file>QmlIconLabel.qml</file>
         <file>BasicSwitch.qml</file>
         <file>BasicTumbler.qml</file>
+        <file>BasicComboBox2.qml</file>
     </qresource>
 </RCC>

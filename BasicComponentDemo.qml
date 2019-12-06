@@ -303,7 +303,6 @@ ScrollView {
                 backgroundTheme: "red"
             }
         }
-
         Row{
             id:combobox_row
             spacing: 10
@@ -335,6 +334,34 @@ ScrollView {
                 backgroundTheme: "green"
                 itemNormalColor: "skyblue"
                 itemHighlightColor: "darkCyan"
+            }
+        }
+        Row{
+            id:combobox2_row
+            spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "ComboBox2:"
+            }
+            BasicComboBox2{
+                editable: true
+                model: ["First", "Second", "Third"]
+                textColor: "white"
+                backgroundTheme: "deepskyblue"
+                indicatorSource: "qrc:/updown.png"
+            }
+            BasicComboBox2{
+                model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                textColor: "white"
+                textLeft: "No.["
+                textRight: "]"
+                radius: 3
+                backgroundTheme: "green"
+                itemNormalColor: "skyblue"
+                itemHighlightColor: "darkCyan"
+                indicatorSource: "qrc:/updown.png"
             }
         }
 

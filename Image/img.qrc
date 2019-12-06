@@ -4,5 +4,6 @@
         <file>volume-medium.png</file>
         <file>demo_1.png</file>
         <file>demo_2.png</file>
+        <file>updown.png</file>
     </qresource>
 </RCC>
