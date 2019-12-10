@@ -4,7 +4,11 @@ import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 import QtQuick.Controls.impl 2.12
 
-//2019-12-6 对上一版本下拉框的改进
+//2019-12-6
+//对上一版本下拉框的改进
+//2019-12-10
+//改进：判断control.delegateModel，增加spacer.component
+//
 //qtquickcontrols2\src\imports\controls\ComboBox.qml
 //from Customizing ComboBox
 T.ComboBox {
@@ -42,6 +46,14 @@ T.ComboBox {
     property string textLeft: ""
     //model数据右侧附加的文字
     property string textRight: ""
+    //text和indicator间的竖线
+    property Component spacer
+    spacer: Rectangle{
+        width: 1
+        height: parent.height-2
+        anchors.left: parent.left
+        color: control.textColor
+    }
 
 
     implicitWidth: 120
@@ -83,6 +95,7 @@ T.ComboBox {
             color: (control.highlightedIndex === index)
                    ? control.itemHighlightColor
                    : control.itemNormalColor
+            //item底部的线
             Rectangle{
                 height: 1
                 width: parent.width-2*control.radius
@@ -111,11 +124,11 @@ T.ComboBox {
             source: control.indicatorSource
         }
         //分割线
-        Rectangle{
-            width: 1
-            height: parent.height
+        Loader{
             anchors.left: parent.left
-            color: control.textColor
+            anchors.leftMargin: -width/2
+            anchors.verticalCenter: parent.verticalCenter
+            sourceComponent: control.spacer
         }
     }
 
@@ -166,9 +179,11 @@ T.ComboBox {
         y: control.height
         width: control.width
         //根据showCount来设置最多显示item个数
-        implicitHeight: (control.delegateModel.count<showCount
-                         ?contentItem.implicitHeight
-                         :5*control.implicitHeight)+2
+        implicitHeight: control.delegateModel
+                        ?((control.delegateModel.count<showCount)
+                          ?contentItem.implicitHeight
+                          :5*control.implicitHeight)+2
+                        :0
         //用于边框留的padding
         padding: 1
         contentItem: ListView {
@@ -181,7 +196,7 @@ T.ComboBox {
             ScrollBar.vertical: ScrollBar { //定制滚动条
                 id: box_bar
                 implicitWidth: 10
-                visible: (control.delegateModel.count>showCount)
+                visible: control.delegateModel&&(control.delegateModel.count>showCount)
                 //background: Rectangle{} //这是整体的背景
                 contentItem: Rectangle{
                     implicitWidth:10

@@ -353,15 +353,30 @@ ScrollView {
                 indicatorSource: "qrc:/updown.png"
             }
             BasicComboBox2{
+                id: basic_combobox2_2
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                 textColor: "white"
                 textLeft: "No.["
                 textRight: "]"
                 radius: 3
-                backgroundTheme: "green"
                 itemNormalColor: "skyblue"
                 itemHighlightColor: "darkCyan"
                 indicatorSource: "qrc:/updown.png"
+                indicatorPadding: 6
+                spacer: Rectangle{
+                    width: 6
+                    height: 6
+                    rotation: 45
+                    color: "white"
+                }
+                background: Rectangle{
+                    color: basic_combobox2_2.hovered?Qt.lighter("green"):"green"
+                    border.width: 1
+                    border.color: "black"
+                }
+            }
+            BasicComboBox2{
+                //test null model
             }
         }
 
