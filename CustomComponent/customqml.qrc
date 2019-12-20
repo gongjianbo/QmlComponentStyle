@@ -7,5 +7,7 @@
         <file>CustomButton2.qml</file>
         <file>CustomCircularView.qml</file>
         <file>CustomCircularViewDemo.qml</file>
+        <file>CustomItemShot.qml</file>
+        <file>CustomItemShotDemo.qml</file>
     </qresource>
 </RCC>

@@ -11,17 +11,25 @@ ScrollView {
         }
         spacing: 10
 
-        //普通按钮
-        CustomButton{}
-        CustomButton2{}
+        Row{
+            spacing: 10
+            //普通按钮
+            CustomButton{}
+            CustomButton2{}
+            //开关按钮
+            CustomSwitchButton{}
+        }
 
-        //开关按钮
-        CustomSwitchButton{}
-
-        //音量调节
-        CustomVolumeSliderDemo{}
+        Row{
+            spacing: 10
+            //音量调节
+            CustomVolumeSliderDemo{}
+            //Item截图
+            CustomItemShotDemo{}
+        }
 
         //轮播图
         CustomCircularViewDemo{}
+
     }
 }
