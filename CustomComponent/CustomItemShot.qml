@@ -4,6 +4,11 @@ import QtQuick.Dialogs 1.2
 //框选截图工具
 //使用时需要anchors.fill目标，并把目标赋值给shotTarget
 //pop()初始化显示，close()隐藏
+//注意要放在target Item的外部，不然截图组件的影像也被捕获了
+
+//2019-12-21
+//设置preventStealing: true防止鼠标事件被偷走
+//如在ScrollView或Map中，MouseArea不能正常处理拖动效果
 Item {
     id: control
     visible: false
@@ -83,12 +88,6 @@ Item {
         settings.fileName: "dialog.ini"
     }
 
-    MouseArea{
-        anchors.fill: parent
-        //防止拖动事件传递下去
-        //滚动事件是没有截获的
-    }
-
     //用于截图
     ShaderEffectSource{
         id: shot_shader
@@ -129,7 +128,7 @@ Item {
             anchors.fill: parent
             property int pressPointX: 0
             property int pressPointY: 0
-
+            preventStealing: true
             onPressed: {
                 pressPointX=mouse.x;
                 pressPointY=mouse.y;
@@ -165,6 +164,7 @@ Item {
                 property int pressPosX: 0
                 property int pressPosY: 0
                 anchors.fill: parent
+                preventStealing: true
                 onClicked: {
                     pressPosX=mouse.x;
                     pressPosY=mouse.y;
@@ -206,6 +206,7 @@ Item {
                 property int pressPosX: 0
                 property int pressPosY: 0
                 anchors.fill: parent
+                preventStealing: true
                 onClicked: {
                     pressPosX=mouse.x;
                     pressPosY=mouse.y;
@@ -245,6 +246,7 @@ Item {
                 property int pressPosX: 0
                 property int pressPosY: 0
                 anchors.fill: parent
+                preventStealing: true
                 onClicked: {
                     pressPosX=mouse.x;
                     pressPosY=mouse.y;
@@ -283,6 +285,7 @@ Item {
                 property int pressPosX: 0
                 property int pressPosY: 0
                 anchors.fill: parent
+                preventStealing: true
                 onClicked: {
                     pressPosX=mouse.x;
                     pressPosY=mouse.y;
