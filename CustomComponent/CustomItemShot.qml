@@ -294,7 +294,7 @@ Item {
                     var new_width=shot_area.width+mouse.x-pressPosX;
                     var new_height=shot_area.height+mouse.y-pressPosY;
                     if(new_width>=control.areaMinSize){
-                        shot_area.width+=new_width;
+                        shot_area.width=new_width;
                         if(shot_area.x+shot_area.width>control.width){
                             shot_area.width=control.width-shot_area.x;
                         }
