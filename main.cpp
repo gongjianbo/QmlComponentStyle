@@ -12,10 +12,9 @@ int main(int argc, char *argv[])
     //QQuickWindow::setTextRenderType(QQuickWindow::NativeTextRendering);
 
     //About MSVC Chinese characters（关于MSVC中文字符）
-    //VS中使用utf8参考https://blog.csdn.net/xs1102/article/details/83186321
-    //QtCreator中在Pro加utf8的设置（见本例pro文件msvc处）
-    //设置参数后在使用时前面加上u8（MinGW不用加，加了也没影响）
-    //qDebug()<<u8"中文";
+    //如果用的msvc的utf8开关，前面加上u8
+    //（用CONFIG += utf8_source或者MinGW不用加，加了也没影响）
+    //qDebug()<<u8"中文测试";
     //测试在MSVC2017/2019下通过（包括VS和QtCreator）
 
     QGuiApplication app(argc, argv);
