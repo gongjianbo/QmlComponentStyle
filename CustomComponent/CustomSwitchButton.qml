@@ -1,5 +1,6 @@
 import QtQuick 2.12
 
+//滑动按钮
 Rectangle {
     id: control
 

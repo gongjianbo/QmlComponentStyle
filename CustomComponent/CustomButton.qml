@@ -1,5 +1,6 @@
 import QtQuick 2.12
 
+//自定义按钮
 Rectangle {
     id:control
 
