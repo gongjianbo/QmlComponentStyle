@@ -9,5 +9,6 @@
         <file>CustomCircularViewDemo.qml</file>
         <file>CustomItemShot.qml</file>
         <file>CustomItemShotDemo.qml</file>
+        <file>CustomCircleProgressBar.qml</file>
     </qresource>
 </RCC>

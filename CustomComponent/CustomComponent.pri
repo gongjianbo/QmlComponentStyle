@@ -1,6 +1,7 @@
 DISTFILES += \
     $$PWD/CustomButton.qml \
     $$PWD/CustomButton2.qml \
+    $$PWD/CustomCircleProgressBar.qml \
     $$PWD/CustomCircularView.qml \
     $$PWD/CustomCircularViewDemo.qml \
     $$PWD/CustomItemShot.qml \

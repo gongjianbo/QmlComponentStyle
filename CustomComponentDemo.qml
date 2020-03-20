@@ -31,5 +31,15 @@ ScrollView {
         //轮播图
         CustomCircularViewDemo{}
 
+        //环形进度条
+        CustomCircleProgressBar{
+            //测试用，循环设置进度值
+            NumberAnimation on value {
+                from: 0; to: 100
+                duration: 5000
+                running: true
+                loops: Animation.Infinite
+            }
+        }
     }
 }
