@@ -18,6 +18,26 @@ ScrollView {
             CustomButton2{}
             //开关按钮
             CustomSwitchButton{}
+            //桌面右下角弹框
+            CustomButton2{
+                text: "Pop"
+                textColor: "white"
+                onClicked: pop.showTip()
+                //桌面右下角弹框
+                CustomDesktopTip{
+                    id: pop
+                    title: qsTr("DesktopTip")
+                    content: Rectangle{
+                        width: 300
+                        height: 200
+                        color: "green"
+                        Text {
+                            anchors.centerIn: parent
+                            text: qsTr("DesktopTip")
+                        }
+                    }
+                }
+            }
         }
 
         Row{
