@@ -3,6 +3,12 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 //桌面右下角弹框
+//使用时给content赋值一个Item展示内容，
+//如content: Rectangle{}
+//目前还存在得问题：
+//1.被模态框阻塞无法点击
+//2.鼠标是否hover的判断，会被content的MouseArea遮盖，
+//要么content的MouseArea不设置hoverEnable
 Window {
     id: control
     visible: false
@@ -11,6 +17,8 @@ Window {
     opacity: 0
     //无边框-提示框
     flags: Qt.FramelessWindowHint | Qt.ToolTip
+    //默认非模态
+    modality: Qt.NonModal
     //初始位置，在屏幕右下角
     x: Screen.desktopAvailableWidth-width
     y: Screen.desktopAvailableHeight
@@ -22,6 +30,11 @@ Window {
     //内容
     property alias content: content_loader.sourceComponent
 
+    MouseArea{
+        id: tip_mouse
+        anchors.fill: parent
+        hoverEnabled: true
+    }
     //标题栏
     Rectangle{
         id: title_item
@@ -69,7 +82,10 @@ Window {
                 interval: 1000
                 repeat: true
                 onTriggered: {
-                    if(time_count<1){
+                    //倒计时为0，且鼠标不在上面
+                    if(time_count<1&&
+                            !tip_mouse.containsMouse&&
+                            !close_mouse.containsMouse){
                         hideTip();
                     }else{
                         time_count--;
@@ -78,11 +94,11 @@ Window {
             }
         }
     }
+    //用于加载内容
     Loader{
         id: content_loader
         anchors.top: title_item.bottom
     }
-
 
     //显示-动画组
     ParallelAnimation{

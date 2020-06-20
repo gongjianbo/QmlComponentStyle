@@ -15,6 +15,7 @@ ScrollView {
             spacing: 10
             //普通按钮
             CustomButton{}
+            //普通按钮2
             CustomButton2{}
             //开关按钮
             CustomSwitchButton{}
@@ -34,6 +35,12 @@ ScrollView {
                         Text {
                             anchors.centerIn: parent
                             text: qsTr("DesktopTip")
+                        }
+                        //测试上层也有个MouseArea对对话框的MouseArea影响
+                        MouseArea{
+                            anchors.fill: parent
+                            //目前还不能设置hoverEnabled，不然parent的MouseArea没法判断
+                            //hoverEnabled: true
                         }
                     }
                 }
