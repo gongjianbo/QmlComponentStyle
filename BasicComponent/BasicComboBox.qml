@@ -55,6 +55,7 @@ T.ComboBox {
             verticalAlignment: Text.AlignVCenter
         }
         hoverEnabled: control.hoverEnabled
+        focusPolicy: Qt.NoFocus
         background: Rectangle{
             //radius: control.radius
             color: (control.highlightedIndex === index)
@@ -140,7 +141,7 @@ T.ComboBox {
         //根据showCount来设置最多显示item个数
         implicitHeight: (control.delegateModel.count<showCount
                          ?contentItem.implicitHeight
-                         :5*control.implicitHeight)+2
+                         :control.showCount*control.implicitHeight)+2
         padding: 1
 
         contentItem: ListView {

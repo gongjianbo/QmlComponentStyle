@@ -90,6 +90,7 @@ T.ComboBox {
             verticalAlignment: Text.AlignVCenter
         }
         hoverEnabled: control.hoverEnabled
+        focusPolicy: Qt.NoFocus
         background: Rectangle{
             radius: control.radius
             color: (control.highlightedIndex === index)
@@ -182,7 +183,7 @@ T.ComboBox {
         implicitHeight: control.delegateModel
                         ?((control.delegateModel.count<showCount)
                           ?contentItem.implicitHeight
-                          :5*control.implicitHeight)+2
+                          :control.showCount*control.implicitHeight)+2
                         :0
         //用于边框留的padding
         padding: 1

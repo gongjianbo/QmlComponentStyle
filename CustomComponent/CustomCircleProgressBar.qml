@@ -31,7 +31,7 @@ ConicalGradient {
         GradientStop { position: 0.0; color: control.foregroundColor }
         GradientStop { position: control.__progress; color: control.foregroundColor }
         GradientStop { position: control.__progress + 0.00001; color: control.backgroundColor }
-        GradientStop { position: 1.0; color: control.backgroundColor }
+        GradientStop { position: 1.00001; color: control.backgroundColor }
     }
 
     //具体的设置可以再单独引出来
