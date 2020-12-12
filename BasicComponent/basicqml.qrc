@@ -28,5 +28,6 @@
         <file>BasicSwitch.qml</file>
         <file>BasicTumbler.qml</file>
         <file>BasicComboBox2.qml</file>
+        <file>BasicDialog.qml</file>
     </qresource>
 </RCC>

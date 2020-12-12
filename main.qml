@@ -3,7 +3,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
 ApplicationWindow{
-    id:root
+    id: root
     visible: true
     width: 820
     height: 600

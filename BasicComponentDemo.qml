@@ -25,7 +25,7 @@ ScrollView {
         spacing: 10
 
         Row{
-            id:menu_row
+            id: menu_row
             spacing: 10
             Text {
                 width: 90
@@ -154,13 +154,13 @@ ScrollView {
         }
 
         Row{
-            id:gradientbutton_row
+            id: test_row
             spacing: 10
             Text {
                 width: 90
                 height: 30
                 renderType: Text.NativeRendering
-                text: "Button:"
+                text: "Test:"
             }
             Button{
                 text: "DrawerShow"
@@ -173,6 +173,25 @@ ScrollView {
                 width: 120
                 height: 30
                 onClicked: drawer.close()
+            }
+            Button{
+                text: "Dialog"
+                width: 120
+                height: 30
+                onClicked: basic_dialog.open()
+
+                BasicDialog{ id: basic_dialog }
+            }
+        }
+
+        Row{
+            id: gradientbutton_row
+            spacing: 10
+            Text {
+                width: 90
+                height: 30
+                renderType: Text.NativeRendering
+                text: "Button:"
             }
             GradientButton{
                 text: "Button"
@@ -195,7 +214,7 @@ ScrollView {
         }
 
         Row{
-            id:gradientcombobox_row
+            id: gradientcombobox_row
             spacing: 10
             Text {
                 width: 90
@@ -226,7 +245,7 @@ ScrollView {
         }
 
         Row{
-            id:gradientcheckbox_row
+            id: gradientcheckbox_row
             spacing: 10
             Text {
                 width: 90
@@ -235,7 +254,7 @@ ScrollView {
                 text: "CheckBox:"
             }
             ButtonGroup{
-                id:checkbox_group
+                id: checkbox_group
             }
             //En: CheckBox sets tristate to three-state mode, as detailed in the document.
             //Ch: CheckBox 设置tristate后为三态模式，详见文档
@@ -263,7 +282,7 @@ ScrollView {
         }
 
         Row{
-            id:button_row
+            id: button_row
             spacing: 10
             Text {
                 width: 90
@@ -304,7 +323,7 @@ ScrollView {
             }
         }
         Row{
-            id:combobox_row
+            id: combobox_row
             spacing: 10
             Text {
                 width: 90
@@ -337,7 +356,7 @@ ScrollView {
             }
         }
         Row{
-            id:combobox2_row
+            id: combobox2_row
             spacing: 10
             Text {
                 width: 90
@@ -381,7 +400,7 @@ ScrollView {
         }
 
         Row{
-            id:checkbox_row
+            id: checkbox_row
             spacing: 10
             Text {
                 width: 90
@@ -390,7 +409,7 @@ ScrollView {
                 text: "CheckBox:"
             }
             ButtonGroup{
-                id:checkbox_group2
+                id: checkbox_group2
             }
             CheckBox{
                 width: 90
@@ -417,7 +436,7 @@ ScrollView {
         }
 
         Row{
-            id:radiobutton_row
+            id: radiobutton_row
             spacing: 10
             Text {
                 width: 90
@@ -459,7 +478,7 @@ ScrollView {
         }
 
         Row{
-            id:switch_row
+            id: switch_row
             spacing: 10
             Text {
                 width: 90
@@ -487,7 +506,7 @@ ScrollView {
         }
 
         Row{
-            id:delaybutton_row
+            id: delaybutton_row
             spacing: 10
             Text {
                 width: 90
@@ -519,7 +538,7 @@ ScrollView {
         //发现Tumbler有个问题，在滚动的过程中鼠标按下不动，
         //放开鼠标元素就不会继续滚动到正中去
         Row{
-            id:tumbler_row
+            id: tumbler_row
             spacing: 10
             Text {
                 width: 90
@@ -562,7 +581,7 @@ ScrollView {
         //发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
         //类似这种有动画效果的绘制，在我的笔记本缩小窗口过程中会有闪烁，但另一台台式机显示正常
         Row{
-            id:progress_row
+            id: progress_row
             spacing: 10
             Text {
                 width: 90
@@ -579,7 +598,7 @@ ScrollView {
                 indeterminate: true
             }
             BasicProgressBar{
-                id:progress_bar1
+                id: progress_bar1
                 //from: 0; to:100; value: 20
                 themeColor: "green"
                 indeterminate: true
@@ -596,7 +615,7 @@ ScrollView {
         }
 
         Row{
-            id:busy_row
+            id: busy_row
             spacing: 10
             Text {
                 width: 90
@@ -618,7 +637,7 @@ ScrollView {
         }
 
         Row{
-            id:label_row
+            id: label_row
             spacing: 10
             Text {
                 width: 90
@@ -642,7 +661,7 @@ ScrollView {
         }
 
         Row{
-            id:spinbox_row
+            id: spinbox_row
             spacing: 10
             Text {
                 width: 90
@@ -820,7 +839,7 @@ ScrollView {
         }
 
         Row{
-            id:scrollbar_row
+            id: scrollbar_row
             spacing: 10
             Text {
                 width: 90

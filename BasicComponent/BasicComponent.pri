@@ -5,6 +5,7 @@ DISTFILES += \
     $$PWD/BasicComboBox.qml \
     $$PWD/BasicComboBox2.qml \
     $$PWD/BasicDelayButton.qml \
+    $$PWD/BasicDialog.qml \
     $$PWD/BasicLabel.qml \
     $$PWD/BasicMenu.qml \
     $$PWD/BasicMenuBar.qml \
