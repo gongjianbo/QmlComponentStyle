@@ -71,6 +71,7 @@ T.ComboBox {
     }
 
     //图标自己画比较麻烦，还是贴图方便
+    //源码中使用impl中的ColorImage加载按钮图标
     indicator: Shape {
         id: box_indicator
         x: control.width - width - control.padding

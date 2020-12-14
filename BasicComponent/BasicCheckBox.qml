@@ -44,7 +44,7 @@ T.CheckBox {
         border.color: indicatorColor
         antialiasing: false
 
-        //源码中是用ColorImage加载的按钮图标
+        //源码中使用impl中的ColorImage加载按钮图标
         Shape { //indicator全部用shape算了
             id: checked_indicator
             anchors.centerIn: parent

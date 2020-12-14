@@ -37,7 +37,7 @@ T.CheckBox {
         pixelSize: 16
     }
 
-    //勾选框，用贴图更方便
+    //勾选框
     indicator: Rectangle {
         implicitWidth: control.height-2*control.leftPadding
         implicitHeight: width
@@ -54,6 +54,7 @@ T.CheckBox {
             antialiasing: false
             visible: control.checkState === Qt.Checked
         }*/
+        //源码中使用impl中的ColorImage加载按钮图标
         Shape { //indicator全部用shape算了
             id: checked_indicator
             anchors.centerIn: parent

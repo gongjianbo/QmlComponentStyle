@@ -78,6 +78,7 @@ T.ComboBox {
     }
 
     //图标自己画比较麻烦，还是贴图方便
+    //源码中使用impl中的ColorImage加载按钮图标
     indicator: Shape {
         id: box_indicator
         x: control.width - width - control.padding
@@ -151,7 +152,7 @@ T.ComboBox {
         //根据showCount来设置最多显示item个数
         implicitHeight: (control.delegateModel.count<showCount
                          ?contentItem.implicitHeight
-                         :5*control.implicitHeight)+2
+                         :control.showCount*control.implicitHeight)+2
         padding: 1
 
         contentItem: ListView {
