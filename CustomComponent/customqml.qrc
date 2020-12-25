@@ -11,5 +11,6 @@
         <file>CustomItemShotDemo.qml</file>
         <file>CustomCircleProgressBar.qml</file>
         <file>CustomDesktopTip.qml</file>
+        <file>CustomDateRange.qml</file>
     </qresource>
 </RCC>

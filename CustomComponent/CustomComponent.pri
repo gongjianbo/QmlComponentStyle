@@ -4,6 +4,7 @@ DISTFILES += \
     $$PWD/CustomCircleProgressBar.qml \
     $$PWD/CustomCircularView.qml \
     $$PWD/CustomCircularViewDemo.qml \
+    $$PWD/CustomDateRange.qml \
     $$PWD/CustomDesktopTip.qml \
     $$PWD/CustomItemShot.qml \
     $$PWD/CustomItemShotDemo.qml \

@@ -68,5 +68,39 @@ ScrollView {
                 loops: Animation.Infinite
             }
         }
+
+        Row{
+            spacing: 10
+            //日期范围选择
+            CustomDateRange{
+                id: date_range
+                height: 40
+                width: 300
+            }
+            Button{
+                text: "近一周"
+                onClicked: {
+                    let begin_date=new Date();
+                    date_range.endDate=new Date();
+                    begin_date.setDate(begin_date.getDate()-6)
+                    date_range.beginDate=begin_date;
+                }
+            }
+            Button{
+                text: "近一月"
+                onClicked: {
+                    let begin_date=new Date();
+                    date_range.endDate=new Date();
+                    begin_date.setMonth(begin_date.getMonth()-1);
+                    date_range.beginDate=begin_date;
+                }
+            }
+        }
+
+        //底部空白
+        Item{
+            width: 100
+            height: 200
+        }
     }
 }
