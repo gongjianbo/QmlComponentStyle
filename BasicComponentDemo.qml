@@ -3,18 +3,15 @@ import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
+//展示基础组件的自定义
 ScrollView {
-    //En: The default implicit size of the control varies with the content,
-    //    but I set it to a fixed value for demonstration purposes.
-    //Ch: 控件的默认implicit尺寸是随内容变化的，但是我为了展示设置为了固定值
-    //e.g.
+    //控件的默认implicit尺寸是随内容变化的，但是我有些地方设置为了固定值
+    //例如：
     //implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
     //                        implicitContentWidth + leftPadding + rightPadding)
     //implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
     //                         implicitContentHeight + topPadding + bottomPadding)
-
-    //En: In addition, I excluded mirrored (which may represent right-to-left)
-    //Ch: 此外，我排除了mirrored这种情况（他可能是表示的右到左）
+    //此外，我排除了mirrored这种情况（他可能是表示的右到左）
 
     Column{
         anchors{
@@ -256,8 +253,7 @@ ScrollView {
             ButtonGroup{
                 id: checkbox_group
             }
-            //En: CheckBox sets tristate to three-state mode, as detailed in the document.
-            //Ch: CheckBox 设置tristate后为三态模式，详见文档
+            //CheckBox 设置tristate后为三态模式，详见文档
             CheckBox{
                 width: 90
                 height: 30
@@ -589,9 +585,7 @@ ScrollView {
                 renderType: Text.NativeRendering
                 text: "ProgressBar:"
             }
-            //En: When ProgressBar sets indeterminate, it waits for an indeterminate time,
-            //    similar to BusyIndicator
-            //Ch: ProgressBar设置indeterminate后为时间不明确的等待，类似BusyIndicator
+            //ProgressBar设置indeterminate后为时间不明确的等待，类似BusyIndicator
             ProgressBar{
                 width: 200; height: 10
                 from: 0; to:100; value: 20

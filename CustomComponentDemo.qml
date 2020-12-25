@@ -2,7 +2,9 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
 
+//展示自定义组合组件
 ScrollView {
+
     Column{
         anchors{
             left: parent.left
