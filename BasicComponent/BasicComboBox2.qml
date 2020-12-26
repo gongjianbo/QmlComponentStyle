@@ -8,6 +8,8 @@ import QtQuick.Controls.impl 2.12
 //对上一版本下拉框的改进
 //2019-12-10
 //改进：判断control.delegateModel，增加spacer.component
+//2020-12-26
+//移除text和indicator间的竖线spacer
 //
 //qtquickcontrols2\src\imports\controls\ComboBox.qml
 //from Customizing ComboBox
@@ -22,6 +24,8 @@ T.ComboBox {
                                     : control.hovered
                                       ? Qt.lighter(backgroundTheme)
                                       : backgroundTheme
+    //边框颜色
+    property color borderColor: Qt.darker(backgroundTheme)
     //item高亮颜色
     property color itemHighlightColor: Qt.darker(backgroundTheme)
     //item普通颜色
@@ -33,9 +37,9 @@ T.ComboBox {
     //下拉按钮颜色
     //property color indicatorColor: "white"
     //下拉按钮左右距离
-    property int indicatorPadding: 8
+    property int indicatorPadding: 3
     //下拉按钮图标
-    property url indicatorSource
+    property url indicatorSource: "qrc:/qt-project.org/imports/QtQuick/Controls.2/images/double-arrow.png"
     //圆角
     property int radius: 0
     //最多显示的item个数
@@ -46,15 +50,6 @@ T.ComboBox {
     property string textLeft: ""
     //model数据右侧附加的文字
     property string textRight: ""
-    //text和indicator间的竖线
-    property Component spacer
-    spacer: Rectangle{
-        width: 1
-        height: parent.height-2
-        anchors.left: parent.left
-        color: control.textColor
-    }
-
 
     implicitWidth: 120
     implicitHeight: 30
@@ -111,7 +106,7 @@ T.ComboBox {
     //图标自己画比较麻烦，还是贴图方便，使用的时候换成自己图
     indicator: Item{
         id: box_indicator
-        x: control.width - width - control.padding
+        x: control.width - width
         y: control.topPadding + (control.availableHeight - height) / 2
         width: box_indicator_img.width+control.indicatorPadding*2
         height: control.height
@@ -123,13 +118,6 @@ T.ComboBox {
             //height: control.height
             //fillMode: Image.PreserveAspectFit
             source: control.indicatorSource
-        }
-        //分割线
-        Loader{
-            anchors.left: parent.left
-            anchors.leftMargin: -width/2
-            anchors.verticalCenter: parent.verticalCenter
-            sourceComponent: control.spacer
         }
     }
 
@@ -172,6 +160,7 @@ T.ComboBox {
         implicitHeight: control.implicitHeight
         radius: control.radius
         color: control.backgroundColor
+        border.color: control.borderColor
     }
 
     //弹出框
@@ -192,7 +181,8 @@ T.ComboBox {
             implicitHeight: contentHeight
             model: control.popup.visible ? control.delegateModel : null
             currentIndex: control.highlightedIndex
-            snapMode: ListView.SnapToItem //按行滚动
+            //按行滚动SnapToItem ;像素移动SnapPosition
+            snapMode: ListView.SnapToItem
             //ScrollBar.horizontal: ScrollBar { visible: false }
             ScrollBar.vertical: ScrollBar { //定制滚动条
                 id: box_bar
@@ -211,10 +201,10 @@ T.ComboBox {
 
         //弹出框背景（只有border显示出来了，其余部分被delegate背景遮挡）
         background: Rectangle{
-            color: control.itemNormalColor
-            radius: control.radius
             border.width: 1
-            border.color: Qt.lighter(control.itemNormalColor)
+            border.color: control.borderColor
+            //color: Qt.lighter(themeColor)
+            radius: control.radius
         }
     }
 }

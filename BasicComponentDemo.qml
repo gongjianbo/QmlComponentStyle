@@ -339,15 +339,24 @@ ScrollView {
                 editable: true
                 model: ["First", "Second", "Third"]
                 textColor: "white"
-                indicatorColor: "white"
                 backgroundTheme: "deepskyblue"
                 //onEditTextChanged: { console.log(editText); }
+            }
+            BasicComboBox{
+                editable: true
+                model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                textColor: "white"
+                radius: 3
+                indicatorSource: "qrc:/updown.png"
+                backgroundTheme: "green"
+                itemNormalColor: "skyblue"
+                itemHighlightColor: "darkCyan"
             }
             BasicComboBox{
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                 textColor: "white"
                 radius: 3
-                indicatorColor: "white"
+                indicatorSource: "qrc:/updown.png"
                 backgroundTheme: "green"
                 itemNormalColor: "skyblue"
                 itemHighlightColor: "darkCyan"
@@ -379,13 +388,6 @@ ScrollView {
                 itemNormalColor: "skyblue"
                 itemHighlightColor: "darkCyan"
                 indicatorSource: "qrc:/updown.png"
-                indicatorPadding: 6
-                spacer: Rectangle{
-                    width: 6
-                    height: 6
-                    rotation: 45
-                    color: "white"
-                }
                 background: Rectangle{
                     color: basic_combobox2_2.hovered?Qt.lighter("green"):"green"
                     border.width: 1
@@ -394,6 +396,7 @@ ScrollView {
             }
             BasicComboBox2{
                 //test null model
+                indicatorSource: "qrc:/updown.png"
             }
         }
 

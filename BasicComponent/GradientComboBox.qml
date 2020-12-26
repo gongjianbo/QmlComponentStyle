@@ -1,12 +1,11 @@
 import QtQuick 2.12
-import QtQuick.Window 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
-import QtQuick.Shapes 1.12
 import QtQuick.Controls.impl 2.12
 
 //qtquickcontrols2\src\imports\controls\ComboBox.qml
 //from Customizing ComboBox
+//2020-12-26 移除Shape，改用impl中的ColorImage加载按钮图标
 T.ComboBox {
     id:control
 
@@ -15,6 +14,8 @@ T.ComboBox {
     property color textColor: "white"      //文本主颜色
     property int radius: 3
     property int showCount: 5              //最多显示的item个数
+    property int indicatorPadding: 0       //下拉按钮边距
+    property url indicatorSource: "qrc:/qt-project.org/imports/QtQuick/Controls.2/images/double-arrow.png"
 
     property Gradient _normalGradient: Gradient{
         GradientStop { position: 0.0; color: Qt.lighter(themeColor) }
@@ -77,28 +78,19 @@ T.ComboBox {
         }
     }
 
-    //图标自己画比较麻烦，还是贴图方便
-    //源码中使用impl中的ColorImage加载按钮图标
-    indicator: Shape {
+    //下拉按钮图标
+    indicator: Item{
         id: box_indicator
-        x: control.width - width - control.padding
+        x: control.width - width
         y: control.topPadding + (control.availableHeight - height) / 2
-        width: height*2
-        height: control.height/2
-        //smooth: true //平滑处理
-        //antialiasing: true //反走样抗锯齿
-        ShapePath {
-            strokeWidth: 1
-            strokeColor: indicatorColor
-            fillRule: ShapePath.WindingFill
-            fillColor: control.pressed ? Qt.lighter(themeColor) : themeColor
-            startX: 0; startY: 4
-            PathLine { x:0; y:0 }
-            PathLine { x:box_indicator.width-8+1; y:0 } //+1补齐
-            PathLine { x:box_indicator.width-8+1; y:4 }
-            PathLine { x:0; y:4 }
-            PathLine { x:(box_indicator.width-8)/2; y:box_indicator.height }
-            PathLine { x:box_indicator.width-8; y:4 }
+        width: box_indicator_img.width+control.indicatorPadding*2
+        height: control.height
+        //按钮图标
+        ColorImage {
+            id: box_indicator_img
+            anchors.centerIn: parent
+            color: control.textColor
+            source: control.indicatorSource
         }
     }
 
@@ -106,7 +98,9 @@ T.ComboBox {
     contentItem: T.TextField{
         leftPadding: 10
         rightPadding: 6
-        text: control.editable ? control.editText : control.displayText
+        text: control.editable
+              ? control.editText
+              : control.displayText
         font: control.font
         color: control.textColor
         verticalAlignment: Text.AlignVCenter
@@ -123,7 +117,6 @@ T.ComboBox {
         readOnly: control.down
         inputMethodHints: control.inputMethodHints
         validator: control.validator
-
         background: Rectangle {
             visible: control.enabled && control.editable
             color: parent && parent.activeFocus
@@ -154,13 +147,13 @@ T.ComboBox {
                          ?contentItem.implicitHeight
                          :control.showCount*control.implicitHeight)+2
         padding: 1
-
         contentItem: ListView {
             clip: true
             implicitHeight: contentHeight
             model: control.popup.visible ? control.delegateModel : null
             currentIndex: control.highlightedIndex
-            snapMode: ListView.SnapToItem //按行滚动
+            //按行滚动SnapToItem ;像素移动SnapPosition
+            snapMode: ListView.SnapToItem
             //ScrollBar.horizontal: ScrollBar { visible: false }
             ScrollBar.vertical: ScrollBar { //定制滚动条
                 id: box_bar
