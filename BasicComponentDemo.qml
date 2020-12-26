@@ -262,16 +262,18 @@ ScrollView {
                 ButtonGroup.group: checkbox_group
             }
             GradientCheckBox{
+                height: 30
                 text: "Box B"
                 themeColor: "blue"
                 //tristate: true
                 ButtonGroup.group: checkbox_group
             }
             GradientCheckBox{
+                height: 30
                 text: "Box C"
                 themeColor: "red"
                 textColor: "white"
-                indicatorColor: "blue"
+                indicatorColor: "yellow"
                 tristate: true
                 checkState: Qt.PartiallyChecked
             }

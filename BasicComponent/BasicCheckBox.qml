@@ -2,10 +2,10 @@ import QtQuick 2.12
 import QtQuick.Templates 2.12 as T
 import QtQuick.Controls 2.12
 import QtQuick.Controls.impl 2.12
-import QtQuick.Shapes 1.12
 
 //qtquickcontrols2\src\imports\controls\CheckBox.qml
 //from Customizing CheckBox
+//2020-12-26 移除Shape，改用impl中的ColorImage加载按钮图标
 T.CheckBox {
     id:control
 
@@ -20,13 +20,17 @@ T.CheckBox {
                                       : control.checked
                                         ? backgroundTheme
                                         : backgroundTheme
-    property color indicatorColor: "white"     //勾选框颜色
+    property int indicatorWidth: 24 //勾选框
+    property color indicatorColor: control.textColor
     property int radius: 0
 
-    implicitWidth: 90
-    implicitHeight: 30
-    leftPadding: 5
-    rightPadding: 5
+    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+                            implicitContentWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+                             implicitContentHeight + topPadding + bottomPadding,
+                             implicitIndicatorHeight + topPadding + bottomPadding)
+
+    padding: 5
     spacing: 5
     font{
         family: "SimSun"
@@ -35,40 +39,27 @@ T.CheckBox {
 
     //勾选框，用贴图更方便
     indicator: Rectangle {
-        implicitWidth: control.height-2*control.leftPadding
-        implicitHeight: width
-        x: control.leftPadding
+        implicitWidth: control.indicatorWidth
+        implicitHeight: control.indicatorWidth
+        x: control.text ? control.leftPadding : control.leftPadding + (control.availableWidth - width) / 2
         y: (parent.height-height) / 2
         color: "transparent"
         border.width: 1
-        border.color: indicatorColor
-        antialiasing: false
-
-        //源码中使用impl中的ColorImage加载按钮图标
-        Shape { //indicator全部用shape算了
-            id: checked_indicator
-            anchors.centerIn: parent
-            width: parent.width-6
-            height: parent.height-6
+        border.color: control.indicatorColor
+        //ColorImage只是把图的颜色填充为了单色
+        ColorImage {
+            anchors.fill: parent
+            anchors.margins: 1
+            color: control.textColor
+            //这个资源是control默认提供的
+            source: "qrc:/qt-project.org/imports/QtQuick/Controls.2/images/check.png"
             visible: control.checkState === Qt.Checked
-            //smooth: true //平滑处理
-            //antialiasing: true //反走样抗锯齿
-            ShapePath {
-                strokeWidth: 2
-                strokeColor: indicatorColor
-                //fillRule: ShapePath.WindingFill
-                fillColor: "transparent"
-                startX: 0; startY: checked_indicator.height/2
-                PathLine { x:checked_indicator.width/2; y:checked_indicator.height }
-                PathLine { x:checked_indicator.width; y:0 }
-            }
         }
         Rectangle {
             anchors.centerIn: parent
             width: parent.width/2
             height: parent.height/2
-            color: indicatorColor
-            antialiasing: false
+            color: control.textColor
             visible: control.checkState === Qt.PartiallyChecked
         }
     }
