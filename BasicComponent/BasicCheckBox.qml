@@ -50,7 +50,7 @@ T.CheckBox {
         ColorImage {
             anchors.fill: parent
             anchors.margins: 1
-            color: control.textColor
+            color: control.indicatorColor
             //这个资源是control默认提供的
             source: "qrc:/qt-project.org/imports/QtQuick/Controls.2/images/check.png"
             visible: control.checkState === Qt.Checked
@@ -59,7 +59,7 @@ T.CheckBox {
             anchors.centerIn: parent
             width: parent.width/2
             height: parent.height/2
-            color: control.textColor
+            color: control.indicatorColor
             visible: control.checkState === Qt.PartiallyChecked
         }
     }
