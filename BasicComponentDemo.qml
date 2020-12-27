@@ -847,7 +847,6 @@ ScrollView {
                 text: "ScrollBar:"
             }
             //用ScrollView来展示ScrollBar
-            //(TODO 5.15中滚动条展示效果不对，会出现新旧两个滚动条，待解决)
             ScrollView{
                 id: scrollview_1
                 width: 200
@@ -887,6 +886,19 @@ ScrollView {
                     active: scrollview_1.ScrollBar.vertical.active
                     policy: ScrollBar.AsNeeded
                 }
+                //5.15中滚动条展示效果不对，会出现新旧两个滚动条
+                //可以给自定义ScrollBar设置一个属性，然后去判断是否为新定义的
+                //Component.onCompleted: {
+                //    let child_list=control.children;
+                //    for(var i=0;i<child_list.length;i++)
+                //    {
+                //        //给自定义的scrollbar加一个自定义属性，此处为newBar
+                //        //遍历scrollview子节点，移除没有自定义属性的
+                //        if(child_list[i] instanceof ScrollBar&&
+                //                !child_list[i].newBar)
+                //            child_list[i].visible=false;
+                //    }
+                //}
             }
 
             ScrollView{
@@ -932,6 +944,12 @@ ScrollView {
 
         //BasicInputComponent.qml
         BasicInputComponent{}
+
+        //底部空白
+        Item{
+            width: 100
+            height: 200
+        }
     }
 
     //一个滑动的抽屉

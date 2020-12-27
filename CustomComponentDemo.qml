@@ -80,7 +80,7 @@ ScrollView {
                 width: 300
             }
             Button{
-                text: "近一周"
+                text: "\u8fd1\u4e00\u5468" //"近一周"
                 onClicked: {
                     let begin_date=new Date();
                     date_range.endDate=new Date();
@@ -89,7 +89,7 @@ ScrollView {
                 }
             }
             Button{
-                text: "近一月"
+                text: "\u8fd1\u4e00\u6708" //"近一月"
                 onClicked: {
                     let begin_date=new Date();
                     date_range.endDate=new Date();
