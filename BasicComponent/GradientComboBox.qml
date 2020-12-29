@@ -58,6 +58,7 @@ T.ComboBox {
         implicitWidth: control.implicitWidth
         implicitHeight: control.implicitHeight
         width: control.width
+        padding: 0
         contentItem: Text {
             text: control.textRole
                   ? (Array.isArray(control.model)

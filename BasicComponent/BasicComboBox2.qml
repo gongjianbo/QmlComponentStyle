@@ -62,12 +62,12 @@ T.ComboBox {
     }
 
     //各item
-    //这里没用ItemDelegate是因为高度不够的时候没显示文字（如24px）
-    delegate: T.AbstractButton {
+    delegate: ItemDelegate {
         id: box_item
         height: control.itemHeight
-        //Popup如果有padding，这里要剪掉2*pop.padding
+        //Popup如果有padding，这里要减掉2*pop.padding
         width: control.width
+        padding: 0
         contentItem: Text {
             text: control.textLeft+
                   (control.textRole
@@ -85,7 +85,6 @@ T.ComboBox {
             verticalAlignment: Text.AlignVCenter
         }
         hoverEnabled: control.hoverEnabled
-        focusPolicy: Qt.NoFocus
         background: Rectangle{
             radius: control.radius
             color: (control.highlightedIndex === index)
@@ -172,7 +171,7 @@ T.ComboBox {
         implicitHeight: control.delegateModel
                         ?((control.delegateModel.count<showCount)
                           ?contentItem.implicitHeight
-                          :control.showCount*control.implicitHeight)+2
+                          :control.showCount*control.itemHeight)+2
                         :0
         //用于边框留的padding
         padding: 1

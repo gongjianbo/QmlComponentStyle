@@ -45,6 +45,7 @@ T.ComboBox {
         implicitWidth: control.implicitWidth
         implicitHeight: control.implicitHeight
         width: control.width
+        padding: 0
         contentItem: Text {
             text: control.textRole
                   ? (Array.isArray(control.model)
@@ -58,7 +59,6 @@ T.ComboBox {
             verticalAlignment: Text.AlignVCenter
         }
         hoverEnabled: control.hoverEnabled
-        focusPolicy: Qt.NoFocus
         background: Rectangle{
             //radius: control.radius
             color: (control.highlightedIndex === index)
