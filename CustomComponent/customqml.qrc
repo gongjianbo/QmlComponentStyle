@@ -12,5 +12,7 @@
         <file>CustomCircleProgressBar.qml</file>
         <file>CustomDesktopTip.qml</file>
         <file>CustomDateRange.qml</file>
+        <file>CustomLoading.qml</file>
+        <file>CustomLoading2.qml</file>
     </qresource>
 </RCC>

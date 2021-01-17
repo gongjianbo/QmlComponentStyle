@@ -12,7 +12,7 @@ ApplicationWindow{
     Loader{
         id: root_loader
         anchors.fill: parent
-        source: "qrc:/BasicComponentDemo.qml"
+        source: "qrc:/CustomComponentDemo.qml"
     }
 
     menuBar: MenuBar{

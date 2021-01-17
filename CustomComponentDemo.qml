@@ -99,10 +99,26 @@ ScrollView {
             }
         }
 
+        Row{
+            spacing: 10
+            CustomLoading{
+                running: loading_runing.checked
+            }
+            CustomLoading2{
+                running: loading_runing.checked
+            }
+            Button{
+                id: loading_runing
+                checkable: true
+                checked: true
+                text: checked?"stop":"running"
+            }
+        }
+
         //底部空白
         Item{
             width: 100
-            height: 200
+            height: 500
         }
     }
 }

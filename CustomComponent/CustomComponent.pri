@@ -8,6 +8,8 @@ DISTFILES += \
     $$PWD/CustomDesktopTip.qml \
     $$PWD/CustomItemShot.qml \
     $$PWD/CustomItemShotDemo.qml \
+    $$PWD/CustomLoading.qml \
+    $$PWD/CustomLoading2.qml \
     $$PWD/CustomSwitchButton.qml \
     $$PWD/CustomVolumeSlider.qml \
     $$PWD/CustomVolumeSliderDemo.qml
