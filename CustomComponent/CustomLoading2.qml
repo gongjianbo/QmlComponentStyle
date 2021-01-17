@@ -11,6 +11,8 @@ Item {
     property int itemCount: 4
     //item圆圈直径
     property int itemSize: 20
+    //item圆圈颜色
+    property color itemColor: "green"
     //转一次时长
     property int duration: 3000
     //
@@ -76,7 +78,7 @@ Item {
                     height: control.itemSize
                     width: height
                     radius: height/2
-                    color: "green"
+                    color: control.itemColor
                 }
             }
         }

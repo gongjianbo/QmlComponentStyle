@@ -103,9 +103,11 @@ ScrollView {
             spacing: 10
             CustomLoading{
                 running: loading_runing.checked
+                itemColor: "red"
             }
             CustomLoading2{
                 running: loading_runing.checked
+                itemColor: "blue"
             }
             Button{
                 id: loading_runing

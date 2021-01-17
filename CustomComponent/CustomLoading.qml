@@ -12,6 +12,8 @@ Item {
     property int itemSize: 16
     //item变大范围
     property int itemExpand: 10
+    //item圆圈颜色
+    property color itemColor: "green"
     //当前item，配合动画
     property int itemIndex: 0
     //轮转一次的时长
@@ -50,7 +52,7 @@ Item {
                 x: content.width/2 - width/2
                 y: content.height/2 - height/2
                 radius: height/2
-                color: "green"
+                color: control.itemColor
 
                 //环绕在中心
                 transform: [
