@@ -23,9 +23,9 @@ Rectangle {
     implicitHeight: 30
 
     //white:fff, black:000
-    color: control_mousearea.down_state
+    color: control_mousearea.pressed
            ?"#444"
-           :control_mousearea.hover_state
+           :control_mousearea.containsMouse
              ?"#888"
              :"#666"
     border {
@@ -37,7 +37,7 @@ Rectangle {
         id: control_text
         anchors.fill: parent
         text: qsTr("Button")
-        color: control_mousearea.down_state?"white":"black"
+        color: control_mousearea.pressed?"white":"black"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         renderType: Text.NativeRendering
@@ -53,35 +53,14 @@ Rectangle {
         id: control_mousearea
         anchors.fill: parent
         hoverEnabled: true
-        property bool hover_state: false
-        property bool down_state: false
 
-        onEntered: {
-            hover_state=true;
-            control.entered();
-        }
-        onExited: {
-            hover_state=false;
-            control.exited();
-        }
+        onEntered: control.entered();
+        onExited: control.exited();
         onCanceled: control.canceled();
-        onClicked: {
-            control.clicked();
-        }
-        onDoubleClicked: {
-            control.doubleClicked();
-        }
-        onPressAndHold: {
-            down_state=true;
-            control.pressAndHold();
-        }
-        onPressed: {
-            down_state=true;
-            control.pressed();
-        }
-        onReleased: {
-            down_state=false;
-            control.released();
-        }
+        onClicked: control.clicked();
+        onDoubleClicked: control.doubleClicked();
+        onPressAndHold: control.pressAndHold();
+        onPressed: control.pressed();
+        onReleased: control.released();
     }
 }
