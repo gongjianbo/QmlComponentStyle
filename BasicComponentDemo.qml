@@ -485,7 +485,7 @@ ScrollView {
                 width: 90
                 height: 30
                 renderType: Text.NativeRendering
-                text: "DelayButton:"
+                text: "SwitchButton:"
             }
             Switch{
                 text: "Switch"

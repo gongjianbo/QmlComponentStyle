@@ -1,6 +1,7 @@
 import QtQuick 2.12
 
 //滑动按钮
+//qml圆角抗锯齿有点糊，索性去掉
 Rectangle {
     id: control
 
@@ -15,17 +16,15 @@ Rectangle {
     implicitHeight: 30
 
     radius: height/2
-    border {
-        width: 1
-    }
+    border.width: 0
 
     Rectangle{
         id: switch_button
         height: parent.height
         width: parent.width*2/3
         radius: height/2
-        border.color: parent.border.color
-        border.width: 1
+        border.color: parent.color
+        border.width: 2
         //本来想加个Off/On的文本在上面，貌似没必要
     }
 
