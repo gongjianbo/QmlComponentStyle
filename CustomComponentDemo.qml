@@ -4,6 +4,7 @@ import QtQuick.Controls 2.12
 
 //展示自定义组合组件
 ScrollView {
+    id: control
 
     Column{
         anchors{

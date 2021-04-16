@@ -4,14 +4,15 @@ import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 
 //展示基础组件的自定义
+//控件的默认implicit尺寸是随内容变化的，但是我有些地方设置为了固定值
+//例如：
+//implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
+//                        implicitContentWidth + leftPadding + rightPadding)
+//implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
+//                         implicitContentHeight + topPadding + bottomPadding)
+//此外，我排除了mirrored这种情况（他可能是表示的右到左）
 ScrollView {
-    //控件的默认implicit尺寸是随内容变化的，但是我有些地方设置为了固定值
-    //例如：
-    //implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-    //                        implicitContentWidth + leftPadding + rightPadding)
-    //implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-    //                         implicitContentHeight + topPadding + bottomPadding)
-    //此外，我排除了mirrored这种情况（他可能是表示的右到左）
+    id: control
 
     Column{
         anchors{
@@ -171,6 +172,7 @@ ScrollView {
                 height: 30
                 onClicked: drawer.close()
             }
+
             Button{
                 text: "Dialog"
                 width: 120
@@ -952,17 +954,58 @@ ScrollView {
         }
     }
 
-    //一个滑动的抽屉
-    Drawer{
-        id: drawer
-        modal: false //fei1模态
-        edge: Qt.RightEdge
-        //默认点击pop外部区域就close，这里取消
-        closePolicy: Popup.NoAutoClose
-        width: 100
-        height: parent.height
-        background: Rectangle{
-            color: "green"
+    Item{
+        //锚定到window去，不挡住scroll
+        parent: Overlay.overlay
+        anchors.fill: parent
+
+        //一个滑动的抽屉
+        Drawer{
+            id: drawer
+            modal: true //模态
+            dim: true //遮罩阴影
+            interactive: false //交互，默认可以从边缘拖拽
+            edge: Qt.RightEdge //右侧停靠
+            //默认点击pop外部区域就close，这里取消
+            closePolicy: Popup.NoAutoClose
+            width: 400
+            height: parent.height
+            padding: 0
+            background: Rectangle{
+                color: "#faa755"
+                border.color: "#f47920"
+                border.width: 2
+                //radius: 4
+
+                //drawer左侧按钮
+                Rectangle{
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.left
+                    width: 30
+                    height: width
+                    radius: width/2
+                    color: "#f47920"
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: drawer.close()
+                    }
+                }
+            }
+        }
+
+        //屏幕右侧按钮
+        Rectangle{
+            visible: !drawer.visible
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.right
+            width: 30
+            height: width
+            radius: width/2
+            color: "#f47920"
+            MouseArea{
+                anchors.fill: parent
+                onClicked: drawer.open()
+            }
         }
     }
 }
