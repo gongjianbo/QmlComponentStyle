@@ -118,6 +118,18 @@ ScrollView {
             }
         }
 
+        Row{
+            spacing: 10
+            CustomLoading3{
+                running: loading_runing.checked
+                itemColor: "orange"
+            }
+            CustomLoading4{
+                running: loading_runing.checked
+                itemColor: "purple"
+            }
+        }
+
         //底部空白
         Item{
             width: 100

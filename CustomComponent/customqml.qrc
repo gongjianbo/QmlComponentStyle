@@ -14,5 +14,7 @@
         <file>CustomDateRange.qml</file>
         <file>CustomLoading.qml</file>
         <file>CustomLoading2.qml</file>
+        <file>CustomLoading3.qml</file>
+        <file>CustomLoading4.qml</file>
     </qresource>
 </RCC>
