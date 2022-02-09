@@ -1,11 +1,17 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.12
+import QtQuick.Shapes 1.12
 
 //自定义loading效果
-//龚建波 2022-02-08
+//龚建波 2022-02-09
 Item {
     id: control
 
+    implicitWidth: 160
+    implicitHeight: 160
+
+    property int itemMargin: 5
+    property int itemBorder: 4
     //item的宽度
     property int itemWidth: 16
     //item的颜色
@@ -17,12 +23,9 @@ Item {
     //
     property bool running: visible
 
-    implicitHeight: 160
-    implicitWidth: 160
-
     //动画1旋转
     RotationAnimation {
-        target: content
+        target: sp
         from: 0
         to: 360
         loops: Animation.Infinite
@@ -39,117 +42,103 @@ Item {
             property: "_rotate"
             from: _from
             to: _to
-            duration: 1000
+            duration: 2000
         }
         NumberAnimation {
-            duration: 1000 //停顿
+            duration: 2000 //停顿
         }
         NumberAnimation {
             target: control
             property: "_rotate"
             from: _to
             to: _from
-            duration: 2000
+            duration: 1000
         }
         NumberAnimation {
-            duration: 3000 //停顿
+            duration: 2000 //停顿
         }
     }
 
-    //半透明背景
-    Rectangle {
-        anchors.fill: parent
-        anchors.margins: 2
-        color: "transparent"
-        border.width: control.itemWidth + 6
-        border.color: control.itemColor
-        opacity: 0.1
-        radius: width / 2
-    }
-    Rectangle {
-        anchors.fill: parent
-        anchors.margins: 5
-        color: "transparent"
-        border.width: control.itemWidth
-        border.color: control.itemColor
-        opacity: 0.2
-        radius: width / 2
-    }
+    Shape {
+        id: sp
+        width: control.width
+        height: control.height
+        layer{
+            enabled: true
+            smooth: true
+            samples: 16
+        }
 
-    //整体旋转
-    Item {
-        id: content
-        anchors.fill: parent
-        anchors.margins: 5
+        //底部浅色
+        ShapePath {
+            strokeWidth: itemWidth+itemBorder*2
+            strokeColor: Qt.lighter(itemColor, 1.9)
+            strokeStyle: ShapePath.SolidLine
+            fillColor: "transparent"
 
-        //item 1
-        Item {
-            width: parent.width
-            height: parent.height / 2
-            clip: true
+            capStyle: ShapePath.RoundCap
+            joinStyle: ShapePath.RoundJoin
 
-            Item {
-                width: parent.width
-                height: parent.height
-                rotation: _rotate
-                transformOrigin: Item.Bottom
-                clip: true
-
-                Rectangle {
-                    width: content.width
-                    height: content.height
-                    color: "transparent"
-                    border.width: control.itemWidth
-                    border.color: control.itemColor
-                    radius: width / 2
-                }
+            PathAngleArc {
+                centerX: width/2
+                centerY: height/2
+                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
+                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                startAngle: 0
+                sweepAngle: 360
+                moveToStart: true
             }
         }
 
-        //item 2
-        Item {
-            y: parent.height / 2
-            width: parent.width
-            height: parent.height / 2
-            clip: true
+        //底部深色
+        ShapePath {
+            strokeWidth: itemWidth
+            strokeColor: Qt.lighter(itemColor, 1.8)
+            strokeStyle: ShapePath.SolidLine
+            fillColor: "transparent"
 
-            Item {
-                width: parent.width
-                height: parent.height
-                rotation: _rotate
-                transformOrigin: Item.Top
-                clip: true
+            capStyle: ShapePath.RoundCap
+            joinStyle: ShapePath.RoundJoin
 
-                Rectangle {
-                    y: -content.height / 2
-                    width: content.width
-                    height: content.height
-                    color: "transparent"
-                    border.width: control.itemWidth
-                    border.color: control.itemColor
-                    radius: width / 2
-                }
+            PathAngleArc {
+                centerX: width/2
+                centerY: height/2
+                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
+                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                startAngle: 0
+                sweepAngle: 360
+                moveToStart: true
             }
         }
 
-        //端点四个
-        Repeater {
-            model: ListModel {
-                ListElement { mul: 0; add: 90 }
-                ListElement { mul: 1; add: -90 }
-                ListElement { mul: 0; add: 270 }
-                ListElement { mul: 1; add: 90 }
+        //旋转的曲线
+        ShapePath {
+            strokeWidth: itemWidth
+            strokeColor: itemColor
+            strokeStyle: ShapePath.SolidLine
+            fillColor: "transparent"
+
+            capStyle: ShapePath.RoundCap
+            joinStyle: ShapePath.RoundJoin
+
+            PathAngleArc {
+                centerX: width/2
+                centerY: height/2
+                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
+                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                startAngle: 0
+                sweepAngle: -_rotate
+                moveToStart: true
             }
 
-            delegate: Rectangle {
-                x: (content.width/2 - control.itemWidth/2) *
-                   (1 + Math.sin((model.mul*_rotate+model.add)/360*6.283185307179))
-                y: (content.height/2 - control.itemWidth/2) *
-                   (1 - Math.cos((model.mul*_rotate+model.add)/360*6.283185307179))
-                width: control.itemWidth
-                height: width
-                color: control.itemColor
-                radius: width / 2
+            PathAngleArc {
+                centerX: width/2
+                centerY: height/2
+                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
+                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                startAngle: 180
+                sweepAngle: -_rotate
+                moveToStart: true
             }
         }
     }
