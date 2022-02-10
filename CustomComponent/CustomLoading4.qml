@@ -66,7 +66,7 @@ Item {
             antialiasing: true
             transform: [
                 Rotation {
-                    angle: control._transRotate
+                    angle: control.running ? control._transRotate : 0
                     axis{
                         x: control._transX ? 1 : 0
                         y: control._transX ? 0 : 1

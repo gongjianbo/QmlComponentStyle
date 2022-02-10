@@ -127,7 +127,7 @@ Item {
                 radiusX: width/2-itemWidth/2-itemMargin-itemBorder
                 radiusY: height/2-itemWidth/2-itemMargin-itemBorder
                 startAngle: 0
-                sweepAngle: -_rotate
+                sweepAngle: control.running ? -_rotate : 360
                 moveToStart: true
             }
 
@@ -137,7 +137,7 @@ Item {
                 radiusX: width/2-itemWidth/2-itemMargin-itemBorder
                 radiusY: height/2-itemWidth/2-itemMargin-itemBorder
                 startAngle: 180
-                sweepAngle: -_rotate
+                sweepAngle: control.running ? -_rotate : 360
                 moveToStart: true
             }
         }
