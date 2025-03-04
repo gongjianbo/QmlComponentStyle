@@ -1,28 +1,28 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Window 2.15
+import QtQuick.Controls 2.15
 
-ApplicationWindow{
+ApplicationWindow {
     id: root
     visible: true
-    width: 820
-    height: 600
-    title: qsTr("Qml Component Style: by Gong Jian Bo")
+    width: 900
+    height: 720
+    title: "Qml Component Style: by Gong Jian Bo"
 
-    Loader{
+    Loader {
         id: root_loader
         anchors.fill: parent
         source: "qrc:/CustomComponentDemo.qml"
     }
 
-    menuBar: MenuBar{
-        Menu{
+    menuBar: MenuBar {
+        Menu {
             title: "Demo List"
-            Action{
+            Action {
                 text: "Basic"
                 onTriggered: root_loader.setSource("qrc:/BasicComponentDemo.qml")
             }
-            Action{
+            Action {
                 text: "Custom"
                 onTriggered: root_loader.setSource("qrc:/CustomComponentDemo.qml")
             }
