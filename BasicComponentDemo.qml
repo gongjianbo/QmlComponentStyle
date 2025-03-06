@@ -296,30 +296,32 @@ ScrollView {
                 height: 30
             }
             BasicButton {
+                width: 50
+                text: "Button"
+            }
+            BasicButton {
                 text: "Button"
                 textColor: "white"
-                backgroundTheme: "green"
+                themeColor: "green"
             }
             BasicButton {
                 text: "Basic Button"
                 icon.source: "qrc:/fire.png"
                 textColor: "white"
-                radius: 3
-                backgroundColor:  down
-                                  ? Qt.darker("purple")
-                                  : (hovered || highlighted)
-                                    ? Qt.lighter("darkCyan")
-                                    : checked
-                                      ? Qt.lighter("darkCyan")
-                                      : "red"
+                radius: 4
+                backgroundColor: (pressed || checked)
+                                 ? Qt.darker("purple")
+                                 : (hovered || highlighted)
+                                   ? Qt.lighter("darkCyan")
+                                   : "red"
             }
             BasicButton {
                 width: 200
                 text: "Basic Button"
                 icon.source: "qrc:/fire.png"
                 textColor: "white"
-                radius: 3
-                backgroundTheme: "red"
+                themeColor: "red"
+                radius: 4
             }
         }
         Row {

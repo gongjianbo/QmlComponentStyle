@@ -11,21 +11,21 @@ T.Button {
     id: control
 
     // 可以像源码一样，定义一个全局的样式，然后取全局样式中对应的颜色
+    // 定义主题颜色
+    property color themeColor: "darkCyan"
     // 定义文本颜色
     property color textColor: "white"
-    // 定义背景主题色
-    property color backgroundTheme: "darkCyan"
     // 定义背景颜色
     // pressed按下，hovered鼠标悬停，highlighted高亮，checked选中
     property color backgroundColor: (control.pressed || control.checked)
-                                    ? Qt.darker(backgroundTheme)
+                                    ? Qt.darker(themeColor)
                                     : (control.hovered || control.highlighted)
-                                      ? Qt.lighter(backgroundTheme)
-                                      : backgroundTheme
+                                      ? Qt.lighter(themeColor)
+                                      : themeColor
     // 定义边框宽度
     property int borderWidth: 0
     // 定义边框颜色
-    property color borderColor: Qt.darker(backgroundTheme)
+    property color borderColor: Qt.darker(themeColor)
     // 定义边框圆角
     property int radius: 0
 
@@ -39,7 +39,7 @@ T.Button {
     //                          implicitContentHeight + topPadding + bottomPadding)
     // 通过内容计算宽高可能会导致一组按钮的宽高都不齐，可以用固定的默认宽高，或者固定高但是宽度自适应
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
-    implicitHeight: 30
+    implicitHeight: implicitContentHeight
     // 边距
     padding: 0
     // 左右边距可以直接用horizontalPadding，因为遇到过相关bug就单独设置下
@@ -115,8 +115,8 @@ T.Button {
     //     color: control.textColor
     // }
     contentItem: Item {
-        implicitWidth: btn_row.implicitWidth
-        implicitHeight: btn_row.implicitHeight
+        implicitWidth: btn_text.implicitWidth + btn_icon.iconWidth
+        implicitHeight: 30
         // Row会根据内容计算出implicitWidth
         Row {
             id: btn_row
@@ -127,6 +127,8 @@ T.Button {
             // 用impl模块的ColorImage，便于设置图标颜色
             ColorImage {
                 id: btn_icon
+                // 除了text外的内容宽度
+                property int iconWidth: (btn_icon.implicitWidth > 0 ? btn_icon.implicitWidth + btn_row.spacing : 0)
                 // 在Row内上下居中
                 anchors.verticalCenter: parent.verticalCenter
                 // 借用Button已有的icon的接口设置图标路径
@@ -136,6 +138,8 @@ T.Button {
             }
             Text {
                 id: btn_text
+                // 如果按钮宽度小于默认宽度文字需要显示省略号，得先设置Text宽度
+                width: (control.width - btn_icon.iconWidth - control.leftPadding - control.rightPadding)
                 // 在Row内上下居中
                 anchors.verticalCenter: parent.verticalCenter
                 // 按钮文字内容
@@ -145,12 +149,12 @@ T.Button {
                 // 单独设置文本组件的渲染方式
                 renderType: Text.NativeRendering
                 // 文字对齐方式，设置Text宽高后设置才有意义
-                // verticalAlignment: Text.AlignVCenter
-                // horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
                 // 换行设置，按钮一般没有换行
                 // wrapMode: Text.NoWrap
                 // 文字超出按钮范围显示省略号
-                elide: Text.ElideRight
+                elide: Text.ElideMiddle
                 // 字体设置
                 font: control.font
             }
