@@ -321,6 +321,7 @@ ScrollView {
                 icon.source: "qrc:/fire.png"
                 textColor: "white"
                 themeColor: "red"
+                icon.color: "yellow"
                 radius: 4
             }
         }

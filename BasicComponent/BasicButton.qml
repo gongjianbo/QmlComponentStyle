@@ -39,7 +39,7 @@ T.Button {
     //                          implicitContentHeight + topPadding + bottomPadding)
     // 通过内容计算宽高可能会导致一组按钮的宽高都不齐，可以用固定的默认宽高，或者固定高但是宽度自适应
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
-    implicitHeight: implicitContentHeight
+    implicitHeight: implicitContentHeight + topPadding + bottomPadding
     // 边距
     padding: 0
     // 左右边距可以直接用horizontalPadding，因为遇到过相关bug就单独设置下
@@ -48,6 +48,7 @@ T.Button {
     // 图标和文字间距
     spacing: 6
     // checkable: true
+    // 字体设置
     // 也可以给QApplication设置全局的默认字体
     font{
         family: "SimSun"
@@ -57,6 +58,7 @@ T.Button {
     // icon.width: 24
     // icon.height: 24
     // icon.source: "url"
+    icon.color: textColor
 
     // Control组件点击之后，后续按空格也会触发点击，可以把空格过滤掉
     Keys.onPressed: event.accepted = (event.key === Qt.Key_Space)
@@ -131,10 +133,12 @@ T.Button {
                 property int iconWidth: (btn_icon.implicitWidth > 0 ? btn_icon.implicitWidth + btn_row.spacing : 0)
                 // 在Row内上下居中
                 anchors.verticalCenter: parent.verticalCenter
-                // 借用Button已有的icon的接口设置图标路径
+                // 借用Button已有的icon接口设置图标url
                 source: control.icon.source
-                // 图标颜色
-                color: control.textColor
+                // 借用Button已有的icon接口设置图标尺寸
+                sourceSize: Qt.size(control.icon.width, control.icon.height)
+                // 借用Button已有的icon接口设置图标颜色
+                color: control.icon.color
             }
             Text {
                 id: btn_text

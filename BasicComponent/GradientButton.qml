@@ -40,16 +40,23 @@ T.Button {
 
     // 默认宽高
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
-    implicitHeight: implicitContentHeight
+    implicitHeight: implicitContentHeight + topPadding + bottomPadding
     // 边距
     padding: 0
     leftPadding: 8
     rightPadding: 8
     spacing: 6
+    // 字体设置
+    // 也可以给QApplication设置全局的默认字体
     font{
         family: "SimSun"
         pixelSize: 16
     }
+    // 按钮图标设置
+    // icon.width: 24
+    // icon.height: 24
+    // icon.source: "url"
+    icon.color: textColor
     hoverEnabled: true
 
     // 按钮中显示的内容
@@ -70,10 +77,12 @@ T.Button {
                 property int iconWidth: (btn_icon.implicitWidth > 0 ? btn_icon.implicitWidth + btn_row.spacing : 0)
                 // 在Row内上下居中
                 anchors.verticalCenter: parent.verticalCenter
-                // 借用Button已有的icon的接口设置图标路径
+                // 借用Button已有的icon接口设置图标url
                 source: control.icon.source
-                // 图标颜色
-                color: control.textColor
+                // 借用Button已有的icon接口设置图标尺寸
+                sourceSize: Qt.size(control.icon.width, control.icon.height)
+                // 借用Button已有的icon接口设置图标颜色
+                color: control.icon.color
             }
             Text {
                 id: btn_text
