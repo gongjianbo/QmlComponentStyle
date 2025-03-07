@@ -275,7 +275,7 @@ ScrollView {
                 text: "Box C"
                 themeColor: "red"
                 textColor: "white"
-                indicatorColor: "yellow"
+                icon.color: "yellow"
                 tristate: true
                 checkState: Qt.PartiallyChecked
             }
@@ -427,17 +427,22 @@ ScrollView {
             BasicCheckBox {
                 text: "Box B"
                 textColor: "white"
-                backgroundTheme: "orange"
+                themeColor: "orange"
                 ButtonGroup.group: checkbox_group2
             }
             BasicCheckBox {
                 text: "Box C"
                 textColor: "cyan"
-                backgroundTheme: "purple"
-                indicatorColor: "cyan"
+                themeColor: "purple"
+                icon.color: "yellow"
                 tristate: true
                 checkState: Qt.PartiallyChecked
-                radius: 3
+                radius: 4
+            }
+            BasicCheckBox {
+                text: "Box D"
+                textColor: "red"
+                background: Item { }
             }
         }
 
