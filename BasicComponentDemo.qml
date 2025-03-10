@@ -325,6 +325,7 @@ ScrollView {
                 radius: 4
             }
         }
+
         Row {
             id: combobox_row
             spacing: 10
@@ -341,67 +342,47 @@ ScrollView {
                 model: ["First", "Second", "Third"]
             }
             BasicComboBox {
+                width: 80
+                editable: true
+                model: ["First", "Second", "Third"]
+                indicatorWidth: 20
+            }
+            BasicComboBox {
                 editable: true
                 model: ["First", "Second", "Third"]
                 textColor: "white"
-                backgroundTheme: "deepskyblue"
+                themeColor: "deepskyblue"
                 // onEditTextChanged: { console.log(editText); }
             }
             BasicComboBox {
-                editable: true
                 model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
                 textColor: "white"
-                radius: 3
+                radius: 4
                 indicatorSource: "qrc:/updown.png"
-                backgroundTheme: "green"
+                themeColor: "green"
                 itemNormalColor: "skyblue"
                 itemHighlightColor: "darkCyan"
-            }
-            BasicComboBox {
-                model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-                textColor: "white"
-                radius: 3
-                indicatorSource: "qrc:/updown.png"
-                backgroundTheme: "green"
-                itemNormalColor: "skyblue"
-                itemHighlightColor: "darkCyan"
-            }
-        }
-        Row {
-            id: combobox2_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "ComboBox2:"
-            }
-            BasicComboBox2 {
-                editable: true
-                model: ["First", "Second", "Third"]
-                textColor: "white"
-                backgroundTheme: "deepskyblue"
-                indicatorSource: "qrc:/updown.png"
-            }
-            BasicComboBox2 {
-                id: basic_combobox2_2
-                model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-                textColor: "white"
-                textLeft: "No.["
-                textRight: "]"
-                radius: 3
-                itemNormalColor: "skyblue"
-                itemHighlightColor: "darkCyan"
-                indicatorSource: "qrc:/updown.png"
-                background: Rectangle {
-                    color: basic_combobox2_2.hovered ? Qt.lighter("green") : "green"
-                    border.width: 1
-                    border.color: "black"
+                showFunc: function(value) {
+                    return String('No.[%1]').arg(value);
                 }
             }
-            BasicComboBox2 {
-                // test null model
+            BasicComboBox {
+                width: 80
+                model: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                textColor: "white"
+                radius: 4
                 indicatorSource: "qrc:/updown.png"
+                themeColor: "green"
+                itemNormalColor: "skyblue"
+                itemHighlightColor: "darkCyan"
+                showFunc: function(value) {
+                    // 65是大写A
+                    return String.fromCharCode(Number(value) + 64);
+                }
+            }
+            BasicComboBox {
+                width: 80
+                // 测试空model
             }
         }
 
