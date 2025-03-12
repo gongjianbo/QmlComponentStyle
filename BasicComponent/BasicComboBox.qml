@@ -295,8 +295,14 @@ T.ComboBox {
             model: control.popup.visible ? control.delegateModel : null
             // 选中项同步
             currentIndex: control.highlightedIndex
-            // 按行滚动SnapToItem ;像素移动SnapPosition
-            snapMode: ListView.SnapToItem
+            // 滚动效果
+            // - NoSnap 默认任意位置停止NoSnap
+            // - SnapToItem 滑动结束时顶部对齐（不会只漏半截），滑到末尾才是底部对齐
+            // - SnapOneItem 滑动结束时最多移动一项
+            // SnapToItem可能会导致原地来回跳无法滚动，SnapOneItem不适合做滚动
+            // snapMode: ListView.NoSnap
+            // 高亮移动动画时间，源码设置为0
+            highlightMoveDuration: 0
             // ScrollBar.horizontal: ScrollBar { visible: false }
             // 竖向滚动条，可以单独封装然后组合在这里
             ScrollBar.vertical: ScrollBar {
