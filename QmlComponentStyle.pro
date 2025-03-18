@@ -32,12 +32,6 @@ OTHER_FILES += \
     LICENSE \
     README.md
 
-INCLUDEPATH += $$PWD/BasicComponent
-include($$PWD/BasicComponent/BasicComponent.pri)
-
-INCLUDEPATH += $$PWD/CustomComponent
-include($$PWD/CustomComponent/CustomComponent.pri)
-
 INCLUDEPATH += $$PWD/Tools
 include($$PWD/Tools/Tools.pri)
 

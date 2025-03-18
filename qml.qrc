@@ -4,5 +4,49 @@
         <file>BasicComponentDemo.qml</file>
         <file>BasicInputComponent.qml</file>
         <file>CustomComponentDemo.qml</file>
+        <file>BasicComponent/BasicBusyIndicator.qml</file>
+        <file>BasicComponent/BasicButton.qml</file>
+        <file>BasicComponent/BasicCheckBox.qml</file>
+        <file>BasicComponent/BasicComboBox.qml</file>
+        <file>BasicComponent/BasicDelayButton.qml</file>
+        <file>BasicComponent/BasicDialog.qml</file>
+        <file>BasicComponent/BasicLabel.qml</file>
+        <file>BasicComponent/BasicMenu.qml</file>
+        <file>BasicComponent/BasicMenuBar.qml</file>
+        <file>BasicComponent/BasicMenuBarItem.qml</file>
+        <file>BasicComponent/BasicMenuItem.qml</file>
+        <file>BasicComponent/BasicMenuSeparator.qml</file>
+        <file>BasicComponent/BasicProgressBar.qml</file>
+        <file>BasicComponent/BasicRadioButton.qml</file>
+        <file>BasicComponent/BasicScrollBar.qml</file>
+        <file>BasicComponent/BasicSlider.qml</file>
+        <file>BasicComponent/BasicSpinBox.qml</file>
+        <file>BasicComponent/BasicSwitch.qml</file>
+        <file>BasicComponent/BasicTabBar.qml</file>
+        <file>BasicComponent/BasicTabButton.qml</file>
+        <file>BasicComponent/BasicToolBar.qml</file>
+        <file>BasicComponent/BasicToolButton.qml</file>
+        <file>BasicComponent/BasicToolSeparator.qml</file>
+        <file>BasicComponent/BasicTumbler.qml</file>
+        <file>BasicComponent/GradientButton.qml</file>
+        <file>BasicComponent/GradientCheckBox.qml</file>
+        <file>BasicComponent/GradientComboBox.qml</file>
+        <file>BasicComponent/QmlIconLabel.qml</file>
+        <file>CustomComponent/CustomButton.qml</file>
+        <file>CustomComponent/CustomButton2.qml</file>
+        <file>CustomComponent/CustomCircleProgressBar.qml</file>
+        <file>CustomComponent/CustomCircularView.qml</file>
+        <file>CustomComponent/CustomCircularViewDemo.qml</file>
+        <file>CustomComponent/CustomDateRange.qml</file>
+        <file>CustomComponent/CustomDesktopTip.qml</file>
+        <file>CustomComponent/CustomItemShot.qml</file>
+        <file>CustomComponent/CustomItemShotDemo.qml</file>
+        <file>CustomComponent/CustomLoading.qml</file>
+        <file>CustomComponent/CustomLoading2.qml</file>
+        <file>CustomComponent/CustomLoading3.qml</file>
+        <file>CustomComponent/CustomLoading4.qml</file>
+        <file>CustomComponent/CustomSwitchButton.qml</file>
+        <file>CustomComponent/CustomVolumeSlider.qml</file>
+        <file>CustomComponent/CustomVolumeSliderDemo.qml</file>
     </qresource>
 </RCC>

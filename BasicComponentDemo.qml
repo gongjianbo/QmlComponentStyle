@@ -3,6 +3,8 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
+import "./BasicComponent"
+
 // 展示基础组件的自定义
 // 控件的默认implicit尺寸是随内容变化的，但是我有些地方设置为了固定值
 // 例如：

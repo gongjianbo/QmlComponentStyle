@@ -1,2 +1,1 @@
-RESOURCES += \
-    $$PWD/img.qrc
+RESOURCES += $$PWD/img.qrc

@@ -2,6 +2,8 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 
+import "./CustomComponent"
+
 // 展示自定义组合组件
 ScrollView {
     id: control
