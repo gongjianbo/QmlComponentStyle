@@ -101,7 +101,7 @@ T.CheckBox {
         implicitHeight: 24
         // 设置勾选图标位置
         x: control.text ? control.leftPadding : control.leftPadding + (control.availableWidth - width) / 2
-        y: (parent.height - height) / 2
+        y: control.topPadding + (control.availableHeight - height) / 2
         // indicator默认层级在background上，这里只是显示勾选部件的边框，所以color设置成透明
         color: "transparent"
         // 图标外面的矩形框

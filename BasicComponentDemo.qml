@@ -443,10 +443,12 @@ ScrollView {
             Row {
                 spacing: 10
                 RadioButton {
+                    height: 30
                     checked: true
                     text: "A"
                 }
                 RadioButton {
+                    height: 30
                     text: "B"
                 }
             }
@@ -456,17 +458,17 @@ ScrollView {
                     checked: true
                     text: "First"
                     textColor: "purple"
-                    radioTheme: "red"
+                    themeColor: "red"
                 }
                 BasicRadioButton {
                     text: "Second"
-                    radius: 3
-                    radioTheme: "green"
+                    borderWidth: 4
+                    themeColor: "green"
                 }
                 BasicRadioButton {
                     text: "Third"
                     radius: 0
-                    radioTheme: "blue"
+                    themeColor: "blue"
                 }
             }
         }
