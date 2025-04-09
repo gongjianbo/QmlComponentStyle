@@ -515,9 +515,8 @@ ScrollView {
                 text: "Delay"
                 width: 120
                 height: 30
-                delay: 1000 //press and hold delay 1s
-                onActivated: console.log("delay active");
-                onCheckedChanged: console.log("delay state",checked);
+                onActivated: console.log("delay active", delay)
+                onCheckedChanged: console.log("delay state", checked)
             }
             BasicDelayButton {
                 text: "GongJianBo"
@@ -526,8 +525,8 @@ ScrollView {
                 text: "1992"
                 delay: 1000
                 backgroundColor: "purple"
-                maskColor: "green"
-                radius: 3
+                maskBackgroundColor: "green"
+                radius: 4
             }
         }
 
