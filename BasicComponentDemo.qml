@@ -486,18 +486,20 @@ ScrollView {
                 text: "Switch"
                 width: 120
                 height: 30
-                onClicked: console.log(checked)
             }
             BasicSwitch {
                 text: "Gong"
                 width: 120
                 height: 30
+                checked: true
             }
             BasicSwitch {
                 text: "1992"
                 width: 120
                 height: 30
-                indicatorTheme: "green"
+                themeColor: "green"
+                indicatorBorderWidth: 2
+                indicatorVerticalPadding: 0
             }
         }
 
