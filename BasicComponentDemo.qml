@@ -12,7 +12,7 @@ import "./BasicComponent"
 //                         implicitContentWidth + leftPadding + rightPadding)
 // implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
 //                          implicitContentHeight + topPadding + bottomPadding)
-// 此外，我排除了mirrored这种情况（他可能是表示的右到左）
+// 此外，我排除了mirrored这种情况（表示右到左这种书写习惯）
 ScrollView {
     id: control
 
@@ -532,8 +532,6 @@ ScrollView {
             }
         }
 
-        // 发现Tumbler有个问题，在滚动的过程中鼠标按下不动，
-        // 放开鼠标元素就不会继续滚动到正中去
         Row {
             id: tumbler_row
             spacing: 10
@@ -564,7 +562,7 @@ ScrollView {
             BasicTumbler {
                 width: 60
                 height: 160
-                model: ["gong","jian","bo","1992"]
+                model: ["gong", "jian", "bo", "1992"]
                 normalTextColor: "cyan"
                 selectedTextColor: "white"
                 backgroundGradient: Gradient {
