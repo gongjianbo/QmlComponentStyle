@@ -573,8 +573,8 @@ ScrollView {
             }
         }
 
-        // 发现一个问题，qml中放了busyindicattor，或者progressbar设置indeterminate，
-        // 类似这种有动画效果的绘制，在我的笔记本缩小窗口过程中会有闪烁，但另一台台式机显示正常
+        // qml中放了busyindicattor，或者progressbar设置indeterminate，
+        // 类似这种有动画效果的绘制，在部分电脑上缩小窗口过程中会有闪烁
         Row {
             id: progress_row
             spacing: 10
@@ -584,26 +584,25 @@ ScrollView {
                 renderType: Text.NativeRendering
                 text: "ProgressBar:"
             }
-            // ProgressBar设置indeterminate后为时间不明确的等待，类似BusyIndicator
             ProgressBar {
                 width: 200; height: 10
                 from: 0; to:100; value: 20
                 indeterminate: true
             }
             BasicProgressBar {
-                id: progress_bar1
                 // from: 0; to:100; value: 20
-                themeColor: "green"
                 indeterminate: true
             }
             BasicProgressBar {
-                id: progress_bar2
                 from: 0; to:100; value: 20
-                themeColor: "blue"
-            }
-            Text {
-                text: progress_bar2.value+"%"
-                color: progress_bar2.themeColor
+                themeColor: "green"
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.right
+                    anchors.leftMargin: 10
+                    text: parent.value + "%"
+                    color: parent.themeColor
+                }
             }
         }
 
