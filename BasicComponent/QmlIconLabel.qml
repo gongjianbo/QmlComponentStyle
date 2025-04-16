@@ -50,7 +50,7 @@ Item{
             elide: Text.ElideRight
             font{
                 family: "SimSun"
-                pixelSize: 14
+                pixelSize: 16
             }
         }
     }

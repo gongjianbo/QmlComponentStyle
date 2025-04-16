@@ -19,7 +19,7 @@ T.Menu {
     overlap: 1
     font{
         family: "SimSun"
-        pixelSize: 14
+        pixelSize: 16
     }
 
     delegate: BasicMenuItem { }

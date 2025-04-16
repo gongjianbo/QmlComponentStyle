@@ -20,7 +20,7 @@ T.TabButton {
     spacing: 6
     font{
         family: "SimSun"
-        pixelSize: 14
+        pixelSize: 16
     }
 
     //自定义的QmlIconLabel

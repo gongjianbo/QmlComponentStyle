@@ -3,7 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls.impl 2.15
 import QtQuick.Templates 2.15 as T
 
-// Qt5按钮样式自定义
+// Qt5延时按钮样式自定义
 // 龚建波 2025-04-09
 // 参考：qt-everywhere-src-5.15.2\qtquickcontrols2\src\imports\controls\DelayButton.qml
 // DelayButton继承自AbstractButton，增加了delay/progress/transition三个属性
@@ -44,7 +44,6 @@ T.DelayButton {
     // 默认高度
     // implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
     //                          implicitContentHeight + topPadding + bottomPadding)
-    // 通过内容计算宽高可能会导致一组按钮的宽高都不齐，可以用固定的默认宽高，或者固定高但是宽度自适应
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
     implicitHeight: implicitBackgroundHeight + topPadding + bottomPadding
     // 边距
