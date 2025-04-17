@@ -409,23 +409,22 @@ ScrollView {
             }
             BasicCheckBox {
                 text: "Box B"
-                textColor: "white"
-                themeColor: "orange"
                 ButtonGroup.group: checkbox_group2
             }
             BasicCheckBox {
                 text: "Box C"
-                textColor: "cyan"
+                textColor: "green"
                 themeColor: "purple"
-                icon.color: "yellow"
                 tristate: true
                 checkState: Qt.PartiallyChecked
-                radius: 4
+                indicatorRadius: 4
+                indicatorBorderWidth: 2
+                indicatorButtonColor: "green"
             }
             BasicCheckBox {
                 text: "Box D"
                 textColor: "red"
-                background: Item { }
+                themeColor: "purple"
             }
         }
 
@@ -457,18 +456,17 @@ ScrollView {
                 BasicRadioButton {
                     checked: true
                     text: "First"
-                    textColor: "purple"
-                    themeColor: "red"
                 }
                 BasicRadioButton {
                     text: "Second"
-                    borderWidth: 4
+                    textColor: "purple"
                     themeColor: "green"
+                    indicatorBorderWidth: 4
                 }
                 BasicRadioButton {
                     text: "Third"
-                    radius: 0
                     themeColor: "blue"
+                    indicatorRadius: 0
                 }
             }
         }

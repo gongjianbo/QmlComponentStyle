@@ -14,19 +14,24 @@ T.RadioButton {
     // 定义主题颜色
     property color themeColor: "darkCyan"
     // 定义文本颜色
-    property color textColor: themeColor
-    // 定义边框宽度
-    property int borderWidth: 1
-    // 定义边框颜色
-    property color borderColor: control.pressed
-                                ? Qt.darker(themeColor)
-                                : (control.hovered || control.highlighted)
-                                  ? Qt.lighter(themeColor)
-                                  : control.checked
-                                    ? themeColor
-                                    : themeColor
-    // 定义边框圆角，<0则为圆形勾选框
-    property int radius: -1
+    property color textColor: "black"
+    // 定义勾选框背景色
+    property color indicatorBackgroundColor: "transparent"
+    // 定义勾选框颜色
+    // pressed按下，hovered鼠标悬停，highlighted高亮，checked选中
+    property color indicatorBorderColor: control.pressed
+                                         ? Qt.darker(themeColor)
+                                         : (control.hovered || control.highlighted)
+                                           ? Qt.lighter(themeColor)
+                                           : control.checked
+                                             ? themeColor
+                                             : themeColor
+    // 定义勾选图标颜色
+    property color indicatorButtonColor: indicatorBorderColor
+    // 定义勾选框边框宽度
+    property int indicatorBorderWidth: 1
+    // 定义勾选框圆角，<0则为圆形勾选框
+    property int indicatorRadius: -1
 
     // 默认宽度，参考Qt源码的写法，实际应用可以删减
     // Math.max表示取两者中最大值，1为默认背景宽度+左右偏移值，2为默认内容宽度+左右边距
@@ -78,17 +83,17 @@ T.RadioButton {
         x: control.text ? control.leftPadding : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
         // <0则为圆形勾选框
-        radius: control.radius < 0 ? width / 2 : control.radius
-        color: "transparent"
-        border.width: control.borderWidth
-        border.color: control.borderColor
+        radius: control.indicatorRadius < 0 ? width / 2 : control.indicatorRadius
+        color: control.indicatorBackgroundColor
+        border.width: control.indicatorBorderWidth
+        border.color: control.indicatorBorderColor
         // 选中后的实心圆圈
         Rectangle {
             anchors.fill: parent
-            anchors.margins: parent.width / 6 + control.borderWidth
+            anchors.margins: parent.width / 6 + control.indicatorBorderWidth
             // 和边框一样的圆角
-            radius: control.radius < 0 ? width / 2 : control.radius
-            color: control.borderColor
+            radius: control.indicatorRadius < 0 ? width / 2 : control.indicatorRadius
+            color: control.indicatorButtonColor
             // 选中后显示
             visible: control.checked
         }
@@ -114,4 +119,7 @@ T.RadioButton {
         leftPadding: control.indicator.width + control.spacing
         rightPadding: 0
     }
+
+    // 背景
+    // background: Rectangle { }
 }

@@ -14,23 +14,24 @@ T.CheckBox {
     // 定义主题颜色
     property color themeColor: "darkCyan"
     // 定义文本颜色
-    property color textColor: "white"
-    // 定义背景颜色
-    // 如果不需要背景，可以设置 background: Item {}
+    property color textColor: "black"
+    // 定义勾选框背景色
+    property color indicatorBackgroundColor: "transparent"
+    // 定义勾选框颜色
     // pressed按下，hovered鼠标悬停，highlighted高亮，checked选中
-    property color backgroundColor: control.pressed
-                                    ? Qt.darker(themeColor)
-                                    : (control.hovered || control.highlighted)
-                                      ? Qt.lighter(themeColor)
-                                      : control.checked
-                                        ? themeColor
-                                        : themeColor
-    // 定义边框宽度
-    property int borderWidth: 0
-    // 定义边框颜色
-    property color borderColor: Qt.darker(themeColor)
-    // 定义边框圆角
-    property int radius: 0
+    property color indicatorBorderColor: control.pressed
+                                         ? Qt.darker(themeColor)
+                                         : (control.hovered || control.highlighted)
+                                           ? Qt.lighter(themeColor)
+                                           : control.checked
+                                             ? themeColor
+                                             : themeColor
+    // 定义勾选图标颜色
+    property color indicatorButtonColor: indicatorBorderColor
+    // 定义勾选框边框宽度
+    property int indicatorBorderWidth: 1
+    // 定义勾选框圆角
+    property int indicatorRadius: 0
 
     // 默认宽度，参考Qt源码的写法，实际应用可以删减
     // Math.max表示取两者中最大值，1为默认背景宽度+左右偏移值，2为默认内容宽度+左右边距
@@ -66,7 +67,7 @@ T.CheckBox {
     // icon.height: 24
     // 这个图标资源是Control模块默认提供的
     icon.source: "qrc:/qt-project.org/imports/QtQuick/Controls.2/images/check.png"
-    icon.color: textColor
+    // icon.color: indicatorButtonColor
 
     // Control组件点击之后，后续按空格也会触发点击，可以把空格过滤掉
     Keys.onPressed: event.accepted = (event.key === Qt.Key_Space)
@@ -103,10 +104,11 @@ T.CheckBox {
         x: control.text ? control.leftPadding : control.leftPadding + (control.availableWidth - width) / 2
         y: control.topPadding + (control.availableHeight - height) / 2
         // indicator默认层级在background上，这里只是显示勾选部件的边框，所以color设置成透明
-        color: "transparent"
+        color: control.indicatorBackgroundColor
         // 图标外面的矩形框
-        border.width: 1
-        border.color: icon.color
+        radius: control.indicatorRadius
+        border.width: control.indicatorBorderWidth
+        border.color: control.indicatorBorderColor
         // 用impl模块的ColorImage，便于设置图标颜色
         ColorImage {
             anchors.centerIn: parent
@@ -115,7 +117,7 @@ T.CheckBox {
             // 借用Button已有的icon接口设置图标尺寸
             sourceSize: Qt.size(control.icon.width, control.icon.height)
             // 借用Button已有的icon接口设置图标颜色
-            color: control.icon.color
+            color: control.indicatorButtonColor
             // 勾选状态下显示勾选图标
             visible: control.checkState === Qt.Checked
         }
@@ -125,7 +127,8 @@ T.CheckBox {
             anchors.centerIn: parent
             width: parent.width / 2
             height: parent.height / 2
-            color: icon.color
+            radius: control.indicatorRadius
+            color: control.indicatorButtonColor
             // 半选状态下显示实心方形
             visible: control.checkState === Qt.PartiallyChecked
         }
@@ -153,16 +156,5 @@ T.CheckBox {
     }
 
     // 背景
-    background: Rectangle {
-        // control设置了背景无关的宽高，这里也可以不设置默认宽高
-        implicitWidth: control.implicitWidth
-        implicitHeight: control.implicitHeight
-        // 背景圆角
-        radius: control.radius
-        // 背景颜色
-        color: control.backgroundColor
-        // 背景边框
-        border.width: control.borderWidth
-        border.color: control.borderColor
-    }
+    // background: Rectangle { }
 }
