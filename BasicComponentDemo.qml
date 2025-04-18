@@ -614,12 +614,11 @@ ScrollView {
                 text: "BusyIndicator:"
             }
             BusyIndicator {
-                width: 64
-                height: 64
+                width: 86
+                height: 86
                 running: true // running时才visible
             }
             BasicBusyIndicator {
-                themeColor: "orange"
             }
             BasicBusyIndicator {
                 themeColor: "purple"
