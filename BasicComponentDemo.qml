@@ -635,17 +635,31 @@ ScrollView {
                 text: "Label:"
             }
             Label {
+                text: "Label"
+                font.underline: true
+            }
+            Label {
                 // Label继承自Text，而Text是支持Html样式的
                 text: "<u>Label</u>"
             }
-            BasicLabel {
-                underlineVisible: true
-                normalColor: "red"
-                hoverColor: "blue"
-                text: "Label"
+            Label {
+                text: '<a href="https://www.baidu.com/">Baidu</a>'
+                onLinkActivated: function(link) {
+                    Qt.openUrlExternally(link)
+                }
             }
             BasicLabel {
-                text: "Label"
+                text: "Basic"
+                font.underline: true
+            }
+            BasicLabel {
+                text: "<u>Basic</u>"
+            }
+            BasicLabel {
+                text: '<a href="https://www.baidu.com/">Baidu</a>'
+                onLinkActivated: function(link) {
+                    Qt.openUrlExternally(link)
+                }
             }
         }
 
