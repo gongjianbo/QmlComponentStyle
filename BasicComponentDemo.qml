@@ -672,7 +672,7 @@ ScrollView {
                 renderType: Text.NativeRendering
                 text: "SpinBox:"
             }
-            // 参考文档示例里代码
+            // 参考文档里的三个示例
             SpinBox {
                 width: 120
                 height: 30
@@ -690,7 +690,6 @@ ScrollView {
                 to: items.length - 1
                 value: 1 // "Medium"
                 property var items: ["Small", "Medium", "Large"]
-
                 validator: RegExpValidator {
                     // js的正则对象
                     // 参数一为正则表达式
@@ -698,7 +697,6 @@ ScrollView {
                     //      分别用于指定全局匹配、区分大小写的匹配和多行匹配
                     regExp: new RegExp("(Small|Medium|Large)", "i")
                 }
-
                 textFromValue: function(value) {
                     return items[value];
                 }
@@ -715,7 +713,7 @@ ScrollView {
                 width: 150
                 height: 30
                 from: 0
-                to: 100*100
+                to: 100 * 100
                 value: 1111
                 stepSize: 1
                 editable: true
@@ -727,12 +725,11 @@ ScrollView {
                     bottom: Math.min(spinbox3.from, spinbox3.to)
                     top:  Math.max(spinbox3.from, spinbox3.to)
                 }
-                // loale为格式化数据和数字，见control
+                // locale为格式化数据和数字，见control
                 // 如果想使用js的函数作为回调函数，可以看下这部分的源码
                 textFromValue: function(value, locale) {
                     return Number(value / 100).toLocaleString(locale, 'f', spinbox3.decimals)
                 }
-
                 valueFromText: function(text, locale) {
                     return Number.fromLocaleString(locale, text) * 100
                 }
@@ -750,14 +747,13 @@ ScrollView {
                 value: 10
                 stepSize: 1
                 // editable: true
-                borderVisible: false
-                // borderColor: "darkCyan"
+                borderWidth: 0
                 textColor: "white"
-                btnNormalColor: "darkCyan"
-                bgNormalColor: "skyblue"
-                bgFocusColor: "blue"
+                buttonNormalColor: "darkCyan"
                 indicatorNormalColor: "white"
                 indicatorDisableColor: "gray"
+                backgroundNormalColor: "skyblue"
+                backgroundFocusColor: Qt.darker("skyblue")
             }
         }
 
