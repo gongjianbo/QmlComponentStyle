@@ -767,17 +767,15 @@ ScrollView {
                 text: "Slider:"
             }
             // 在实际应用中，也可以关联scrollbar，鼠标滚动之类的
-            Slider{
+            Slider {
                 height: 200
                 width: 20
-                // 默认范围[0.0,1.0]
-                // stepSize: 默认为0.0
-                // 默认Horizontal
+                // 默认Horizontal横向
                 orientation: Qt.Vertical
-                // 如果setp not defined，那么每次decrease（减）和increase（增）0.1
             }
             Column {
                 spacing: 10
+                // 两个联动的slider
                 Slider {
                     id: slider_2
                     width: 200
@@ -788,7 +786,7 @@ ScrollView {
                     stepSize: 1
                     orientation: Qt.Horizontal
                     onValueChanged: {
-                        slider_3.value=value
+                        slider_3.value = value
                     }
                 }
                 Slider {
@@ -803,11 +801,11 @@ ScrollView {
 
                     // mirror镜像反转只有水平的，所以竖向的我只写了一个
                     // LayoutMirroring.enabled设置为ture启用镜像
-                    LayoutMirroring.enabled:true
+                    LayoutMirroring.enabled: true
                     // childrenInherit属性设置为true，那么该项目的所有子项目都会启用镜像
                     LayoutMirroring.childrenInherit: true
                     onValueChanged: {
-                        slider_2.value=value
+                        slider_2.value = value
                     }
                 }
             }
@@ -824,15 +822,9 @@ ScrollView {
                 BasicSlider {
                     width: 200
                     orientation: Qt.Horizontal
-                    LayoutMirroring.enabled:true
+                    themeColor: "gray"
+                    LayoutMirroring.enabled: true
                     LayoutMirroring.childrenInherit: true
-
-                    handleBorderColor: "black"
-                    handleNormalColor: "white"
-                    handleHoverColor: "gray"
-                    handlePressColor: "black"
-                    completeColor: "black"
-                    incompleteColor: "gray"
                 }
             }
         }
