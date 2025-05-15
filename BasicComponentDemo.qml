@@ -843,8 +843,6 @@ ScrollView {
                 id: scrollview_1
                 width: 200
                 height: 200
-                // contentWidth: 500
-                // contentHeight: 500
                 clip: true
                 Text {
                     text: "A B C \nD E F"
@@ -861,19 +859,16 @@ ScrollView {
                     x: scrollview_1.mirrored ? 0 : scrollview_1.width - width
                     y: scrollview_1.topPadding
                     z: 10
-                    // 可以判断下另一边的scrollbar，减去其高度避免重叠
                     height: scrollview_1.availableHeight
                     active: scrollview_1.ScrollBar.horizontal.active
-                    policy: ScrollBar.AlwaysOn // 默认asneeded需要操作时才显示
-                    // 默认是可以拖动来交互的
-                    // interactive: true
+                    // policy默认AsNeeded需要操作时才显示
+                    policy: ScrollBar.AlwaysOn
                 }
                 ScrollBar.horizontal: ScrollBar {
                     parent: scrollview_1
                     x: scrollview_1.leftPadding
                     y: scrollview_1.height - height
                     z: 10
-                    // 可以判断下另一边的scrollbar，减去其宽度避免重叠
                     width: scrollview_1.availableWidth
                     active: scrollview_1.ScrollBar.vertical.active
                     policy: ScrollBar.AsNeeded
@@ -881,55 +876,26 @@ ScrollView {
                 // 5.15中滚动条展示效果不对，会出现新旧两个滚动条
                 // 可以给自定义ScrollBar设置一个属性，然后去判断是否为新定义的
                 // Component.onCompleted: {
-                //     let child_list=control.children;
-                //     for(var i=0;i<child_list.length;i++)
+                //     let child_list = control.children;
+                //     for (var i = 0; i < child_list.length; i++)
                 //     {
-                //         //给自定义的scrollbar加一个自定义属性，此处为newBar
-                //         //遍历scrollview子节点，移除没有自定义属性的
-                //         if(child_list[i] instanceof ScrollBar&&
-                //                 !child_list[i].newBar)
-                //             child_list[i].visible=false;
+                //         // 给自定义的scrollbar加一个自定义属性，此处为newBar
+                //         // 遍历scrollview子节点，移除没有自定义属性的
+                //         if (child_list[i] instanceof ScrollBar && !child_list[i].newBar)
+                //             child_list[i].visible = false;
                 //     }
                 // }
+                // 更简单的方法是直接用T.ScrollView，因为ScrollBar是在ScrollView定义时添加的
             }
 
-            ScrollView {
-                id: scrollview_2
+            BasicScrollView {
                 width: 200
                 height: 200
-                // contentWidth: 500
-                // contentHeight: 500
-                clip: true
+                themeColor: "orange"
                 Text {
                     text: "A B C \nD E F"
                     font.family: "SimHei"
                     font.pixelSize: 120
-                }
-                background: Rectangle {
-                    border.color: "black"
-                    border.width: 1
-                }
-                padding: 1
-                ScrollBar.vertical: BasicScrollBar {
-                    parent: scrollview_2
-                    // 这里有1是为了防止踩再background的border上
-                    x: scrollview_2.mirrored ? 1 : scrollview_2.width - width-1
-                    y: scrollview_2.topPadding
-                    z: 10
-                    height: scrollview_2.availableHeight
-                    active: scrollview_2.ScrollBar.horizontal.active
-                    policy: ScrollBar.AlwaysOn // 因为每超出范围，所以设置让他显示
-                    handleNormalColor: "orange"
-                }
-                ScrollBar.horizontal: BasicScrollBar {
-                    parent: scrollview_2
-                    x: scrollview_2.leftPadding
-                    y: scrollview_2.height - height-1
-                    z: 10
-                    width: scrollview_2.availableWidth
-                    active: scrollview_2.ScrollBar.vertical.active
-                    policy: ScrollBar.AsNeeded
-                    handleNormalColor: "orange"
                 }
             }
         }

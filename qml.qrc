@@ -48,5 +48,6 @@
         <file>CustomComponent/CustomSwitchButton.qml</file>
         <file>CustomComponent/CustomVolumeSlider.qml</file>
         <file>CustomComponent/CustomVolumeSliderDemo.qml</file>
+        <file>BasicComponent/BasicScrollView.qml</file>
     </qresource>
 </RCC>

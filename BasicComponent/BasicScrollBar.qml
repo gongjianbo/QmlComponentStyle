@@ -8,9 +8,12 @@ import QtQuick.Templates 2.12 as T
 T.ScrollBar {
     id: control
 
-    property color handleNormalColor: "darkCyan"  //按钮颜色
-    property color handleHoverColor: Qt.lighter(handleNormalColor)
-    property color handlePressColor: Qt.darker(handleNormalColor)
+    // 可以像源码一样，定义一个全局的样式，然后取全局样式中对应的颜色
+    // 定义主题颜色
+    property color themeColor: "darkCyan"
+    property color handleNormalColor: themeColor  //按钮颜色
+    property color handleHoverColor: Qt.lighter(themeColor)
+    property color handlePressColor: Qt.darker(themeColor)
 
     implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
                             implicitContentWidth + leftPadding + rightPadding)
