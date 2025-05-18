@@ -52,6 +52,7 @@ T.ScrollView {
         y: control.scrollBarPadding
         z: 10
         height: control.height - control.scrollBarPadding * 2
+        // 横向竖向active关联起来
         active: control.ScrollBar.horizontal.active
         // 是否为交互式滚动条，如可以鼠标或触摸拖动，默认true
         // interactive: true

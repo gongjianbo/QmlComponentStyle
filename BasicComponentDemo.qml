@@ -860,6 +860,7 @@ ScrollView {
                     y: scrollview_1.topPadding
                     z: 10
                     height: scrollview_1.availableHeight
+                    // 横向竖向active关联起来
                     active: scrollview_1.ScrollBar.horizontal.active
                     // policy默认AsNeeded需要操作时才显示
                     policy: ScrollBar.AlwaysOn
