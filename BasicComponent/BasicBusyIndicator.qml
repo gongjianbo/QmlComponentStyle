@@ -21,7 +21,7 @@ T.BusyIndicator {
     // 默认宽度
     implicitWidth: implicitContentWidth + leftPadding + rightPadding
     // 默认高度
-    implicitHeight: implicitContentHeight + leftPadding + rightPadding
+    implicitHeight: implicitContentHeight + topPadding + bottomPadding
     // 边距
     padding: 6
 
