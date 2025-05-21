@@ -117,7 +117,7 @@ ScrollView {
         TabBar {
             width: 600
             background: Rectangle { color: palette.button }
-            // tabbar默认平均分宽度
+            // TabBar中没设置宽度的TabButton会把剩余的宽度平分
             TabButton { width: 120; text: "Tab"; icon.source: "qrc:/fire.png" }
             TabButton { width: 120; text: "Button" }
             TabButton { width: 120; text: "GongJianBo" }
@@ -125,7 +125,6 @@ ScrollView {
 
         BasicTabBar {
             width: 600
-            // tabbar默认平均分宽度
             BasicTabButton { width: 120; text: "Tab"; icon.source: "qrc:/fire.png" }
             BasicTabButton { width: 120; text: "Button" }
             BasicTabButton { width: 120; text: "1992" }
