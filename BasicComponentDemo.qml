@@ -125,6 +125,7 @@ ScrollView {
 
         BasicTabBar {
             width: 600
+            themeColor: "orange"
             BasicTabButton { width: 120; text: "Tab"; icon.source: "qrc:/fire.png" }
             BasicTabButton { width: 120; text: "Button" }
             BasicTabButton { width: 120; text: "1992" }
@@ -138,16 +139,19 @@ ScrollView {
                 ToolButton { text: "Button" }
                 ToolSeparator {}
                 ToolButton { text: "GongJianBo" }
+                ToolButton { icon.source: "qrc:/fire.png" }
             }
         }
 
         BasicToolBar {
             width: 600
+            themeColor: "darkorchid"
             RowLayout {
                 layoutDirection: Qt.LeftToRight
                 BasicToolButton { text: "Tool"; icon.source: "qrc:/fire.png" }
                 BasicToolButton { text: "Button" }
                 BasicToolSeparator {}
+                BasicToolButton { text: "1992" }
                 BasicToolButton { icon.source: "qrc:/fire.png" }
             }
         }
