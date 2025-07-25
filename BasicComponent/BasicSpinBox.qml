@@ -1,7 +1,7 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls.impl 2.12
-import QtQuick.Templates 2.12 as T
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Controls.impl 2.15
+import QtQuick.Templates 2.15 as T
 
 // Qt5数值编辑框样式自定义
 // 龚建波 2025-04-24

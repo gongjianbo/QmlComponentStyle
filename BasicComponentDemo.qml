@@ -170,18 +170,11 @@ ScrollView {
                 text: "Test:"
             }
             Button {
-                text: "DrawerShow"
+                text: "Drawer"
                 width: 120
                 height: 30
                 onClicked: drawer.open()
             }
-            Button {
-                text: "DrawerHide"
-                width: 120
-                height: 30
-                onClicked: drawer.close()
-            }
-
             Button {
                 text: "Dialog"
                 width: 120
@@ -947,7 +940,7 @@ ScrollView {
                     anchors.horizontalCenter: parent.left
                     width: 30
                     height: width
-                    radius: width/2
+                    radius: width / 2
                     color: "#f47920"
                     MouseArea {
                         anchors.fill: parent
@@ -964,7 +957,7 @@ ScrollView {
             anchors.horizontalCenter: parent.right
             width: 30
             height: width
-            radius: width/2
+            radius: width / 2
             color: "#f47920"
             MouseArea {
                 anchors.fill: parent

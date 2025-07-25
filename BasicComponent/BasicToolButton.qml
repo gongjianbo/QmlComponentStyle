@@ -14,7 +14,12 @@ T.ToolButton {
     property color themeColor: {
         var p = control.parent
         while (p) {
-            if ("themeColor" in p) return p.themeColor
+            if (p instanceof BasicToolBar) {
+                if ("themeColor" in p)
+                    return p.themeColor
+                else
+                    break
+            }
             p = p.parent
         }
         return "darkCyan"

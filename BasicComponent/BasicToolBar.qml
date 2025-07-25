@@ -13,6 +13,8 @@ T.ToolBar {
     // 定义背景颜色
     property color backgroundColor: themeColor
 
+    // 默认宽度，参考Qt源码的写法，实际应用可以删减
+    // Math.max表示取两者中最大值，1为默认背景宽度+左右偏移值，2为默认内容宽度+左右边距
     // implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
     //                         contentWidth + leftPadding + rightPadding)
     // implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
