@@ -49,5 +49,7 @@
         <file>CustomComponent/CustomVolumeSlider.qml</file>
         <file>CustomComponent/CustomVolumeSliderDemo.qml</file>
         <file>BasicComponent/BasicScrollView.qml</file>
+        <file>BasicComponent/QmlDropShadow.qml</file>
+        <file>BasicComponent/QmlInnerShadow.qml</file>
     </qresource>
 </RCC>

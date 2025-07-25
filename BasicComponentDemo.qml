@@ -34,7 +34,7 @@ ScrollView {
                 text: "Menu:"
             }
             Button {
-                text: "A Menu"
+                text: "Default Menu"
                 width: 120
                 height: 30
                 onClicked: menu_default.open()
@@ -48,7 +48,7 @@ ScrollView {
             // menubar通过row来组织menu
             // menu通过listview来组织menuitem
             BasicButton {
-                text: "B Menu"
+                text: "Basic Menu"
                 width: 120
                 height: 30
                 backgroundColor: "gray"
@@ -67,50 +67,54 @@ ScrollView {
             // 使用MenuBarItem来添加图标
             // MenuBarItem{}
             Menu {
-                title: "MenuA"
-                Action { text: "A"; checkable: true; checked: true }
-                Action { text: "B"; checkable: true; icon.source: "qrc:/fire.png" }
+                width: 180
+                title: "Menu A"
+                Action { text: "Checked"; checkable: true; checked: true }
+                Action { text: "Uncheckd Icon"; checkable: true; icon.source: "qrc:/fire.png" }
                 MenuSeparator {}
                 // 使用MenuItem来添加图标
                 MenuItem {
-                    text: "C"
+                    text: "MenuItem Icon"
                     icon.source: "qrc:/fire.png"
                 }
-                // 有下级菜单的还不知道怎么设置icon
+                // 有下级菜单的还不知道怎么设置icon，Qt6.5添加了icon属性组
                 Menu {
-                    title: "D"
-                    Action { text: "A" }
-                    Action { text: "B" }
+                    title: "Sub Menu"
+                    MenuItem { text: "Sub A" }
+                    MenuItem { text: "Sub B" }
                 }
             }
             Menu {
-                title: "Menu Test"
-                Action { text: "A" }
-                Action { text: "B" }
+                title: "Menu B"
+                Action { text: "Action A" }
+                Action { text: "Action B" }
             }
         }
 
         BasicMenuBar {
             width: 600
             height: 30
+            themeColor: "royalblue"
             BasicMenu {
-                title: "MenuA"
-                Action { text: "A"; checkable: true; checked: true }
-                Action { text: "B"; checkable: true; }
+                width: 180
+                title: "Menu A"
+                Action { text: "Checked"; checkable: true; checked: true }
+                Action { text: "Unchecked Icon"; checkable: true; icon.source: "qrc:/fire.png" }
                 BasicMenuSeparator {}
                 BasicMenuItem {
-                    text: "C"
+                    text: "MenuItem Icon"
+                    icon.source: "qrc:/fire.png"
                 }
                 BasicMenu {
-                    title: "D"
-                    Action { text: "A" }
-                    Action { text: "B" }
+                    title: "SubMenu"
+                    BasicMenuItem { text: "Sub A" }
+                    BasicMenuItem { text: "Sub B" }
                 }
             }
             BasicMenu {
-                title: "Menu Test"
-                Action { text: "A" }
-                Action { text: "B" }
+                title: "Menu B"
+                Action { text: "Action A" }
+                Action { text: "Action B" }
             }
         }
 

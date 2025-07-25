@@ -1,4 +1,6 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Controls.impl 2.15
 
 // QtQuick.control2带Icon的Label是个单独的控件：IconLabel
 // 但是自定义起来不大方便，比如没有renderType那就只能全局设置该属性
@@ -31,11 +33,12 @@ Item {
         // leftPadding: 6
         // rightPadding: 6
 
-        Image {
+        ColorImage {
             id: _icon
             anchors{
                 verticalCenter: parent.verticalCenter
             }
+            color: _text.color
         }
         Text {
             id: _text
