@@ -24,15 +24,9 @@ ScrollView {
         }
         spacing: 10
 
-        Row {
+        SubRow {
             id: menu_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "Menu:"
-            }
+            title: "Menu:"
             Button {
                 text: "Default Menu"
                 width: 120
@@ -160,15 +154,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: test_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "Test:"
-            }
+            title: "Test:"
             Button {
                 text: "Drawer"
                 width: 120
@@ -185,15 +173,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: gradientbutton_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "Button:"
-            }
+            title: "Button:"
             GradientButton {
                 text: "Button"
                 themeColor: "green"
@@ -214,15 +196,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: gradientcombobox_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "ComboBox:"
-            }
+            title: "ComboBox:"
             ComboBox {
                 editable: true
                 width: 120
@@ -245,15 +221,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: gradientcheckbox_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "CheckBox:"
-            }
+            title: "CheckBox:"
             ButtonGroup {
                 id: checkbox_group
             }
@@ -283,15 +253,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: button_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "Button:"
-            }
+            title: "Button:"
             Button {
                 text: "Button"
                 width: 120
@@ -328,15 +292,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: combobox_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "ComboBox:"
-            }
+            title: "ComboBox:"
             ComboBox {
                 editable: true
                 width: 120
@@ -388,15 +346,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: checkbox_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "CheckBox:"
-            }
+            title: "CheckBox:"
             ButtonGroup {
                 id: checkbox_group2
             }
@@ -428,15 +380,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: radiobutton_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "RadioButton:"
-            }
+            title: "RadioButton:"
             // 默认情况下，单选按钮是自动排他的。属于同一父项的单选按钮中随时只能检查一个按钮。
             // 对于不共享公共父级的单选按钮，可以使用ButtonGroup来管理排他性。
             Row {
@@ -471,15 +417,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: switch_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "SwitchButton:"
-            }
+            title: "SwitchButton:"
             Switch {
                 text: "Switch"
                 width: 120
@@ -501,16 +441,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: delaybutton_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "DelayButton:"
-            }
-
+            title: "DelayButton:"
             DelayButton {
                 text: "Delay"
                 width: 120
@@ -530,15 +463,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: tumbler_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "Tumbler:"
-            }
+            title: "Tumbler:"
             Tumbler {
                 width: 60
                 height: 160
@@ -573,15 +500,9 @@ ScrollView {
 
         // qml中放了busyindicattor，或者progressbar设置indeterminate，
         // 类似这种有动画效果的绘制，在部分电脑上缩小窗口过程中会有闪烁
-        Row {
+        SubRow {
             id: progress_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "ProgressBar:"
-            }
+            title: "ProgressBar:"
             ProgressBar {
                 width: 200; height: 10
                 from: 0; to:100; value: 20
@@ -604,15 +525,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: busy_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "BusyIndicator:"
-            }
+            title: "BusyIndicator:"
             BusyIndicator {
                 width: 86
                 height: 86
@@ -625,15 +540,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: label_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "Label:"
-            }
+            title: "Label:"
             Label {
                 text: "Label"
                 font.underline: true
@@ -663,15 +572,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: spinbox_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "SpinBox:"
-            }
+            title: "SpinBox:"
             // 参考文档里的三个示例
             SpinBox {
                 width: 120
@@ -757,15 +660,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: slider_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "Slider:"
-            }
+            title: "Slider:"
             // 在实际应用中，也可以关联scrollbar，鼠标滚动之类的
             Slider {
                 height: 200
@@ -829,15 +726,9 @@ ScrollView {
             }
         }
 
-        Row {
+        SubRow {
             id: scrollbar_row
-            spacing: 10
-            Text {
-                width: 90
-                height: 30
-                renderType: Text.NativeRendering
-                text: "ScrollBar:"
-            }
+            title: "ScrollBar:"
             // 用ScrollView来展示ScrollBar
             ScrollView {
                 id: scrollview_1
@@ -888,7 +779,6 @@ ScrollView {
                 // }
                 // 更简单的方法是直接用T.ScrollView，因为ScrollBar是在ScrollView定义时添加的
             }
-
             BasicScrollView {
                 width: 200
                 height: 200
@@ -901,11 +791,75 @@ ScrollView {
             }
         }
 
+        SubRow {
+            id: textinput_row
+            title: "TextInput:"
+            TextInput {
+                width: 200
+                height: 30
+                padding: 6
+                text: "Default TextInput"
+                verticalAlignment: TextInput.AlignVCenter
+                selectByMouse: true
+                InputBorder {}
+            }
+            BasicTextInput {
+                width: 200
+                height: 30
+                text: "Basic TextInput"
+                InputBorder {}
+            }
+            BasicTextInput {
+                width: 200
+                height: 30
+                text: "123"
+                maximumLength: 6
+                // 仅数字
+                validator: RegExpValidator { regExp: /[0-9]+/ }
+                // 显示模式：Normal普通文本，Password密码，NoEcho无显示，
+                // PasswordEchoOnEdit显示在编辑时输入的字符，否则与相同TextInput.Password
+                echoMode: TextInput.Password
+                // Password由普通字符到被特殊符号替换的间隔
+                passwordMaskDelay: 1000
+                InputBorder {}
+            }
+        }
+
+        SubRow {
+            id: textfield_row
+            title: "TextField:"
+            TextField {
+                width: 200
+                height: 30
+                padding: 6
+                selectByMouse: true
+                placeholderText: "Default TextField"
+            }
+            BasicTextField {
+                width: 200
+                height: 30
+                placeholderText: "Basic TextField"
+            }
+            BasicTextField {
+                width: 200
+                height: 30
+                text: "123"
+                maximumLength: 6
+                // 仅数字
+                validator: RegExpValidator { regExp: /[0-9]+/ }
+                // 显示模式：Normal普通文本，Password密码，NoEcho无显示，
+                // PasswordEchoOnEdit显示在编辑时输入的字符，否则与相同TextInput.Password
+                echoMode: TextInput.Password
+                // Password由普通字符到被特殊符号替换的间隔
+                passwordMaskDelay: 1000
+            }
+        }
+
         // BasicInputComponent.qml
         BasicInputComponent {}
 
         // 底部空白
-        Item{
+        Item {
             width: 100
             height: 500
         }
@@ -964,5 +918,23 @@ ScrollView {
                 onClicked: drawer.open()
             }
         }
+    }
+
+    component SubRow: Row {
+        property alias title: _title.text
+        spacing: 10
+        Text {
+            id: _title
+            width: 92
+            height: 30
+            renderType: Text.NativeRendering
+        }
+    }
+
+    component InputBorder: Rectangle {
+        anchors.fill: parent
+        color: "transparent"
+        border.width: parent.activeFocus ? 2 : 1
+        border.color: parent.activeFocus ? "blue" : "black"
     }
 }

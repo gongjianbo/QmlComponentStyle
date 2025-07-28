@@ -51,5 +51,7 @@
         <file>BasicComponent/BasicScrollView.qml</file>
         <file>BasicComponent/QmlDropShadow.qml</file>
         <file>BasicComponent/QmlInnerShadow.qml</file>
+        <file>BasicComponent/BasicTextInput.qml</file>
+        <file>BasicComponent/BasicTextField.qml</file>
     </qresource>
 </RCC>
