@@ -794,34 +794,34 @@ ScrollView {
         SubRow {
             id: textinput_row
             title: "TextInput:"
-            TextInput {
-                width: 200
-                height: 30
-                padding: 6
-                text: "Default TextInput"
-                verticalAlignment: TextInput.AlignVCenter
-                selectByMouse: true
-                InputBorder {}
+            InputBorder {
+                TextInput {
+                    anchors.fill: parent
+                    padding: 6
+                    text: "Default TextInput"
+                    verticalAlignment: TextInput.AlignVCenter
+                    selectByMouse: true
+                }
             }
-            BasicTextInput {
-                width: 200
-                height: 30
-                text: "Basic TextInput"
-                InputBorder {}
+            InputBorder {
+                BasicTextInput {
+                    anchors.fill: parent
+                    text: "Basic TextInput"
+                }
             }
-            BasicTextInput {
-                width: 200
-                height: 30
-                text: "123"
-                maximumLength: 6
-                // 仅数字
-                validator: RegExpValidator { regExp: /[0-9]+/ }
-                // 显示模式：Normal普通文本，Password密码，NoEcho无显示，
-                // PasswordEchoOnEdit显示在编辑时输入的字符，否则与相同TextInput.Password
-                echoMode: TextInput.Password
-                // Password由普通字符到被特殊符号替换的间隔
-                passwordMaskDelay: 1000
-                InputBorder {}
+            InputBorder {
+                BasicTextInput {
+                    anchors.fill: parent
+                    text: "123"
+                    maximumLength: 6
+                    // 仅数字
+                    validator: RegExpValidator { regExp: /[0-9]+/ }
+                    // 显示模式：Normal普通文本，Password密码，NoEcho无显示，
+                    // PasswordEchoOnEdit显示在编辑时输入的字符，否则与相同TextInput.Password
+                    echoMode: TextInput.Password
+                    // Password由普通字符到被特殊符号替换的间隔
+                    passwordMaskDelay: 1000
+                }
             }
         }
 
@@ -855,8 +855,66 @@ ScrollView {
             }
         }
 
-        // BasicInputComponent.qml
-        BasicInputComponent {}
+        SubRow {
+            id: textedit_row
+            title: "TextEdit:"
+            InputBorder {
+                height: 100
+                TextEdit {
+                    anchors.fill: parent
+                    padding: 6
+                    selectByMouse: true
+                    textFormat: TextEdit.RichText
+                    text: "Default<br>TextEdit<br><a href='http://www.baidu.com'>baidu</a>"
+                }
+            }
+            InputBorder {
+                height: 100
+                BasicTextEdit {
+                    anchors.fill: parent
+                    textFormat: TextEdit.RichText
+                    text: "Basic<br>TextEdit<br><a href='http://www.baidu.com'>baidu</a>"
+                }
+            }
+            InputBorder {
+                height: 100
+                BasicTextEdit {
+                    anchors.fill: parent
+                    textFormat: TextEdit.PlainText
+                    wrapMode: TextEdit.Wrap
+                    text: "Basic\nTextEdit\n<a href='http://www.baidu.com'>baidu</a>"
+                }
+            }
+        }
+
+        SubRow {
+            id: textarea_row
+            title: "TextArea:"
+            InputBorder {
+                height: 100
+                TextArea {
+                    anchors.fill: parent
+                    padding: 6
+                    selectByMouse: true
+                    textFormat: TextEdit.RichText
+                    text: "Default<br>TextArea<br><a href='http://www.baidu.com'>baidu</a>"
+                }
+            }
+            // todo scrollbar
+            BasicTextArea {
+                width: 200
+                height: 100
+                textFormat: TextEdit.RichText
+                text: "Basic<br>TextArea<br><a href='http://www.baidu.com'>baidu</a>"
+            }
+            BasicTextArea {
+                width: 200
+                height: 100
+                textFormat: TextEdit.PlainText
+                wrapMode: TextEdit.Wrap
+                text: "Basic\nTextArea\n<a href='http://www.baidu.com'>baidu</a>"
+            }
+        }
 
         // 底部空白
         Item {
@@ -932,9 +990,10 @@ ScrollView {
     }
 
     component InputBorder: Rectangle {
-        anchors.fill: parent
-        color: "transparent"
-        border.width: parent.activeFocus ? 2 : 1
-        border.color: parent.activeFocus ? "blue" : "black"
+        property bool itemActive: visibleChildren[0].activeFocus
+        width: 200
+        height: 30
+        border.width: itemActive ? 2 : 1
+        border.color: itemActive ? "blue" : "black"
     }
 }

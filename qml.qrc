@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>BasicComponentDemo.qml</file>
-        <file>BasicInputComponent.qml</file>
         <file>CustomComponentDemo.qml</file>
         <file>BasicComponent/BasicBusyIndicator.qml</file>
         <file>BasicComponent/BasicButton.qml</file>
@@ -53,5 +52,7 @@
         <file>BasicComponent/QmlInnerShadow.qml</file>
         <file>BasicComponent/BasicTextInput.qml</file>
         <file>BasicComponent/BasicTextField.qml</file>
+        <file>BasicComponent/BasicTextEdit.qml</file>
+        <file>BasicComponent/BasicTextArea.qml</file>
     </qresource>
 </RCC>
