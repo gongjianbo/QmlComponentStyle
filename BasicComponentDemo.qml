@@ -858,28 +858,28 @@ ScrollView {
         SubRow {
             id: textedit_row
             title: "TextEdit:"
-            InputBorder {
-                height: 100
+            InputArea {
                 TextEdit {
-                    anchors.fill: parent
+                    width: 180
+                    height: implicitContentHeight < parent.height ? parent.height : implicitContentHeight
                     padding: 6
                     selectByMouse: true
                     textFormat: TextEdit.RichText
                     text: "Default<br>TextEdit<br><a href='http://www.baidu.com'>baidu</a>"
                 }
             }
-            InputBorder {
-                height: 100
+            InputArea {
                 BasicTextEdit {
-                    anchors.fill: parent
+                    width: 180
+                    height: implicitContentHeight < parent.height ? parent.height : implicitContentHeight
                     textFormat: TextEdit.RichText
                     text: "Basic<br>TextEdit<br><a href='http://www.baidu.com'>baidu</a>"
                 }
             }
-            InputBorder {
-                height: 100
+            InputArea {
                 BasicTextEdit {
-                    anchors.fill: parent
+                    width: 180
+                    height: implicitContentHeight < parent.height ? parent.height : implicitContentHeight
                     textFormat: TextEdit.PlainText
                     wrapMode: TextEdit.Wrap
                     text: "Basic\nTextEdit\n<a href='http://www.baidu.com'>baidu</a>"
@@ -890,29 +890,34 @@ ScrollView {
         SubRow {
             id: textarea_row
             title: "TextArea:"
-            InputBorder {
-                height: 100
+            InputArea {
                 TextArea {
-                    anchors.fill: parent
+                    width: 180
+                    height: implicitContentHeight < parent.height ? parent.height : implicitContentHeight
                     padding: 6
                     selectByMouse: true
-                    textFormat: TextEdit.RichText
+                    textFormat: TextArea.RichText
                     text: "Default<br>TextArea<br><a href='http://www.baidu.com'>baidu</a>"
                 }
             }
-            // todo scrollbar
-            BasicTextArea {
-                width: 200
-                height: 100
-                textFormat: TextEdit.RichText
-                text: "Basic<br>TextArea<br><a href='http://www.baidu.com'>baidu</a>"
+            InputArea {
+                BasicTextArea {
+                    width: 180
+                    height: implicitContentHeight < parent.height ? parent.height : implicitContentHeight
+                    textFormat: TextArea.RichText
+                    text: "Basic<br>TextArea<br><a href='http://www.baidu.com'>baidu</a>"
+                    background: Item { }
+                }
             }
-            BasicTextArea {
-                width: 200
-                height: 100
-                textFormat: TextEdit.PlainText
-                wrapMode: TextEdit.Wrap
-                text: "Basic\nTextArea\n<a href='http://www.baidu.com'>baidu</a>"
+            InputArea {
+                BasicTextArea {
+                    width: 180
+                    height: implicitContentHeight < parent.height ? parent.height : implicitContentHeight
+                    textFormat: TextEdit.PlainText
+                    wrapMode: TextArea.Wrap
+                    text: "Basic\nTextArea\n<a href='http://www.baidu.com'>baidu</a>"
+                    background: Item { }
+                }
             }
         }
 
@@ -995,5 +1000,17 @@ ScrollView {
         height: 30
         border.width: itemActive ? 2 : 1
         border.color: itemActive ? "blue" : "black"
+    }
+
+    component InputArea: BasicScrollView {
+        property bool itemActive: activeFocus
+        width: 200
+        height: 100
+        scrollBarPadding: 6
+        contentWidth: 180
+        background: Rectangle {
+            border.width: itemActive ? 2 : 1
+            border.color: itemActive ? "blue" : "black"
+        }
     }
 }
