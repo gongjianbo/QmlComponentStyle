@@ -968,7 +968,7 @@ ScrollView {
         }
 
         // 屏幕右侧按钮
-        Rectangle{
+        Rectangle {
             visible: !drawer.visible
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.right

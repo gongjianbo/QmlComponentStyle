@@ -1,14 +1,14 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
-//截图展示
+// 截图展示
 Rectangle {
     id: control
 
     width: 300
     height: 300
 
-    Rectangle{
+    Rectangle {
         id: target
         anchors.fill: parent
         anchors.topMargin: 30
@@ -16,7 +16,7 @@ Rectangle {
         border.color: "purple"
         color: "orange"
 
-        Rectangle{
+        Rectangle {
             width: 80
             height: 200
             anchors.centerIn: parent
@@ -24,24 +24,24 @@ Rectangle {
         }
     }
 
-    //对Item截图
-    CustomItemShot{
+    // 对Item截图
+    CustomItemShot {
         id: shot_area
-        shotTarget: target //要抓取的Item
-        anchors.fill: target //范围
+        shotTarget: target // 要抓取的Item
+        anchors.fill: target // 范围
         anchors.margins: 1
         visible: false
     }
 
-    Button{
+    Button {
         width: 90
         height: 30
         text: "Shot"
         onClicked: {
-            if(shot_area.visible){
-                shot_area.close();
-            }else{
-                shot_area.pop();
+            if (shot_area.visible) {
+                shot_area.close()
+            } else {
+                shot_area.pop()
             }
         }
     }

@@ -2,7 +2,7 @@ QT += quick
 QT += qml
 QT += quickcontrols2
 
-CONFIG += c++11
+CONFIG += c++17
 CONFIG += utf8_source
 # msvc {
 #     QMAKE_CFLAGS += /utf-8

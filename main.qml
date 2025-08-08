@@ -7,7 +7,7 @@ ApplicationWindow {
     visible: true
     width: 900
     height: 720
-    title: "Qml Component Style: by Gong Jian Bo"
+    title: "Qml Component Style: by GongJianBo"
 
     Loader {
         id: root_loader

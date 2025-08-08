@@ -85,19 +85,19 @@ ScrollView {
             Button {
                 text: "近一周"
                 onClicked: {
-                    let begin_date = new Date();
-                    date_range.endDate = new Date();
+                    let begin_date = new Date()
+                    date_range.endDate = new Date()
                     begin_date.setDate(begin_date.getDate() - 6)
-                    date_range.beginDate = begin_date;
+                    date_range.beginDate = begin_date
                 }
             }
             Button {
                 text: "近一月"
                 onClicked: {
-                    let begin_date = new Date();
-                    date_range.endDate = new Date();
-                    begin_date.setMonth(begin_date.getMonth() - 1);
-                    date_range.beginDate = begin_date;
+                    let begin_date = new Date()
+                    date_range.endDate = new Date()
+                    begin_date.setMonth(begin_date.getMonth() - 1)
+                    date_range.beginDate = begin_date
                 }
             }
         }
@@ -133,7 +133,7 @@ ScrollView {
         }
 
         // 底部空白
-        Item{
+        Item {
             width: 100
             height: 500
         }

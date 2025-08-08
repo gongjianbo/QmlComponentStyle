@@ -1,16 +1,16 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
-//自定义loading效果
-//龚建波 2022-02-08
+// 自定义loading效果
+// 龚建波 2022-02-08
 Item {
     id: control
 
-    //item的颜色
+    // item的颜色
     property color itemColor: "#0486FF"
-    //当前旋转的x轴还是y轴
+    // 当前旋转的x轴还是y轴
     property int _transX: 0
-    //当前旋转的角度，0-180后切换到另一个轴旋转
+    // 当前旋转的角度，0-180后切换到另一个轴旋转
     property double _transRotate: 0
     //
     property bool running: visible
@@ -18,7 +18,7 @@ Item {
     implicitHeight: 160
     implicitWidth: 160
 
-    //动画
+    // 动画
     SequentialAnimation {
         loops: Animation.Infinite
         running: control.running
@@ -57,7 +57,7 @@ Item {
         anchors.fill: parent
         anchors.margins: 8
 
-        //翻转的方块
+        // 翻转的方块
         Rectangle {
             id: rect
             width: content.width

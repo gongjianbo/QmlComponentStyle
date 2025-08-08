@@ -1,12 +1,10 @@
 # QmlComponentStyle
 
-- QML Component Style Demo Based on Qt5.12. QML组件样式Demo，以Qt5.12为基础版本。
-
-- 正在更新到 Qt5.15，并进行完善...
+- QML Component Style Demo Based on Qt5.15. QML组件样式Demo，以Qt5.15为基础版本。
 
 # Environment （开发环境）
 
-（2025-03-04）Win10/Win11 64bit + Qt5.15.2 + MSVC2019/MSVC2022 64bit
+（2025-08-08）Win10/Win11 64bit + Qt5.15.2 + MSVC2019/MSVC2022 32bit/64bit
 
 # Warning(注意)：
 

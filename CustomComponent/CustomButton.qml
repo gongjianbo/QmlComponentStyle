@@ -1,6 +1,6 @@
-import QtQuick 2.12
+import QtQuick 2.15
 
-//自定义按钮
+// 自定义按钮
 Rectangle {
     id:control
 
@@ -22,12 +22,12 @@ Rectangle {
     implicitWidth: 90
     implicitHeight: 30
 
-    //white:fff, black:000
+    // white:fff, black:000
     color: control_mousearea.pressed
-           ?"#444"
-           :control_mousearea.containsMouse
-             ?"#888"
-             :"#666"
+           ? "#444"
+           : control_mousearea.containsMouse
+             ? "#888"
+             : "#666"
     border {
         color: "black"
         width: 1
@@ -37,7 +37,7 @@ Rectangle {
         id: control_text
         anchors.fill: parent
         text: qsTr("Button")
-        color: control_mousearea.pressed?"white":"black"
+        color: control_mousearea.pressed ? "white" : "black"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         renderType: Text.NativeRendering
@@ -49,18 +49,18 @@ Rectangle {
         }
     }
 
-    MouseArea{
+    MouseArea {
         id: control_mousearea
         anchors.fill: parent
         hoverEnabled: true
 
-        onEntered: control.entered();
-        onExited: control.exited();
-        onCanceled: control.canceled();
-        onClicked: control.clicked();
-        onDoubleClicked: control.doubleClicked();
-        onPressAndHold: control.pressAndHold();
-        onPressed: control.pressed();
-        onReleased: control.released();
+        onEntered: control.entered()
+        onExited: control.exited()
+        onCanceled: control.canceled()
+        onClicked: control.clicked()
+        onDoubleClicked: control.doubleClicked()
+        onPressAndHold: control.pressAndHold()
+        onPressed: control.pressed()
+        onReleased: control.released()
     }
 }

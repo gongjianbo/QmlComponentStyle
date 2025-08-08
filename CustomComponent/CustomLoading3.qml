@@ -1,9 +1,9 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Shapes 1.12
 
-//自定义loading效果
-//龚建波 2022-02-09
+// 自定义loading效果
+// 龚建波 2022-02-09
 Item {
     id: control
 
@@ -12,9 +12,9 @@ Item {
 
     property int itemMargin: 5
     property int itemBorder: 4
-    //item的宽度
+    // item的宽度
     property int itemWidth: 16
-    //item的颜色
+    // item的颜色
     property color itemColor: "#0486FF"
     //
     property double _rotate: _from
@@ -23,7 +23,7 @@ Item {
     //
     property bool running: visible
 
-    //动画1旋转
+    // 动画1旋转
     RotationAnimation {
         target: sp
         from: 0
@@ -33,7 +33,7 @@ Item {
         duration: 3000
     }
 
-    //动画2控制长度形变
+    // 动画2控制长度形变
     SequentialAnimation {
         loops: Animation.Infinite
         running: control.running
@@ -45,7 +45,7 @@ Item {
             duration: 2000
         }
         NumberAnimation {
-            duration: 2000 //停顿
+            duration: 2000 // 停顿
         }
         NumberAnimation {
             target: control
@@ -55,7 +55,7 @@ Item {
             duration: 1000
         }
         NumberAnimation {
-            duration: 2000 //停顿
+            duration: 2000 // 停顿
         }
     }
 
@@ -69,9 +69,9 @@ Item {
             samples: 16
         }
 
-        //底部浅色
+        // 底部浅色
         ShapePath {
-            strokeWidth: itemWidth+itemBorder*2
+            strokeWidth: itemWidth + itemBorder * 2
             strokeColor: Qt.lighter(itemColor, 1.9)
             strokeStyle: ShapePath.SolidLine
             fillColor: "transparent"
@@ -80,17 +80,17 @@ Item {
             joinStyle: ShapePath.RoundJoin
 
             PathAngleArc {
-                centerX: width/2
-                centerY: height/2
-                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
-                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                centerX: width / 2
+                centerY: height / 2
+                radiusX: width / 2 - itemWidth / 2 - itemMargin - itemBorder
+                radiusY: height / 2 - itemWidth / 2 - itemMargin - itemBorder
                 startAngle: 0
                 sweepAngle: 360
                 moveToStart: true
             }
         }
 
-        //底部深色
+        // 底部深色
         ShapePath {
             strokeWidth: itemWidth
             strokeColor: Qt.lighter(itemColor, 1.8)
@@ -101,17 +101,17 @@ Item {
             joinStyle: ShapePath.RoundJoin
 
             PathAngleArc {
-                centerX: width/2
-                centerY: height/2
-                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
-                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                centerX: width / 2
+                centerY: height / 2
+                radiusX: width / 2 - itemWidth / 2 - itemMargin - itemBorder
+                radiusY: height / 2 - itemWidth / 2 - itemMargin - itemBorder
                 startAngle: 0
                 sweepAngle: 360
                 moveToStart: true
             }
         }
 
-        //旋转的曲线
+        // 旋转的曲线
         ShapePath {
             strokeWidth: itemWidth
             strokeColor: itemColor
@@ -122,20 +122,20 @@ Item {
             joinStyle: ShapePath.RoundJoin
 
             PathAngleArc {
-                centerX: width/2
-                centerY: height/2
-                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
-                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                centerX: width / 2
+                centerY: height / 2
+                radiusX: width / 2 - itemWidth / 2 - itemMargin - itemBorder
+                radiusY: height / 2 - itemWidth / 2 - itemMargin - itemBorder
                 startAngle: 0
                 sweepAngle: control.running ? -_rotate : 360
                 moveToStart: true
             }
 
             PathAngleArc {
-                centerX: width/2
-                centerY: height/2
-                radiusX: width/2-itemWidth/2-itemMargin-itemBorder
-                radiusY: height/2-itemWidth/2-itemMargin-itemBorder
+                centerX: width / 2
+                centerY: height / 2
+                radiusX: width / 2 - itemWidth / 2 - itemMargin - itemBorder
+                radiusY: height / 2 - itemWidth / 2 - itemMargin - itemBorder
                 startAngle: 180
                 sweepAngle: control.running ? -_rotate : 360
                 moveToStart: true
